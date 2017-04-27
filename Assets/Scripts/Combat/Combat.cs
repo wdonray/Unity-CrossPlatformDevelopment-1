@@ -12,24 +12,24 @@ namespace Combat
         //roll 20d and add dex mod
         private Combat()
         {
-            InitiativeSeed = new Random();
-            AttackSeed = new Random();
+            _initiativeSeed = new Random();
+            _attackSeed = new Random();
         }
 
-        private Random InitiativeSeed;
-        private Random AttackSeed;
+        private readonly Random _initiativeSeed;
+        private readonly Random _attackSeed;
 
         public static Combat Instance
         {
             get
             {
-                if(instance == null)
-                    instance = new Combat();
-                return instance;
+                if (_instance != null) return _instance;
+                _instance = new Combat();
+                return _instance;
             }
         }
 
-        private static Combat instance;
+        private static Combat _instance;
 
         [DataMember]
         public int Round { get; set; }
@@ -40,7 +40,7 @@ namespace Combat
 
         public int RollForInitiative(Unit u1)
         {
-            int roll = InitiativeSeed.Next(1, 21);
+            var roll = _initiativeSeed.Next(1, 21);
             var dex = u1.Stats.GetStat("Dexterity");
             int value = dex.Value;
             return ((value - 10) / 2) + roll;
@@ -50,7 +50,7 @@ namespace Combat
         {
             //chance to hit
 
-            int roll = AttackSeed.Next(1, 21);
+            int roll = _attackSeed.Next(1, 21);
             Stat s1 = attacker.Stats.GetStat(attacker.Weapon.StatName);
             int s2 = defender.ArmorCount;
             int playerRoll = ((s1.Value - 10) / 2) + roll;

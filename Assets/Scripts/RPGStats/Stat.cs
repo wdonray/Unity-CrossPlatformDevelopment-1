@@ -4,17 +4,22 @@ using System;
 namespace RPGStats
 {
     [DataContract]
+    [System.Serializable]
     public class Stat
     {
         public Stat()
         {
+            Name = "Name:";
+            Value = 0;
+            _baseValue = Value;
+            OnStatAdd += Doit;
         }
 
         public Stat(string n, int v)
         {
             Name = n;
             Value = v;
-            base_value = Value;
+            _baseValue = Value;
             OnStatAdd += Doit;
         }
 
@@ -24,7 +29,7 @@ namespace RPGStats
         [DataMember]
         public int Value { get; set; }
 
-        [DataMember] private readonly int base_value;
+        [DataMember] private readonly int _baseValue;
 
         [IgnoreDataMember] public Action OnStatAdd;
 
@@ -35,17 +40,17 @@ namespace RPGStats
         public void Apply(Modifier mod)
         {
             if (mod.type == "add")
-                Value += base_value + mod.value;
+                Value += _baseValue + mod.value;
             if (mod.type == "mult")
-                Value += base_value * mod.value / 10;
+                Value += _baseValue * mod.value / 10;
         }
 
         public void Remove(Modifier mod)
         {
             if (mod.type == "add")
-                Value -= base_value + mod.value;
+                Value -= _baseValue + mod.value;
             if (mod.type == "mult")
-                Value -= base_value * mod.value / 10;
+                Value -= _baseValue * mod.value / 10;
         }
     }
 }

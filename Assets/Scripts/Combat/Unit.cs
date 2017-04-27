@@ -33,6 +33,8 @@ namespace Combat
 
         public override bool Equals(object obj)
         {
+            if(obj == null)
+                return false;
             return this.GetHashCode() == obj.GetHashCode();
         }
 

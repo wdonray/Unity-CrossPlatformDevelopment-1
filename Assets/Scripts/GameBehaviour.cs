@@ -1,28 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 //spawn boxes behaviour
 public class GameBehaviour : MonoBehaviour
 {
-    public List<GameObject> boxes;
+    public List<GameObject> Boxes;
 
-    public GameObject boxPrefab;
+    public GameObject BoxPrefab;
 
     // Use this for initialization
     void Start()
     {
-        boxes = new List<GameObject>();
+        Boxes = new List<GameObject>();
     }
 
     private void Update()
     {
-        GameObject box;
         //because i don't want to do it every frame
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            box = Instantiate(boxPrefab) as GameObject;
-            boxes.Add(box);
-        }
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        var box = Instantiate(BoxPrefab);
+        Boxes.Add(box);
     }
 }

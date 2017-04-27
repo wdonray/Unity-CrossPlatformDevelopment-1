@@ -4,38 +4,36 @@ using UnityEngine.UI;
 [System.Serializable]
 public class PlayerInputBehaviour : MonoBehaviour
 {
-    [SerializeField] Text positionText;
-    Vector2 PlayerPos;
+    [SerializeField] Text _positionText;
+    [SerializeField] Vector2 _playerPos;
 
     void Start()
     {
-        PlayerPos = Vector2.zero;
+        _playerPos = Vector2.zero;
     }
 
     void Update()
     {
-        var currentPosition = PlayerPos;
+        var currentPosition = _playerPos;
         if (Input.GetKeyDown(KeyCode.A))
-            PlayerPos += Vector2.left;
+            _playerPos += Vector2.left;
 
         if (Input.GetKeyDown(KeyCode.D))
-            PlayerPos += Vector2.right;
+            _playerPos += Vector2.right;
 
         if (Input.GetKeyDown(KeyCode.W))
-            PlayerPos += Vector2.up;
+            _playerPos += Vector2.up;
 
         if (Input.GetKeyDown(KeyCode.S))
-            PlayerPos += Vector2.down;
+            _playerPos += Vector2.down;
 
 
-        if (PlayerPos != currentPosition)
+        if (_playerPos == currentPosition) return;
+        if (_positionText == null)
+            Debug.LogError("error");
+        else
         {
-            if (positionText == null)
-                Debug.LogError("error");
-            else
-            {
-                positionText.text = PlayerPos.ToString();
-            }
+            _positionText.text = _playerPos.ToString();
         }
     }
 }

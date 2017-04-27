@@ -2,12 +2,12 @@
 
 public class DestroyAfterTime : MonoBehaviour
 {
-    float time = 1.0f;
+    public float Time = 1.0f;
 
     void Update()
     {
-        if (time < 0)
+        if (Time < 0)
             Destroy(gameObject);
-        time -= Time.deltaTime;
+        Time -= UnityEngine.Time.deltaTime;
     }
 }

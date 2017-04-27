@@ -1,22 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KinematicFixBehaviour : MonoBehaviour
 {
-    public GameBehaviour gameBehaviour;
+    public GameBehaviour GameBehaviour;
 
     private void Start()
     {
-        gameBehaviour = GetComponent<GameBehaviour>();
+        GameBehaviour = GetComponent<GameBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            gameBehaviour.boxes.ForEach(box => box.GetComponent<Rigidbody>().isKinematic = false);
-        }
+        if(!Input.GetKeyDown(KeyCode.F))
+            return;
+
+        GameBehaviour.Boxes.ForEach(box => box.GetComponent<Rigidbody>().isKinematic = false);
+
     }
 }
