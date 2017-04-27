@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RunChoiceBehaviour : MonoBehaviour
 {
-    public Text informationText;
+    public Text InformationText;
 	public void Run()
-    {
-        string info = "Run Choice Selected I am running....";
-        informationText.text += info + Environment.NewLine;
-    }
+	{
+	    const string info = "Run Choice Selected I am running....";
+	    InformationText.text += info + Environment.NewLine;
+	}
 	
 }
