@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class RunChoiceBehaviour : MonoBehaviour
-{
+public class DefendChoiceBehavior : MonoBehaviour {
+
     public Text Log_Text;
-	public void Run()
+    public void Defend()
     {
-        Log_Text.text += "You are now running..." + Environment.NewLine;
+        Log_Text.text += "You are now defending..." + Environment.NewLine;
     }
-	
 }
