@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyAfterTime : MonoBehaviour {
+public class DestroyAfterTime : MonoBehaviour
+{
+    float time = 1.0f;
 
-    private float timer = 1.0f;
-
-    public void Update()
+    void Update()
     {
-        if (timer < 0)
+        if(time < 0)
             Destroy(gameObject);
-        timer -= Time.deltaTime;
+        time -= Time.deltaTime;
     }
 }

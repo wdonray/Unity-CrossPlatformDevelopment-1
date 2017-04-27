@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class RunChoiceBehaviour : MonoBehaviour
 {
-    public Text Log_Text;
+    public Text InformationText;
 	public void Run()
-    {
-        Log_Text.text += "You are now running..." + Environment.NewLine;
+	{
+        InformationText.text = "You are now running..." + Environment.NewLine;
     }
 	
 }
