@@ -183,7 +183,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1740897246}
   m_HandleRect: {fileID: 1740897245}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -491,8 +491,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 475303259}
-        m_MethodName: Run
+      - m_Target: {fileID: 758596347}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -987,14 +987,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_stats:
-  - name: knowledge
-    value: 0
-  - name: guts
-    value: 0
-  - name: charm
-    value: 0
-  - name: kindness
-    value: 0
+  - Name: knowledge
+    Value: 5
+  - Name: guts
+    Value: 4
+  - Name: charm
+    Value: 3
+  - Name: kindness
+    Value: 2
 --- !u!4 &601812057
 Transform:
   m_ObjectHideFlags: 0
@@ -1127,6 +1127,7 @@ GameObject:
   - component: {fileID: 758596351}
   - component: {fileID: 758596350}
   - component: {fileID: 758596349}
+  - component: {fileID: 758596352}
   m_Layer: 5
   m_Name: PlayerStats
   m_TagString: Untagged
@@ -1207,6 +1208,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 758596347}
+--- !u!114 &758596352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 758596347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6078bd2bb1cf84f9e448950c689a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1610094790439236, guid: 982c26d9a57d736469dad46ee9b95da1, type: 2}
+  parent: {fileID: 758596348}
 --- !u!1 &824417014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,7 +1254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.317}
   m_AnchorMax: {x: 0.6001546, y: 0.874}
-  m_AnchoredPosition: {x: -0.12373352, y: -3}
+  m_AnchoredPosition: {x: -0.12374878, y: -3}
   m_SizeDelta: {x: -0.24753, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &824417017
@@ -1451,7 +1465,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 988576169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 601812056}
+        m_MethodName: ModifyRandomStat
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: charm
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &988576169
@@ -2537,8 +2562,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 475303256}
-        m_MethodName: Attack
+      - m_Target: {fileID: 758596352}
+        m_MethodName: SpawnAllItems
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3172,6 +3197,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!1 &1977133183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1977133184}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1977133184
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1977133183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022377528
 GameObject:
   m_ObjectHideFlags: 0

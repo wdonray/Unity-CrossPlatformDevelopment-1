@@ -2,55 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPGStats;
+using UnityEngine.Events;
 
-public class PlayerBehaviour : MonoBehaviour {
-    
-    public Stats PlayerStats
-    {
-        get;
-        private set;
-    }
-    
-    [System.Serializable]
-    public class PlayerStat 
-    {
-        public PlayerStat(Stat s)
-        {
-            name = s.Name;
-            value = s.Value;
-        }
+public class OnStatModify : UnityEvent<RPGStats.Stat>
+{
+    public OnStatModify() { }
+} 
 
-        [SerializeField]
-        private string name;
-        [SerializeField]
-        private int value;
+public class PlayerBehaviour : MonoBehaviour
+{
+    public OnStatModify onStatModify;
+    private void Awake()
+    {
+        onStatModify = new OnStatModify();
     }
 
     [SerializeField]
-    private List<PlayerStat> p_stats;
+    public Stats PlayerStats;
+
+    [SerializeField]
+    private List<Stat> p_stats;
     // Use this for initialization
     void Start ()
 	{
-        if(PlayerStats != null) return;
+         
 	    Create();
 	}
 
     [ContextMenu("Create Player")]
     void Create()
     {
-        var knowledge = new Stat("knowledge", 0);
-        var guts = new Stat("guts", 0);
-        var charm = new Stat("charm", 0);
-        var kindness = new Stat("kindness", 0);
+        var knowledge = new Stat("knowledge", 5);
+        var guts = new Stat("guts", 4);
+        var charm = new Stat("charm", 3);
+        var kindness = new Stat("kindness", 2);
 
         PlayerStats = new Stats(knowledge, guts, charm, kindness);
-
-        p_stats = new List<PlayerStat>()
-        {
-            new PlayerStat(knowledge),
-            new PlayerStat(guts),
-            new PlayerStat(charm),
-            new PlayerStat(kindness),
-        };
+        p_stats = new List<Stat>(PlayerStats._items.Values); 
     }
+
+    private int modcount = 0;
+    public void ModifyRandomStat(string stat)
+    {
+        var res = PlayerStats.AddModifier(modcount++, new Modifier("add", stat, 2));
+        Debug.Log(res);
+        onStatModify.Invoke(PlayerStats[stat]);
+    }
+
+
 }

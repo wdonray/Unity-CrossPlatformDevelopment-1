@@ -24,10 +24,10 @@ namespace RPGStats
         }
 
         [DataMember]
-        public string Name { get; set; }
+        public string Name;
 
         [DataMember]
-        public int Value { get; set; }
+        public int Value;
 
         [DataMember] private readonly int _baseValue;
 
