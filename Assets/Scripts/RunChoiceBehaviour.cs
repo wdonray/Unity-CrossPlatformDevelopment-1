@@ -8,6 +8,7 @@ public class RunChoiceBehaviour : MonoBehaviour
 	public void Run()
 	{
         InformationText.text = "You are now running..." + Environment.NewLine;
+        Application.Quit();
     }
 	
 }

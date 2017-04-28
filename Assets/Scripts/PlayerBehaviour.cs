@@ -4,22 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerBehaviour : MonoBehaviour
 {
-    public Text intel, dex, charisma, vit, Log_Text;
-    public Slider slider;
-    public Button attack;
+    public Text Intel_Text, Dex_Text, Charisma_Text, Vit_Text, Log_Text, Name_Text;
+    public Slider HP_Slider;
+    public Button Attack_Button;
     public PlayerClass Player;
 
     private float timer = 1.0f;
-    private int damage;
+    private int DMG_Dealt;
     private void Start()
     {
         Player = new PlayerClass();
-        //Player.name = Player.names[Random.Range(0, Player.name.Length)];
-        damage = 0;
-        slider.maxValue = Player.vit;
-        slider.value = Player.vit;
+        Player.Player_Name = Player.List_Names[Random.Range(0, Player.List_Names.Count)];
+        DMG_Dealt = 0;
+        HP_Slider.maxValue = Player.Vit_Stat;
+        HP_Slider.value = Player.Vit_Stat;
         Populate_Text();
-        Button btn = attack.GetComponent<Button>();
+        Button btn = Attack_Button.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
@@ -28,36 +28,36 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (timer > 3)
         {
-            damage = Random.Range(5, 11);
-            Player.vit -= damage;
+            DMG_Dealt = Random.Range(5, 11);
+            Player.Vit_Stat -= DMG_Dealt;
             timer = 1.0f;
         }
         timer += Time.deltaTime;
-        if (Player.vit > 0)
+        if (Player.Vit_Stat > 0)
         {
             Populate_Text();
-            slider.value = Player.vit;
+            HP_Slider.value = Player.Vit_Stat;
         }
         else
         {
             Player = null;
             Player = new PlayerClass();
-            slider.maxValue = Player.vit;
-            slider.value = Player.vit;
-            //Player.name = Player.names[Random.Range(0, Player.name.Length)];
+            HP_Slider.maxValue = Player.Vit_Stat;
+            HP_Slider.value = Player.Vit_Stat;
+            Player.Player_Name = Player.List_Names[Random.Range(0, Player.List_Names.Count)];
         }
     }
     public void Populate_Text()
     {
-        intel.text = "Intellegince = " + Player.intel;
-        dex.text = "Dexterity = " + Player.dex;
-        charisma.text = "Charisma = " + Player.chr;
-        vit.text = "Vitality = " + Player.vit;
-        Log_Text.text = "Damage Dealt: " + damage;
-       //Name_Text.text = Player.name;
+        Intel_Text.text = "Intellegince = " + Player.Intel_stat;
+        Dex_Text.text = "Dexterity = " + Player.Dex_Stat;
+        Charisma_Text.text = "Charisma = " + Player.Char_Stat;
+        Vit_Text.text = "Vitality = " + Player.Vit_Stat;
+        Log_Text.text = "Damage Dealt: " + DMG_Dealt;
+        Name_Text.text = Player.Player_Name;
     }
     void TaskOnClick()
     {
-        Player.vit -= damage;
+        Player.Vit_Stat -= DMG_Dealt;
     }
 }

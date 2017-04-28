@@ -290,13 +290,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc434382b54769e48a3d67a376bf6630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intel: {fileID: 736160120}
-  dex: {fileID: 1328260281}
-  charisma: {fileID: 1928301886}
-  vit: {fileID: 1256822544}
+  Intel_Text: {fileID: 736160120}
+  Dex_Text: {fileID: 1328260281}
+  Charisma_Text: {fileID: 1928301886}
+  Vit_Text: {fileID: 1256822544}
   Log_Text: {fileID: 1720811682}
-  slider: {fileID: 1389946683}
-  attack: {fileID: 486149625}
+  Name_Text: {fileID: 1166528496}
+  HP_Slider: {fileID: 1389946683}
+  Attack_Button: {fileID: 486149625}
 --- !u!1 &53004432
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +374,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1740897245}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9219457
+  m_Size: 0.915035
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2358,8 +2359,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1792322618}
   m_HandleRect: {fileID: 1792322617}
   m_Direction: 2
-  m_Value: 0.0000002682651
-  m_Size: 0.8011205
+  m_Value: 0.00000026833925
+  m_Size: 0.80117553
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3551,8 +3552,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 484526957}
   m_HandleRect: {fileID: 484526956}
   m_Direction: 0
-  m_Value: 0.00000026279454
-  m_Size: 0.5645233
+  m_Value: 0.0000002627946
+  m_Size: 0.56452334
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4269,7 +4270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.23429884, y: 28.439743}
+  m_AnchoredPosition: {x: 0.25999218, y: 28.431885}
   m_SizeDelta: {x: -257.12366, y: 143}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1969846977
