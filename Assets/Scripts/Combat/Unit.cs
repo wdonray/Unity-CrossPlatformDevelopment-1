@@ -26,7 +26,7 @@ namespace Combat
         public int Initiative { get; set; }
 
         [DataMember]
-        public Stats Stats { get; set; }
+        public RPGStats.RPG_Stats RpgStats { get; set; }
 
         [DataMember]
         public Weapon Weapon { get; set; }

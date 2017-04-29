@@ -1,53 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using RPGStats;
+using ScriptableAssets;
+using UnityEngine;
 using UnityEngine.Events;
-
-public class OnStatModify : UnityEvent<RPGStats.Stat>
-{
-    public OnStatModify() { }
-} 
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public OnStatModify onStatModify;
-    private void Awake()
+    int modcount;
+    public UnityEvent onStatModify;
+    public Unit unit;
+    public static PlayerBehaviour Instance;
+    public Stats stats;
+
+    void Awake()
     {
-        onStatModify = new OnStatModify();
+        onStatModify = new UnityEvent();
+        
+        Instance = this;
+        unit = Instantiate(unit);
+        stats = Instantiate(stats);
+        unit._stats = stats;
     }
 
-    [SerializeField]
-    public Stats PlayerStats;
-
-    [SerializeField]
-    private List<Stat> p_stats;
-    // Use this for initialization
-    void Start ()
-	{
-         
-	    Create();
-	}
-
-    [ContextMenu("Create Player")]
-    void Create()
+    private void Start()
     {
-        var knowledge = new Stat("knowledge", 5);
-        var guts = new Stat("guts", 4);
-        var charm = new Stat("charm", 3);
-        var kindness = new Stat("kindness", 2);
-
-        PlayerStats = new Stats(knowledge, guts, charm, kindness);
-        p_stats = new List<Stat>(PlayerStats._items.Values); 
+        onStatModify.Invoke();
     }
-
-    private int modcount = 0;
     public void ModifyRandomStat(string stat)
     {
-        var res = PlayerStats.AddModifier(modcount++, new Modifier("add", stat, 2));
-        Debug.Log(res);
-        onStatModify.Invoke(PlayerStats[stat]);
+        var valids = new List<string>(System.Enum.GetNames(typeof(StatType)));
+        if(!valids.Contains(stat)) return;
+        
+        
+        var res = stats.AddModifier(modcount++, new Modifier("add", stat, 2));
+        var info = string.Format("Stat: {0}, {1} modifier of {2} :: {3}", stat, "add", 2, res);
+        Debug.Log(info);
+        onStatModify.Invoke();
     }
-
-
 }

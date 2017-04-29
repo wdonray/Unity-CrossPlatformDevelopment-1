@@ -5,9 +5,9 @@ namespace RPGStats
 {
     [DataContract]
     [System.Serializable]
-    public class Stat
+    public class RPG_Stat
     {
-        public Stat()
+        public RPG_Stat()
         {
             Name = "Name:";
             Value = 0;
@@ -15,7 +15,7 @@ namespace RPGStats
             OnStatAdd += Doit;
         }
 
-        public Stat(string n, int v)
+        public RPG_Stat(string n, int v)
         {
             Name = n;
             Value = v;

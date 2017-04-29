@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(RPGStats.Stat))]
+[CustomPropertyDrawer(typeof(RPGStats.RPG_Stat))]
 public class StatPropertyDrawer : PropertyDrawer {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {

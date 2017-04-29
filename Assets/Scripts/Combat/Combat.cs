@@ -41,7 +41,7 @@ namespace Combat
         public int RollForInitiative(Unit u1)
         {
             var roll = _initiativeSeed.Next(1, 21);
-            var dex = u1.Stats.GetStat("Dexterity");
+            var dex = u1.RpgStats.GetStat("Dexterity");
             int value = dex.Value;
             return ((value - 10) / 2) + roll;
         }
@@ -51,7 +51,7 @@ namespace Combat
             //chance to hit
 
             int roll = _attackSeed.Next(1, 21);
-            Stat s1 = attacker.Stats.GetStat(attacker.Weapon.StatName);
+            RPG_Stat s1 = attacker.RpgStats.GetStat(attacker.Weapon.StatName);
             int s2 = defender.ArmorCount;
             int playerRoll = ((s1.Value - 10) / 2) + roll;
             int damage = playerRoll - roll + attacker.Weapon.Roll();

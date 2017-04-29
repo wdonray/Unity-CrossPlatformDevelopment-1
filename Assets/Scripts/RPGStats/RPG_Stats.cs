@@ -9,17 +9,17 @@ namespace RPGStats
 {
     [DataContract]
     [System.Serializable]
-    public class Stats : IEnumerable<Stat>
+    public class RPG_Stats : IEnumerable<RPG_Stat>
     {
-        public Stats(params Stat[] s)
+        public RPG_Stats(params RPG_Stat[] s)
         {
-            _items = new Dictionary<string, Stat>();
+            _items = new Dictionary<string, RPG_Stat>();
             modifiers = new Dictionary<int, Modifier>();
-            foreach (var stat in s)
+            foreach(var stat in s)
                 _items.Add(stat.Name, stat);
-         }
+        }
 
-        public Stat this[string element]
+        public RPG_Stat this[string element]
         {
             get
             {
@@ -40,8 +40,7 @@ namespace RPGStats
             }
         }
 
-
-        public string AddModifier(int id, Modifier m)
+        public virtual string AddModifier(int id, Modifier m)
         {
             modifiers.Add(id, m);
             var result = string.Format(
@@ -49,39 +48,39 @@ namespace RPGStats
                 modifiers[id].stat,
                 modifiers[id].type,
                 modifiers[id].value);
-            
-            
+
+
             _items[m.stat].Apply(m);
             return result;
-         }
+        }
 
-        public string RemoveModifier(int id)
+        public virtual string RemoveModifier(int id)
         {
             var result = string.Format("Remove modifier {0} {1} {2}", modifiers[id].stat, modifiers[id].type, modifiers[id].value);
             _items[modifiers[id].stat].Remove(modifiers[id]);
             modifiers.Remove(id);
             return result;
-         }
+        }
 
-        private void Add(Stat s)
+        public virtual void Add(RPG_Stat s)
         {
             _items.Add(s.Name, s);
         }
 
-        public void ClearModifiers()
+        public virtual void ClearModifiers()
         {
             var keys = modifiers.Keys.ToArray();
-            foreach (int key in keys)
+            foreach(int key in keys)
                 RemoveModifier(key);
             modifiers.Clear();
         }
 
-        public Stat GetStat(string name)
+        public virtual RPG_Stat GetStat(string name)
         {
             return _items[name];
         }
 
-        public IEnumerator<Stat> GetEnumerator()
+        public IEnumerator<RPG_Stat> GetEnumerator()
         {
             return _items.Values.GetEnumerator();
         }
@@ -91,7 +90,9 @@ namespace RPGStats
             return _items.Values.GetEnumerator();
         }
 
-        [DataMember] public Dictionary<int, Modifier> modifiers;
-        [DataMember] public Dictionary<string, Stat> _items;
+        [DataMember]
+        public Dictionary<int, Modifier> modifiers;
+        [DataMember]
+        public Dictionary<string, RPG_Stat> _items;
     }
 }
