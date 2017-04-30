@@ -10,7 +10,7 @@ public class AttackChoiceBehaviour : MonoBehaviour
     {
         var go = Instantiate(SwordPrefab, ContentWindow.transform);
 
-        go.AddComponent<DestroyAfterTime>();
+        go.AddComponent<DestroyOnTimer>();
         var sprites = Resources.LoadAll<Sprite>("sword_sprites");
         var numsprites = sprites.Length;
         var randomSprite = Random.Range(0, numsprites);

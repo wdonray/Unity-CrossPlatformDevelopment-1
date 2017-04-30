@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb37bc488fcb58d4a8eb96876f4c2a1d, type: 3}
   m_Name: Succubus
   m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: d815e30361512cd4093c7b6d303249fc, type: 2}
-  Name: Maxine
+  _stats: {fileID: 0}
+  Name: 
   UnitType: 0

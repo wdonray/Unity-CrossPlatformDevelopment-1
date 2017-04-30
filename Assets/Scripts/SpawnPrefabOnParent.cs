@@ -11,7 +11,6 @@ public class SpawnPrefabOnParent : MonoBehaviour
     public void Start()
     {
         uiStats = new List<GameObject>();
-        PlayerBehaviour.Instance.onStatModify.AddListener(SpawnAllItems);
     }
 
     public GameObject prefab;
@@ -28,15 +27,10 @@ public class SpawnPrefabOnParent : MonoBehaviour
         return go;
     }
     
-    public void SpawnAllItems()
+    public void SpawnAllItems<T>(List<T> items)
     {
-        var items = PlayerBehaviour.Instance.stats.Items.Values;
-        foreach (var i in items)
-            Debug.Log(string.Format("name {0}, value {1}",i.Name, i.Value));
         uiStats.ForEach(go => Destroy(go));
         uiStats.Clear();
-        foreach(var item in items)
-            uiStats.Add(SpawnPrefab(item));
     }
  
 }
