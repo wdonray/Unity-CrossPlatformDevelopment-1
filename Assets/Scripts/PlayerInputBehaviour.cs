@@ -6,11 +6,11 @@ public class PlayerInputBehaviour : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
 
-    public float speed = 15f;    
+    public float speed = 15f;
     public Vector3 velocity;
- 
+
     void Start()
-    {        
+    {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
     }
@@ -20,9 +20,11 @@ public class PlayerInputBehaviour : MonoBehaviour
         get; set;
     }
     public Vector3 startScale;
-    
+
     private void Update()
     {
+        if(blockinput)
+            return;
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
@@ -54,18 +56,20 @@ public class PlayerInputBehaviour : MonoBehaviour
             print("fire3");        //x key            
         if(Input.GetAxis("Slide") > 0)
         {
-            print("Slide" + " :: " + Input.GetAxis("Slide")); //r trigger axis 10
+            //r trigger axis 10
             _animator.SetTrigger("slide");
         }
-            
-        if(Input.GetAxis("Block") > 0)
-            print("Block" +" :: "+ Input.GetAxis("Block"));
-    }
 
+        if(Input.GetAxis("Block") > 0)
+            print("Block" + " :: " + Input.GetAxis("Block"));
+    }
+    bool blockinput = false;
     private void OnAnimatorMove()
-    {        
-        if(_animator.deltaPosition.magnitude > 0)
-            Debug.Log("Player: " + transform.position);
+    {
+        blockinput = true;
+        transform.position = _animator.rootPosition;
+        if(_animator.deltaPosition.magnitude < .01f)
+            blockinput = false;
     }
 
     public static void SetScaleX(Transform t, float val)
