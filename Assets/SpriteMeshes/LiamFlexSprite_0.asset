@@ -29,7 +29,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: LiamFlexSprite_0_0
-  m_Shader: {fileID: 4800000, guid: 96c3588b5aeb15746b81abc79b686a83, type: 3}
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

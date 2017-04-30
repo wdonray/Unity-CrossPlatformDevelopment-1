@@ -25,6 +25,7 @@ public class CharacterMotion : MonoBehaviour
 		}
 
 		transform.localRotation = Quaternion.Euler(eulerAngles);
+        animator.SetFloat("Speed",1 );
          
 	}
 }

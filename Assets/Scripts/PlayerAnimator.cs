@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    private Animator anim;
-
-    private static readonly int HORIZONTAL = Animator.StringToHash("Speed");
+    private Animator anim;   
     private PlayerInputBehaviour playerInput;
 
     private void Start()
