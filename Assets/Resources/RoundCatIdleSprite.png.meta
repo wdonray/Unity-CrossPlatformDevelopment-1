@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bb3c1e949d2325a4d9bf42e87b57651e
-timeCreated: 1493511625
+timeCreated: 1493520667
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -90,17 +90,17 @@ TextureImporter:
       name: RoundCatIdleSprite_0
       rect:
         serializedVersion: 2
-        x: 16
+        x: 17
         y: 103
-        width: 993
+        width: 992
         height: 816
       alignment: 9
-      pivot: {x: 0.5, y: 0.50061274}
+      pivot: {x: 0.72605467, y: 0.08173823}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     outline: []
   spritePackingTag: 
-  userData: 97878774777023
+  userData: 97879367562055
   assetBundleName: 
   assetBundleVariant: 
