@@ -82,7 +82,10 @@ namespace Player2
             if(dot > 0) transform.localRotation = new Quaternion(0, 0, 0, 1);
             else if(dot < 0) transform.localRotation = new Quaternion(0, 180, 0, 1);
 
-            animator.SetFloat("Speed", velocity.magnitude / speed);
+            if(Input.GetButtonDown("Fire1"))
+                animator.SetTrigger("punch");
+
+            
         }
 
         Coroutine moveCoroutine;

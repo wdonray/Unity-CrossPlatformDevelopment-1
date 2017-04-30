@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bb3c1e949d2325a4d9bf42e87b57651e
-timeCreated: 1493520667
+timeCreated: 1493520885
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -101,6 +101,6 @@ TextureImporter:
       tessellationDetail: 0
     outline: []
   spritePackingTag: 
-  userData: 97879367562055
+  userData: 97879370479709
   assetBundleName: 
   assetBundleVariant: 

@@ -6,7 +6,7 @@ namespace Anima2D
 {
 	public class IkGroup : MonoBehaviour
 	{
-		[SerializeField][HideInInspector]
+		[SerializeField]
 		List<Ik2D> m_IkComponents = new List<Ik2D>();
 
 		public void UpdateGroup()
