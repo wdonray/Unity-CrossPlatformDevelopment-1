@@ -9,6 +9,10 @@ public class PlayerInputBehaviour : MonoBehaviour
     public float speed = 15f;
     public Vector3 velocity;
     public float scaleF;
+    public Vector3 startScale;
+    public float jumpPower = 600f;
+    public bool blockinput = false;
+
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -21,8 +25,7 @@ public class PlayerInputBehaviour : MonoBehaviour
     {
         get; set;
     }
-    public Vector3 startScale;
-
+    
     private void Update()
     {
         if(blockinput)
@@ -39,9 +42,9 @@ public class PlayerInputBehaviour : MonoBehaviour
         var dot = Vector3.Dot(dir, transform.right);
         if(_rigidbody2D.velocity.magnitude > 0)
         {
-            if(h < 0)
+            if(dot < 0)
                 SetScaleX(transform, -scaleF);
-            else if(h > 0)
+            else if(dot > 0)
                 SetScaleX(transform, scaleF);
         }
         
@@ -54,9 +57,16 @@ public class PlayerInputBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         if(Input.GetButtonDown("Fire1"))
-            print("fire1"); //a key
-        if(Input.GetButtonDown("Fire2"))
+        {
             _animator.SetTrigger("kick");
+            blockinput = true;
+        }
+            
+        if(Input.GetButtonDown("Fire2"))
+        {
+
+        }
+            
 
         if(Input.GetButtonDown("Fire3"))
         {
@@ -78,8 +88,7 @@ public class PlayerInputBehaviour : MonoBehaviour
         }
 
     }
-    public float jumpPower = 100f;
-    public bool blockinput = false;
+    
     private void OnAnimatorMove()
     {
         blockinput = true;
