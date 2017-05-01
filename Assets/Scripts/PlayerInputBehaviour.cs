@@ -74,11 +74,11 @@ public class PlayerInputBehaviour : MonoBehaviour
         if(Input.GetButtonDown("Jump"))
         {
             _animator.SetTrigger("jump");
-            _rigidbody2D.AddForce(new Vector2(0, jumpPower * 25f));
+            _rigidbody2D.AddForce(new Vector2(0, jumpPower));
         }
 
     }
-    public float jumpPower = 5f;
+    public float jumpPower = 100f;
     public bool blockinput = false;
     private void OnAnimatorMove()
     {
