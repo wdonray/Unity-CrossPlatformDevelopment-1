@@ -8,11 +8,13 @@ public class PlayerInputBehaviour : MonoBehaviour
 
     public float speed = 15f;
     public Vector3 velocity;
-
+    public float scaleF;
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        scaleF = transform.localScale.x;
+        
     }
 
     public Vector3 Move
@@ -38,11 +40,16 @@ public class PlayerInputBehaviour : MonoBehaviour
         if(_rigidbody2D.velocity.magnitude > 0)
         {
             if(h < 0)
-                SetScaleX(transform, -.5f);
+                SetScaleX(transform, -scaleF);
             else if(h > 0)
-                SetScaleX(transform, .5f);
+                SetScaleX(transform, scaleF);
         }
+        if(Input.GetButtonDown("Jump"))
+        {
+            _rigidbody2D.AddForce(new Vector2(0, jumpPower * 25f));
+             _animator.SetTrigger("jump");
 
+        }
         _rigidbody2D.velocity = new Vector3(Move.x * speed, _rigidbody2D.velocity.y, 0);
     }
 
@@ -53,7 +60,7 @@ public class PlayerInputBehaviour : MonoBehaviour
         if(Input.GetButtonDown("Fire2"))
             print("fire2"); //b key
         if(Input.GetButtonDown("Fire3"))
-            print("fire3");        //x key            
+            _animator.SetTrigger("punch");        //x key            
         if(Input.GetAxis("Slide") > 0)
         {
             //r trigger axis 10
@@ -62,8 +69,11 @@ public class PlayerInputBehaviour : MonoBehaviour
 
         if(Input.GetAxis("Block") > 0)
             print("Block" + " :: " + Input.GetAxis("Block"));
+       
+            
     }
-    bool blockinput = false;
+    public float jumpPower = 5f;
+    public bool blockinput = false;
     private void OnAnimatorMove()
     {
         blockinput = true;
