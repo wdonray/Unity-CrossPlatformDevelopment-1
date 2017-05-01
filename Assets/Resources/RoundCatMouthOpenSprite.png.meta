@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4839d56d98949664fa106104a2dcafe5
-timeCreated: 1493511594
+timeCreated: 1493616070
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -90,12 +90,12 @@ TextureImporter:
       name: RoundCatMouthOpenSprite_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 110
-        width: 979
-        height: 803
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 18
+        y: 105
+        width: 989
+        height: 813
+      alignment: 9
+      pivot: {x: 0.7381432, y: 0.089235894}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
