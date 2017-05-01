@@ -44,13 +44,11 @@ public class PlayerInputBehaviour : MonoBehaviour
             else if(h > 0)
                 SetScaleX(transform, scaleF);
         }
-        if(Input.GetButtonDown("Jump"))
-        {
-            _rigidbody2D.AddForce(new Vector2(0, jumpPower * 25f));
-             _animator.SetTrigger("jump");
+        
 
-        }
         _rigidbody2D.velocity = new Vector3(Move.x * speed, _rigidbody2D.velocity.y, 0);
+
+        
     }
 
     private void FixedUpdate()
@@ -58,19 +56,27 @@ public class PlayerInputBehaviour : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
             print("fire1"); //a key
         if(Input.GetButtonDown("Fire2"))
-            print("fire2"); //b key
+            _animator.SetTrigger("kick");
+
         if(Input.GetButtonDown("Fire3"))
-            _animator.SetTrigger("punch");        //x key            
-        if(Input.GetAxis("Slide") > 0)
         {
-            //r trigger axis 10
-            _animator.SetTrigger("slide");
+            _animator.SetTrigger("punch");        //x key            
+            blockinput = true;
+        }
+            
+        if(Input.GetAxis("Slide") > 0)
+        {         
+            _animator.SetTrigger("slide");   //r trigger axis 10
         }
 
         if(Input.GetAxis("Block") > 0)
             print("Block" + " :: " + Input.GetAxis("Block"));
-       
-            
+        if(Input.GetButtonDown("Jump"))
+        {
+            _animator.SetTrigger("jump");
+            _rigidbody2D.AddForce(new Vector2(0, jumpPower * 25f));
+        }
+
     }
     public float jumpPower = 5f;
     public bool blockinput = false;
