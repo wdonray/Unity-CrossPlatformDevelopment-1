@@ -16,7 +16,7 @@ public class PlayerInputBehaviour : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
-        scaleF = transform.localScale.x;
+        scaleF = transform.localScale.x;        
     }
 
     private void Update()
@@ -24,17 +24,21 @@ public class PlayerInputBehaviour : MonoBehaviour
         if(_rootMotion)
             return;
 
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
-
+        var h = Input.GetAxis("LeftHorizontal");
+        var v = Input.GetAxis("LeftVertical");
+        var rh = Input.GetAxis("RightHorizontal");
+        var lh = Input.GetAxis("LeftHorizontal");
         var move = new Vector3(h, v, 0);
-        var dir = move.normalized;
+
+        
+
 
         if(PlayerAnimator.isBlocking)
             speed = 2.5f;
         else
             speed = 15f;
 
+        var dir = move.normalized;
         velocity = dir * speed;
 
         if(_rigidbody2D.velocity.magnitude > 0)
@@ -47,8 +51,6 @@ public class PlayerInputBehaviour : MonoBehaviour
                 SetScaleX(transform, scaleF);
         }
 
-       
-
         _rigidbody2D.velocity = new Vector3(move.x * speed, _rigidbody2D.velocity.y, 0);
 
     }
@@ -57,6 +59,8 @@ public class PlayerInputBehaviour : MonoBehaviour
     {
         transform.position = m_anim.rootPosition;
         _rootMotion = (m_anim.deltaPosition.magnitude > 0);
+       
+
     }
 
 

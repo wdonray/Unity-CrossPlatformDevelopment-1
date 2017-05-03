@@ -13,8 +13,10 @@ public class PlayerAnimator : MonoBehaviour
     static readonly int PUNCH = Animator.StringToHash("punch");
     static readonly int JUMP = Animator.StringToHash("jump");
     static readonly int CROUCH = Animator.StringToHash("crouch");
-    static readonly int SPEED = Animator.StringToHash("speed");
+    static readonly int SPEED = Animator.StringToHash("Speed");
     static readonly int SWINGEXIT = Animator.StringToHash("swing_exit");
+
+    
 
     public GameObject weapon;
     public GameObject shield;
@@ -28,6 +30,7 @@ public class PlayerAnimator : MonoBehaviour
         m_anim = GetComponent<Animator>();
         weapon_start_pos = weapon.transform.localPosition;
         weapon_start_rot = weapon.transform.localRotation;
+        ResetWeapon(weapon);
     }
 
     public static bool isBlocking
@@ -75,11 +78,6 @@ public class PlayerAnimator : MonoBehaviour
             m_anim.SetTrigger(PUNCH);        //x key            
         }
 
-        if(Input.GetAxis("Slide") > 0)
-        {
-            m_anim.SetTrigger(SLIDE);   //r trigger axis 10
-        }
-
         if(Input.GetButton("LeftBumper"))
         {
             m_anim.SetTrigger(BLOCK);
@@ -94,6 +92,8 @@ public class PlayerAnimator : MonoBehaviour
             AttachWeapon(weapon);
         else
             ResetWeapon(weapon);
+        m_anim.SetFloat(SLIDE, Input.GetAxis("bfSlide"));   //r trigger axis 10                                    
+        m_anim.SetFloat(SLIDE, Input.GetAxis("fSlide"));   //r trigger axis 10                                    
         m_anim.SetBool(BLOCK, isBlocking);
         m_anim.SetBool(CROUCH, isCrouching);
     }
