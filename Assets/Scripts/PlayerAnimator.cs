@@ -47,7 +47,7 @@ public class PlayerAnimator : MonoBehaviour
         swordAttachment.Revert();
         shieldAttachment.Revert();
     }
-    
+
     public static void FlipX(Transform t)
     {
         var scale = t.localScale;
@@ -57,26 +57,26 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1"))
             m_anim.SetTrigger(KICK);
 
-        if (Input.GetButtonDown("Fire2"))
+        if(Input.GetButtonDown("Fire2"))
             m_anim.SetTrigger(SWING); //x key          
 
-        if (Input.GetButtonDown("Fire3"))
+        if(Input.GetButtonDown("Fire3"))
             m_anim.SetTrigger(PUNCH); //x key            
 
-        if (Input.GetButton("LeftBumper"))
+        if(Input.GetButton("LeftBumper"))
             m_anim.SetTrigger(BLOCK);
 
-        if (Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump"))
             m_anim.SetTrigger(JUMP);
 
-        if (m_anim.GetBool("swinging"))
+        if(m_anim.GetBool("swinging"))
         {
-            if(!swordAttachment.attached)
+            if(!swordAttachment.isAttached)
                 swordAttachment.Attach(wrist_left);
-            if(!shieldAttachment.attached)
+            if(!shieldAttachment.isAttached)
                 shieldAttachment.Attach(elbow_right);
         }
         else
@@ -118,11 +118,19 @@ public class PlayerAnimator : MonoBehaviour
         readonly TransformCopy _copy;
         readonly GameObject _gameObject;
         readonly Transform _origin;
-        public bool attached = false;
+        private bool _attached;
         public UnityEvent OnWeaponAttached;
 
+        public bool isAttached
+        {
+            get
+            {
+                return _attached;
+            }
+        }
         public Attachment(GameObject original)
         {
+            _attached = false;
             OnWeaponAttached = new UnityEvent();
             _gameObject = original;
             _origin = _gameObject.transform.parent;
@@ -137,7 +145,7 @@ public class PlayerAnimator : MonoBehaviour
             FlipX(_gameObject.transform);
             if(OnWeaponAttached != null)
                 OnWeaponAttached.Invoke();
-            attached = true;
+            _attached = true;
         }
 
         public void Detach()
@@ -147,7 +155,7 @@ public class PlayerAnimator : MonoBehaviour
 
         public void Revert()
         {
-            attached = false;
+            _attached = false;
             _gameObject.transform.SetParent(_origin);
             _gameObject.transform.localPosition = _copy.localPosition;
             _gameObject.transform.localRotation = _copy.localRotation;
