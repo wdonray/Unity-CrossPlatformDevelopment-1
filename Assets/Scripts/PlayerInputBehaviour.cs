@@ -70,4 +70,12 @@ public class PlayerInputBehaviour : MonoBehaviour
         scale.x = val;
         t.localScale = scale;
     }
+    public static void SetScaleY(Transform t, float val)
+    {
+        var scale = t.localScale;
+        scale.x = val;
+        t.localScale = scale;
+    }
 }
+
+
