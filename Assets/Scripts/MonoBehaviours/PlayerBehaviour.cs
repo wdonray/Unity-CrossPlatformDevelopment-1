@@ -19,8 +19,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Awake()
     {
+        if(unit == null)
+            return;
         unit = Instantiate(unit);
+        if(stats == null)
+            return;
         stats = Instantiate(stats);
+
         unit._stats = stats;
     }
 
