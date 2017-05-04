@@ -49,12 +49,14 @@ public class Attachment : IAttachable
         _copy = new TransformCopy(_gameObject.transform);
     }
 
+    
     public void Attach(Transform target)
     {
         _gameObject.transform.SetParent(target);
         _gameObject.transform.localPosition = Vector3.zero;
         _gameObject.transform.localRotation = Quaternion.identity;
-        _gameObject.transform.FlipX();
+        
+            _gameObject.transform.FlipX();
         if(OnWeaponAttached != null)
             OnWeaponAttached.Invoke();
         _attached = true;

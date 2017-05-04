@@ -12,7 +12,7 @@ public class PlayerAnimator : MonoBehaviour
     static readonly int PUNCHTRIGGER = Animator.StringToHash("punch");
     static readonly int JUMPTRIGGER = Animator.StringToHash("jump");
     static readonly int CROUCHING = Animator.StringToHash("crouch");
-    static readonly int ANIMSPEED = Animator.StringToHash("Speed");    
+    static readonly int ANIMSPEED = Animator.StringToHash("Speed");
 
     public Transform elbow_left;
     public Transform elbow_right;
@@ -31,7 +31,7 @@ public class PlayerAnimator : MonoBehaviour
     IAttachable currentOffhand;
 
     void Start()
-    {        
+    {
         shieldAttachment = new Attachment(offHand);
         swordAttachment = new Attachment(mainHand);
         currentWeapon = swordAttachment;
@@ -48,6 +48,7 @@ public class PlayerAnimator : MonoBehaviour
         {
             currentWeapon.Attach(wrist_left);
             currentOffhand.Attach(elbow_right);
+            offHand.transform.FlipX();
             return;
         }
 
@@ -57,6 +58,12 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
+        if(PlayerInput.isInputBlock)
+        {
+            PlayerInput.UserControl = true;
+            SetWeapons(false);
+        }
+            
         if(!PlayerInput.UserControl)
             return;
 

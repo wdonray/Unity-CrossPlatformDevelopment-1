@@ -43,8 +43,8 @@ public class PlayerMovementBehaviour : MonoBehaviour
         var dir = move.normalized;
         velocity = dir * speed;
 
-        m_anim.SetFloat(HORIZONTAL, PlayerInput.LeftStick.x);
-        m_anim.SetFloat(VERTICAL, PlayerInput.LeftStick.y);
+        m_anim.SetFloat(HORIZONTAL, PlayerInput.RightStick.x);
+        m_anim.SetFloat(VERTICAL, PlayerInput.RightStick.y);
 
 
         if(PlayerInput.UserControl)
@@ -53,10 +53,14 @@ public class PlayerMovementBehaviour : MonoBehaviour
             {
                 var dot = Vector3.Dot(dir, transform.right);
 
-                if(dot < 0)
+                if(dot < 0 || PlayerInput.RightStick.x < 0)
                     SetScaleX(transform, -scaleF);
-                if(dot > 0)
+                else if(dot > 0 || PlayerInput.RightStick.x > 0)
                     SetScaleX(transform, scaleF);
+                
+
+
+
             }
 
 
