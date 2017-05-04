@@ -19,16 +19,16 @@ public class UIController : MonoBehaviour
     public OnSubmit onSubmit;
     public OnCancel onCancel;
     public UIView view;
-    [ContextMenu("create")]
+    
     private void Create()
-    {
+    {        
         foreach(var item in backPack.Items)
         {
             var go = new GameObject(item.Name);
             var button = go.AddComponent<Button>();
             var image = go.AddComponent<Image>();
             image.sprite = item.sprite;
-            go.transform.SetParent(view.InventoryGrid.transform);
+            go.transform.SetParent(view.InventoryGrid.transform);            
             go.transform.ResetTransformation();
 
         }

@@ -2,7 +2,7 @@
 
 public abstract class Item : ScriptableObject
 {
-    public int ID = 0;
+    public int ID;
     public string Name = "Item";
     public virtual void Initialize(GameObject obj){}
     public virtual void AddTo(BackPack backpack){}

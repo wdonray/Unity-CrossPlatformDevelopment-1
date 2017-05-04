@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class BackPack : MonoBehaviour
 {
-    public int Capacity = 5;
-    [HideInInspector]
+    public int Capacity = 25;
+    
     public List<Item> Items = new List<Item>();
     [SerializeField]
     private List<Item> inspectorItems;
@@ -15,7 +15,7 @@ public class BackPack : MonoBehaviour
     }
 
     public bool Add(Item item)
-    {
+    {        
         if (Items.Count < Capacity)
         {
             Items.Add(item);

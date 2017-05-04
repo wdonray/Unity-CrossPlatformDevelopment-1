@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 
 public class UpdateCursor : UIBehaviour
 {
-    private RectTransform rect;
+    private RectTransform rectTransform;
 
     protected override void Start()
     {
-        rect = GetComponent<RectTransform>();
+        rectTransform = GetComponent<RectTransform>();
         EventSystem.current.SetSelectedGameObject(FindObjectOfType<UnityEngine.UI.Button>().gameObject);
 
         Current = EventSystem.current.currentSelectedGameObject;
@@ -41,8 +41,9 @@ public class UpdateCursor : UIBehaviour
 
     private void ResetPosition()
     {
-        rect.SetParent(current.transform);
-        rect.localPosition = Vector3.zero;
+        rectTransform.SetParent(current.transform);
+        var rect = current.GetComponent<RectTransform>().rect;
+        rectTransform.localPosition = new Vector3(rect.xMin, rect.yMin, 0); ;
     }
 
     public GameObject Current
