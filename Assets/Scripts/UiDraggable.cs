@@ -8,5 +8,5 @@ public class UiDraggable : UIBehaviour, IDragHandler
     {
         var rt = GetComponent<RectTransform>();
         rt.transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
-    }    
+    }
 }
