@@ -33,7 +33,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     }
     public GameObject IKSpine;
     private void Update()
-    {
+    {        
         if(_rootMotion)
             return;
 

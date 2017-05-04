@@ -68,10 +68,10 @@ public class PlayerAnimator : MonoBehaviour
         if(!PlayerInput.UserControl)
             return;
 
-        if(Input.GetButtonDown(Strings.XBOX_Y))
+        if(Input.GetButtonDown(Strings.RIGHTBUMPER))
             m_anim.SetTrigger(KICKTRIGGER);
 
-        if(Input.GetButtonDown(Strings.XBOX_B))
+        if(Input.GetButtonDown(Strings.XBOX_Y))
             m_anim.SetTrigger(SWINGTRIGGER); //x key          
 
         if(Input.GetButtonDown(Strings.XBOX_X))
