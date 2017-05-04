@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb37bc488fcb58d4a8eb96876f4c2a1d, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  _stats: {fileID: 11400000, guid: ba68dc0f824c9974abbc85ef84779cf2, type: 2}
+  Name: Teacher
+  UnitType: 1
