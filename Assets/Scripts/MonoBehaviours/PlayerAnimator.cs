@@ -40,6 +40,7 @@ public class PlayerAnimator : MonoBehaviour
 
         currentWeapon.Revert();
         currentOffhand.Revert();
+        //shieldAttachment.OnWeaponAttached.AddListener(() => GetComponent<AudioSource>().Play());
     }
 
     public void SetWeapons(bool on)
