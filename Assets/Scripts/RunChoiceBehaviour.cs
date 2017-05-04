@@ -9,6 +9,6 @@ public class RunChoiceBehaviour : MonoBehaviour
     public void Run()
     {
         const string info = "Run Choice Selected I am running....";
-        InformationText.text += info + Environment.NewLine;
+        InformationText.text = info + Environment.NewLine;
     }
 }
