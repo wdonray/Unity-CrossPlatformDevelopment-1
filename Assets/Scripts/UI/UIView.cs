@@ -20,13 +20,15 @@ public class UIView : MonoBehaviour
 
     public GameObject Root;
 
-    private List<GameObject> items;
+    private List<GameObject> ui_items;
 
     private void Awake()
     {
-        if (items == null) return;
-        if (items.Count > 0) items.ForEach(go => go.SetActive(false));
+        if (ui_items == null) return;
+        if (ui_items.Count > 0) ui_items.ForEach(go => go.SetActive(false));
     }
+
+    public GameObject InventoryGrid;
 
     private void OnEnable()
     {
