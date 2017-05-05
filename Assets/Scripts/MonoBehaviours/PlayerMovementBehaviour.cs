@@ -6,8 +6,12 @@ public class PlayerMovementBehaviour : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Animator m_anim;
 
-    internal static readonly int HORIZONTAL = Animator.StringToHash("horizontal");
-    internal static readonly int VERTICAL = Animator.StringToHash("vertical");
+    internal static readonly int RHORIZONTAL = Animator.StringToHash("righthorizontal");
+    internal static readonly int RVERTICAL = Animator.StringToHash("rightvertical");
+    internal static readonly int LHORIZONTAL = Animator.StringToHash("lefthorizontal");
+    internal static readonly int LVERTICAL = Animator.StringToHash("leftvertical");
+
+
 
     [Range(0, 100)]
     public float speed = 15f;
@@ -43,9 +47,10 @@ public class PlayerMovementBehaviour : MonoBehaviour
         var dir = move.normalized;
         velocity = dir * speed;
 
-        m_anim.SetFloat(HORIZONTAL, PlayerInput.RightStick.x);
-        m_anim.SetFloat(VERTICAL, PlayerInput.RightStick.y);
-
+        m_anim.SetFloat(RHORIZONTAL, PlayerInput.RightStick.x);
+        m_anim.SetFloat(RVERTICAL, PlayerInput.RightStick.y);
+        m_anim.SetFloat(LHORIZONTAL, PlayerInput.LeftStick.x);
+        m_anim.SetFloat(LVERTICAL, PlayerInput.LeftStick.y);
 
         if(PlayerInput.UserControl)
         {
@@ -57,13 +62,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
                     SetScaleX(transform, -scaleF);
                 else if(dot > 0 || PlayerInput.RightStick.x > 0)
                     SetScaleX(transform, scaleF);
-                
-
-
-
             }
 
-
+            
             _rigidbody2D.velocity = new Vector3(move.x * speed, _rigidbody2D.velocity.y, 0);
         }
 

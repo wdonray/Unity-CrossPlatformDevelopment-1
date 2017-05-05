@@ -83,7 +83,7 @@ public class PlayerAnimator : MonoBehaviour
         if(Input.GetButtonDown(Strings.JUMP))
             m_anim.SetTrigger(JUMPTRIGGER);
 
-
+        
         m_anim.SetFloat(BACKSLIDE, Input.GetAxis(Strings.BSLIDE)); //r trigger axis 10                                    
         m_anim.SetFloat(FRONTSLIDE, Input.GetAxis(Strings.FSLIDE)); //r trigger axis 10                                    
         m_anim.SetBool(BLOCKING, PlayerInput.isInputBlock);
