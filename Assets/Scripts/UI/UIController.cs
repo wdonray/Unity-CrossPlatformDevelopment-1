@@ -14,6 +14,8 @@ public class UIController : MonoBehaviour
     public class OnCancel : UnityEvent { }
     [System.Serializable]
     public class OnSubmit : UnityEvent { }
+    [System.Serializable]
+    public class OnStart : UnityEvent { }
 
     public ScriptableAssets.Unit Unit;
     public OnSubmit onSubmit;
@@ -24,14 +26,17 @@ public class UIController : MonoBehaviour
     {        
         foreach(var item in backPack.Items)
         {
-            var go = new GameObject(item.Name);
-            var button = go.AddComponent<Button>();
-            var image = go.AddComponent<Image>();
+            var go = new GameObject(item.Name, typeof(Button), typeof(Image));
+            var button = go.GetComponent<Button>();
+            var image = go.GetComponent<Image>();
             image.sprite = item.sprite;
             go.transform.SetParent(view.InventoryGrid.transform);            
             go.transform.ResetTransformation();
-
         }
+    }
+    private void Start()
+    {
+        
     }
     private void Update()
     {

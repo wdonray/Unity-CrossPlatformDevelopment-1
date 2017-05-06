@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,6 +31,16 @@ public class PlayerAnimator : MonoBehaviour
     IAttachable currentWeapon;
     IAttachable currentOffhand;
 
+    [ContextMenu("Set Body Parts")]
+    public void SetBodyParts()
+    {
+        var hips = transform.Find("hips");
+        spine = hips.transform.FindChild("spine");
+        elbow_left = spine.transform.Find("chest/shoulder_left/elbow_left");
+        elbow_right = spine.transform.Find("chest/shoulder_right/elbow_right");        
+        wrist_left = elbow_left.transform.Find("wrist_left");
+        wrist_right = elbow_right.transform.Find("wrist_right");
+    }
     void Start()
     {
         shieldAttachment = new Attachment(offHand);

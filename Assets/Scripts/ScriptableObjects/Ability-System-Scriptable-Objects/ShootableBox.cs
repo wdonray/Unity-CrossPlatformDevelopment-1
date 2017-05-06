@@ -4,11 +4,9 @@ using UnityEngine;
 
 
 public class ShootableBox : EntityBase
-{
+{ 
 
-    public int health;
-
-    public void Damage(int amount)
+    public override void Damage(int amount)
     {
         var newhealth = health - amount;
         if(newhealth > 0)

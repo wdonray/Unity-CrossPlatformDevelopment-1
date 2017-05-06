@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RadialLayout =  UnityEngine.UI.Extensions.RadialLayout;
-public class ActionChoiceBehaviour : MonoBehaviour
+public class ActionChoiceBehaviour : UIBehaviour
 {
     public RadialLayout layout;
 
