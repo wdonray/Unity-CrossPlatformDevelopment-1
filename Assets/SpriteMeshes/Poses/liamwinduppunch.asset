@@ -50,7 +50,7 @@ MonoBehaviour:
     localScale: {x: 1, y: 1, z: 1}
   - path: hips/spine/chest/shoulder_right/elbow_right/wrist_right
     localPosition: {x: 1.1989973, y: 0.00000035762787, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.8379506, w: 0.545746}
+    localRotation: {x: 0, y: 0, z: -0.47565797, w: 0.8796303}
     localScale: {x: 1, y: 1, z: 1}
   - path: hips/leg_left
     localPosition: {x: -0.24699605, y: -0.7107297, z: 0}

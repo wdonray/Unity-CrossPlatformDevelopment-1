@@ -46,11 +46,11 @@ MonoBehaviour:
     localScale: {x: 1, y: 1, z: 1}
   - path: hips/spine/chest/shoulder_right/elbow_right
     localPosition: {x: 1.4149084, y: 0, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.28330234, w: 0.9590306}
+    localRotation: {x: 0, y: 0, z: -0.28330237, w: 0.9590307}
     localScale: {x: 1, y: 1, z: 1}
   - path: hips/spine/chest/shoulder_right/elbow_right/wrist_right
     localPosition: {x: 1.1989973, y: 0.00000035762787, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.46119133, w: 0.8873007}
+    localRotation: {x: 0, y: 0, z: 0.02010947, w: 0.9997978}
     localScale: {x: 1, y: 1, z: 1}
   - path: hips/leg_left
     localPosition: {x: -0.24699605, y: -0.7107297, z: 0}
@@ -74,5 +74,5 @@ MonoBehaviour:
     localScale: {x: 1, y: 1, z: 1}
   - path: hips/leg_right/calf_right/heel_right
     localPosition: {x: 1.1678128, y: -0.000000029802322, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.15877618, w: 0.9873146}
+    localRotation: {x: 0, y: 0, z: -0.66411924, w: 0.74762666}
     localScale: {x: 1, y: 1, z: 1}
