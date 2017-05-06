@@ -16,12 +16,20 @@ public class UIController : MonoBehaviour
     public class OnSubmit : UnityEvent { }
     [System.Serializable]
     public class OnStart : UnityEvent { }
+    [System.Serializable]
+    public class OnStartButton : UnityEvent { }
 
+    [HideInInspector]
     public ScriptableAssets.Unit Unit;
+
+    public OnStart onStart;
+    public OnStartButton onStartButton;
     public OnSubmit onSubmit;
     public OnCancel onCancel;
+
     public UIView view;
-    
+    public BackPack backPack;
+
     private void Create()
     {        
         foreach(var item in backPack.Items)
@@ -36,12 +44,13 @@ public class UIController : MonoBehaviour
     }
     private void Start()
     {
-        
+        onStart.Invoke();   
     }
     private void Update()
     {
         if(GetCancel()) onCancel.Invoke();
         if(GetSubmit()) onSubmit.Invoke();
+        if(GetStart()) onStartButton.Invoke();
     }
     public static bool GetCancel()
     {
@@ -53,5 +62,10 @@ public class UIController : MonoBehaviour
         return Input.GetButtonDown("Submit");
     }
 
-    public BackPack backPack;
+    public static bool GetStart()
+    {        
+        return Input.GetButtonDown("Start");
+    }
+
+    
 }

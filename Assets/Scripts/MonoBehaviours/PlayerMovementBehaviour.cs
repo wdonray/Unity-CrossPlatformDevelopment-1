@@ -38,7 +38,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     public GameObject IKSpine;
     private void Update()
     {        
-        if(_rootMotion)
+        if(_rootMotion || FindObjectOfType<GameStateBehaviour>().current == GameState.Paused)
             return;
 
         lookat = new Vector3(PlayerInput.RightStick.x, PlayerInput.RightStick.y, 0);

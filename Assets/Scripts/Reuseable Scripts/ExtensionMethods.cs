@@ -23,4 +23,11 @@ public static class ExtensionMethods
         scale.x = t.localScale.x * -1f;
         t.localScale = scale;
     }
+
+    public static void ToggleUI(this UIBehaviour ui)
+    {
+        ui.gameObject.SetActive(!ui.gameObject.activeSelf);
+    }
+
+    
 }
