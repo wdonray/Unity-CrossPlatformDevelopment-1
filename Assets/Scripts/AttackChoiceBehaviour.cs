@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class AttackChoiceBehaviour : MonoBehaviour
 {
-    public GameObject swordPrefab;
-    public GameObject contentWindow;
+    public GameObject ContentWindow;
+    public GameObject SwordPrefab;
 
     public void Attack()
     {
-        var go = Instantiate(swordPrefab, contentWindow.transform);
+        var go = Instantiate(SwordPrefab, ContentWindow.transform);
 
-        go.AddComponent<DestroyAfterTime>();
+        go.AddComponent<DestroyOnTimer>();
         var sprites = Resources.LoadAll<Sprite>("sword_sprites");
         var numsprites = sprites.Length;
         var randomSprite = Random.Range(0, numsprites);
