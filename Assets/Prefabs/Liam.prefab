@@ -1782,8 +1782,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Capacity: 25
-  Items: []
   inspectorItems: []
+  Items: []
 --- !u!114 &114194235064256156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1811,10 +1811,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43f9cf27163d104eb08183be87d0b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
   crouchspeed: 5
-  jumpPower: 800
   IKSpine: {fileID: 0}
+  jumpPower: 800
+  speed: 15
 --- !u!114 &114205634249322640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2022,11 +2022,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elbow_left: {fileID: 4395711203001516}
   elbow_right: {fileID: 4690216913786790}
+  mainHand: {fileID: 1988127298985388}
+  offHand: {fileID: 1102637753599556}
   spine: {fileID: 4958620900607478}
   wrist_left: {fileID: 4255465372372682}
   wrist_right: {fileID: 4723837583746094}
-  offHand: {fileID: 1102637753599556}
-  mainHand: {fileID: 1988127298985388}
 --- !u!114 &114410657891931222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2121,7 +2121,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  unit: {fileID: 11400000, guid: 74c51265b8249cc4d9b35b033fd06924, type: 2}
   stats: {fileID: 11400000, guid: ba68dc0f824c9974abbc85ef84779cf2, type: 2}
 --- !u!114 &114540868467064826
 MonoBehaviour:

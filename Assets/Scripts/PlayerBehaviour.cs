@@ -10,19 +10,12 @@ public class PlayerBehaviour : MonoBehaviour
     private int modcount;
 
     public OnStatModify onStatModify;
-    public Stats stats;
-    public Unit unit;
+    public Stats stats;    
 
     private void Awake()
     {
-        if (unit == null)
-            return;
-        unit = Instantiate(unit);
-        if (stats == null)
-            return;
-        stats = Instantiate(stats);
-
-        unit._stats = stats;
+        var newstats = Instantiate(stats);
+        stats = newstats;
     }
 
     private void Start()
@@ -30,6 +23,13 @@ public class PlayerBehaviour : MonoBehaviour
         onStatModify.Invoke();
     }
 
+    public void ModifyStat(string stat, Modifier mod)
+    {
+        var valids = new List<string>(Enum.GetNames(typeof(StatType)));
+        if(!valids.Contains(stat)) return;
+        stats.AddModifier(modcount++, mod);
+        onStatModify.Invoke();
+    }
     public void ModifyRandomStat(string stat)
     {
         var valids = new List<string>(Enum.GetNames(typeof(StatType)));

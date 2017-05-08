@@ -9,7 +9,8 @@ namespace ScriptableAssets
         Knowledge,
         Guts,
         Charm,
-        Kindness
+        Kindness,
+        Health,
     }
 
     [Serializable]

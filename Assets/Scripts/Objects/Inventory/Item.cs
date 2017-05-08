@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public abstract class Item : ScriptableObject
+public abstract class Item : ScriptableObject, IExecutable
 {
     public int ID;
     public string Name = "Item";
     public Sprite sprite;
+    protected GameObject owner;
 
-    public virtual void Initialize(GameObject obj)
-    {
-    }
+    public abstract void Initialize(GameObject obj);
 
     public virtual void AddTo(BackPack backpack)
     {
@@ -16,6 +16,11 @@ public abstract class Item : ScriptableObject
 
     public virtual void RemoveFrom(BackPack backpack)
     {
+    }
+
+    public virtual void Execute()
+    {
+        Debug.Log("Execute Item: " + this);
     }
 }
 
@@ -30,6 +35,13 @@ public abstract class Equipment : Item, IEquippable
     }
 }
 
+public abstract class Potion : Equipment, IConsumable
+{
+    public abstract void Consume(GameObject owner);
+}
+
+
+
 public abstract class Weapon : Equipment
 {
     public int Damage;
@@ -41,12 +53,18 @@ public abstract class Armor : Equipment
 }
 
 #region Interfaces
-
+public interface IExecutable
+{
+    void Execute();
+}
 public interface IShootable
 {
-    void Shoot(GameObject Target);
+    void Shoot(GameObject owner);
 }
-
+public interface IConsumable
+{
+    void Consume(GameObject owner);
+}
 public interface IEquippable
 {
     void Equip();
