@@ -1,22 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIView : MonoBehaviour
 {
-    public GameObject Inventory;
+    public GameObject Dimmer;
 
     public GameObject HealthBar;
 
-    public GameObject Dimmer;
-
-    public GameObject PlayerChoices;
-
     public GameObject Info;
+    public GameObject Inventory;
+
+    public GameObject InventoryGrid;
 
     public GameObject NPC;
+
+    public GameObject PlayerChoices;
 
     public GameObject Root;
 
@@ -28,15 +26,11 @@ public class UIView : MonoBehaviour
         if (ui_items.Count > 0) ui_items.ForEach(go => go.SetActive(false));
     }
 
-    public GameObject InventoryGrid;
-
     private void OnEnable()
     {
-
     }
 
     private void OnDisable()
     {
-
     }
 }

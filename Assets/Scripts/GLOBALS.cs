@@ -1,5 +1,5 @@
 ﻿public static class Strings
-{ 
+{
     public static readonly string LEFTBUMPER = "LeftBumper";
     public static readonly string RIGHTBUMPER = "RightBumper";
     public static readonly string XBOX_A = "XBOX_A";
@@ -15,5 +15,4 @@
     public static readonly string FSLIDE = "fSlide";
     public static readonly string BSLIDE = "bSlide";
     public static readonly string JUMP = "Jump";
-
 }
