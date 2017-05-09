@@ -14,6 +14,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Awake()
     {
+        if(stats == null)
+        {
+            Debug.LogWarning("you have not assigned a stats reference object");
+            return;
+        }
+            
         var newstats = Instantiate(stats);
         stats = newstats;
     }

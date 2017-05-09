@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 09c293d9f2e82ab47bc2c279bdc2ffc4, type: 2}
-  runtimeItem: {fileID: 0}
+  runtimeItem: {fileID: 11400000, guid: 09c293d9f2e82ab47bc2c279bdc2ffc4, type: 2}
 --- !u!212 &212647460393903416
 SpriteRenderer:
   m_ObjectHideFlags: 1
