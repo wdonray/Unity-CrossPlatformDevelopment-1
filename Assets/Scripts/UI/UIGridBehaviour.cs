@@ -13,8 +13,17 @@ public class UIGridBehaviour : MonoBehaviour
     public List<Transform> children = new List<Transform>();
     public List<GameObject> ui_items = new List<GameObject>();
     public int Capacity = 16;
-    public int numItems = 0;
+    private int numItems = 0;
 
+    public void BackPackUpdated(BackPack backPack)
+    {
+        ClearItems();
+
+        {
+            _item = i;
+            SetItem();
+        }
+    }
 
     public GameObject FirstAvailable
     {
@@ -22,9 +31,9 @@ public class UIGridBehaviour : MonoBehaviour
         {
             if(children.Count <= 0)
                 GetComponentsInChildren(true, children);
-            children.ForEach(child => Debug.Log("Child: " + child.name));            
+            //children.ForEach(child => Debug.Log("Child: " + child.name));            
             firstAvailable = children.First(c => c.childCount <= 0 && c.parent == transform).gameObject;
-      
+            
             return firstAvailable;
         }
     }
@@ -35,10 +44,9 @@ public class UIGridBehaviour : MonoBehaviour
         
         if(newtotal > Capacity)
             return;
-        var parent = FirstAvailable;
         var itemgo = new GameObject("Item", typeof(Image));
         ui_items.Add(itemgo);
-        itemgo.transform.SetParent(FirstAvailable.transform);
+        itemgo.transform.SetParent(children[numItems]);
         itemgo.GetComponent<RectTransform>().Stretch();
         itemgo.GetComponent<Image>().sprite = _item.sprite;        
         numItems++;        
@@ -48,10 +56,15 @@ public class UIGridBehaviour : MonoBehaviour
     {
         if(ui_items == null) return;
         if(ui_items.Count <= 0) return;
-        ui_items.ForEach(go => DestroyImmediate(go));
+        if(!Application.isPlaying)
+            ui_items.ForEach(DestroyImmediate);
+        else
+        {
+            ui_items.ForEach(Destroy);
+        }
         ui_items.Clear();
         numItems = 0;
-    }
+    }   
 }
 
 #if UNITY_EDITOR
@@ -62,7 +75,9 @@ public class InspectorUIGridBehaviour : Editor
     {
         base.OnInspectorGUI();
         var mytarget = target as UIGridBehaviour;
-        if(GUILayout.Button("Set Item"))
+        if (GUILayout.Button("Back Pack Update"))
+            mytarget.BackPackUpdated(FindObjectOfType<UIController>().backPack);
+        if (GUILayout.Button("Set Item"))
             mytarget.SetItem();
         if(GUILayout.Button("Clear Items"))
             mytarget.ClearItems();
