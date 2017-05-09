@@ -3965,6 +3965,12 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1339314713}
+--- !u!114 &1346773215 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+    type: 2}
+  m_PrefabInternal: {fileID: 2111240634}
+  m_Script: {fileID: 11500000, guid: f047173bac04e484b83667f4db44193d, type: 3}
 --- !u!1 &1358595251
 GameObject:
   m_ObjectHideFlags: 0
@@ -6879,6 +6885,16 @@ Prefab:
       propertyPath: Items.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackChange.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackAddedItem.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4277710015062076, guid: efd556ac69a77b34fac2105b24bb5f92, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6967,6 +6983,73 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 21459712113289134, guid: 93a59f786c6d7574abce8708a6c5c114,
+        type: 2}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: backPackPrefs
+      value: 
+      objectReference: {fileID: 11400000, guid: 0aecb6011db73bd42851912861c67220,
+        type: 2}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackAddedItem.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackAddedItem.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackAddedItem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 716237868}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackAddedItem.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackAddedItem.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 716237868}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackPackUpdated
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BackPack, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: onBackPackChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1346773215}
+    - target: {fileID: 114162206893445188, guid: efd556ac69a77b34fac2105b24bb5f92,
+        type: 2}
+      propertyPath: backPackBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 0aecb6011db73bd42851912861c67220,
         type: 2}
     m_RemovedComponents:
     - {fileID: 199268320194361818, guid: efd556ac69a77b34fac2105b24bb5f92, type: 2}

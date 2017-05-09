@@ -5,21 +5,36 @@ using UnityEngine.Events;
 public class BackPack : MonoBehaviour
 {
     public BackPackBase backPackBase;
-    public UnityAction<BackPack> backPackUpdateEvent;
+
+    public int Capacity = 25;
+
+    public List<Item> items = new List<Item>();
 
     private void Awake()
     {
-        backPackUpdateEvent = FindObjectOfType<UIGridBehaviour>().BackPackUpdated;
-        backPackBase = (BackPackBase)Resources.Load("Items/BackPackPrefs");
-        backPackUpdateEvent.Invoke(this);
+        foreach (var item in backPackBase.Items)
+        {
+            items.Add(Instantiate(item));
+        }
+        Capacity = backPackBase.Capacity;
     }
+
+    private void Start()
+    {
+        onBackPackChange.Invoke(this);
+    }
+
+    [System.Serializable]
+    public class OnBackPackChange : UnityEvent<BackPack> { }
+    public OnBackPackChange onBackPackChange = new OnBackPackChange();
 
     public bool Add(Item item)
     {
-        if (backPackBase.Items.Count < backPackBase.Capacity)
+        if (items.Count < items.Capacity)
         {
-            backPackBase.Items.Add(item);
-            backPackUpdateEvent.Invoke(this);
+            items.Add(item);
+            onBackPackChange.Invoke(this);
+            return true;
         }
 
         return false;
@@ -27,10 +42,11 @@ public class BackPack : MonoBehaviour
 
     public bool Remove(Item item)
     {
-        if (backPackBase.Items.Contains(item))
+        if (items.Contains(item))
         {
-            backPackBase.Items.Remove(item);
-            backPackUpdateEvent.Invoke(this);
+            items.Remove(item);
+            onBackPackChange.Invoke(this);
+            return true;
         }
 
         return false;
@@ -38,6 +54,6 @@ public class BackPack : MonoBehaviour
 
     public void PrintItems()
     {
-        backPackBase.Items.ForEach(item => Debug.Log(item.Name));
+        items.ForEach(item => Debug.Log(item.Name));
     }
 }

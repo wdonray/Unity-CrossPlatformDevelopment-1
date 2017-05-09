@@ -12,14 +12,20 @@ public class UIGridBehaviour : MonoBehaviour
     private GameObject firstAvailable;
     public List<Transform> children = new List<Transform>();
     public List<GameObject> ui_items = new List<GameObject>();
+    
     public int Capacity = 16;
     private int numItems = 0;
+
+    private void Start()
+    {
+        
+    }
 
     public void BackPackUpdated(BackPack backPack)
     {
         ClearItems();
 
-        foreach (var i in backPack.backPackBase.Items)
+        foreach (var i in backPack.items)
         {
             _item = i;
             SetItem();
@@ -51,6 +57,12 @@ public class UIGridBehaviour : MonoBehaviour
         itemgo.GetComponent<RectTransform>().Stretch();
         itemgo.GetComponent<Image>().sprite = _item.sprite;        
         numItems++;        
+    }
+
+    public void SetItem(Item item)
+    {
+        _item = item;
+        SetItem();
     }
 
     public void ClearItems()

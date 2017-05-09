@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
+[Serializable]
 [CreateAssetMenu(fileName = "BackPackPrefs", menuName = "Item/BP")]
 public class BackPackBase : ScriptableObject
 {
