@@ -11,14 +11,13 @@ public class HealthPotion : Potion
     public int Value;
     public override void Initialize(GameObject obj)
     {
-        owner = obj;
+        _owner = obj;
         healthMod = new RPGStats.Modifier("add", statToModify , Value);
     }
 
     public override void Execute()
-    {
-        base.Execute();
-        this.Consume(this.owner);
+    {        
+        this.Consume(this._owner);
     }
     public override void Consume(GameObject owner)
     {

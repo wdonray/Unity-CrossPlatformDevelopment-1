@@ -10,12 +10,11 @@ public class CombatShotgun : Weapon, IShootable
     public override void Initialize(GameObject obj)
     {
         
-        this.owner = obj;
+        this._owner = obj;
     }
     public override void Execute()
-    {
-        base.Execute();
-        Shoot(this.owner);
+    {        
+        Shoot(this._owner);
     }
     public void Shoot(GameObject obj)
     {

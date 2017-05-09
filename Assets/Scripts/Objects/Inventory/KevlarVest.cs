@@ -1,12 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "KevlarVest", menuName = "Item/KevlarVest")]
 public class KevlarVest : Armor
 {
     private BackPack backpack;
 
-    public override void Initialize(GameObject obj)
+    public override void Execute()
     {
+        throw new NotImplementedException();
+    }
+
+    public override void Initialize(GameObject obj)
+    {        
         ID = GetHashCode();
 
         if (Name == "")

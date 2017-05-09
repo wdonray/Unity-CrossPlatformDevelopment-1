@@ -10,12 +10,12 @@ public class CombatRifle : Weapon, IShootable
     public float RateOfFire;
     public override void Initialize(GameObject obj)
     {        
-        owner = obj;
+        _owner = obj;
     }
     public override void Execute()
     {
-        base.Execute();
-        Shoot(owner);
+        
+        Shoot(_owner);
     }
 
     public void Shoot(GameObject obj)
