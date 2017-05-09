@@ -11,6 +11,7 @@ namespace ScriptableAssets
         Charm,
         Kindness,
         Health,
+        Mana,
     }
 
     [Serializable]

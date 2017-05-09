@@ -6,22 +6,11 @@ public abstract class Item : ScriptableObject, IExecutable
     public int ID;
     public string Name = "Item";
     public Sprite sprite;
-    protected GameObject owner;
+    protected GameObject _owner;
 
+    public abstract void Execute();
     public abstract void Initialize(GameObject obj);
 
-    public virtual void AddTo(BackPack backpack)
-    {
-    }
-
-    public virtual void RemoveFrom(BackPack backpack)
-    {
-    }
-
-    public virtual void Execute()
-    {
-        Debug.Log("Execute Item: " + this);
-    }
 }
 
 public abstract class Equipment : Item, IEquippable

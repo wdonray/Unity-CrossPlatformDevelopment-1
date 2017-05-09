@@ -11,15 +11,14 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public BackPack backPack;
+    public UIView view;
     public OnCancel onCancel;
-
     public OnStart onStart;
     public OnStartButton onStartButton;
     public OnSubmit onSubmit;
-
     [HideInInspector] public Unit Unit;
 
-    public UIView view;
+    
 
     private void Create()
     {
