@@ -1,37 +1,59 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BackPack : MonoBehaviour
 {
+    public BackPackBase backPackBase;
+
     public int Capacity = 25;
 
-    [SerializeField] private List<Item> inspectorItems;
+    public List<Item> items = new List<Item>();
 
-    public List<Item> Items = new List<Item>();
+    private void Awake()
+    {
+        foreach (var item in backPackBase.Items)
+        {
+            items.Add(Instantiate(item));
+        }
+        Capacity = backPackBase.Capacity;
+    }
 
     private void Start()
     {
-        foreach (var item in inspectorItems)
-            item.Initialize(gameObject);
+        onBackPackChange.Invoke(this);
     }
+
+    [System.Serializable]
+    public class OnBackPackChange : UnityEvent<BackPack> { }
+    public OnBackPackChange onBackPackChange = new OnBackPackChange();
 
     public bool Add(Item item)
     {
-        if (Items.Count < Capacity)
-            Items.Add(item);
+        if (items.Count < items.Capacity)
+        {
+            items.Add(item);
+            onBackPackChange.Invoke(this);
+            return true;
+        }
 
         return false;
     }
 
     public bool Remove(Item item)
     {
-        if (Items.Contains(item))
-            Items.Remove(item);
+        if (items.Contains(item))
+        {
+            items.Remove(item);
+            onBackPackChange.Invoke(this);
+            return true;
+        }
+
         return false;
     }
 
     public void PrintItems()
     {
-        Items.ForEach(item => Debug.Log(item.Name));
+        items.ForEach(item => Debug.Log(item.Name));
     }
 }

@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
 
     private void Create()
     {
-        foreach (var item in backPack.Items)
+        foreach (var item in backPack.backPackBase.Items)
         {
             var go = new GameObject(item.Name, typeof(Button), typeof(Image));
             var button = go.GetComponent<Button>();
