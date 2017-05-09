@@ -3,6 +3,7 @@
 namespace RPGStats
 {
     [DataContract]
+    [System.Serializable]
     public class Modifier
     {
         [DataMember] public string stat;

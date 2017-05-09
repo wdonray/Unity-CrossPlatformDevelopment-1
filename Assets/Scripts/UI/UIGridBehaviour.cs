@@ -51,8 +51,9 @@ public class UIGridBehaviour : MonoBehaviour
         ui_items.ForEach(go => DestroyImmediate(go));
         ui_items.Clear();
         numItems = 0;
+        
     }
-}
+} 
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(UIGridBehaviour))]
@@ -66,6 +67,7 @@ public class InspectorUIGridBehaviour : Editor
             mytarget.SetItem();
         if(GUILayout.Button("Clear Items"))
             mytarget.ClearItems();
+        
     }
 }
 #endif

@@ -11,6 +11,13 @@ namespace ScriptableAssets
         public Dictionary<string, Stat> Items = new Dictionary<string, Stat>();
 
         public Dictionary<int, Modifier> Modifiers = new Dictionary<int, Modifier>();
+        [System.Serializable]
+        public class IDModifier
+        {
+            public int identifier;
+            public Modifier mod;
+        }
+        public List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
 
         public Stat[] stats;
 
@@ -24,6 +31,8 @@ namespace ScriptableAssets
 
         public string AddModifier(int id, Modifier m)
         {
+            
+            INSPECTOR_MODS.Add(new IDModifier {identifier = id, mod = m });
             Modifiers.Add(id, m);
             var result = string.Format(
                 "Add modifier {0} {1} {2}",

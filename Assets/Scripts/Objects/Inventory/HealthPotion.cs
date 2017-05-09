@@ -7,12 +7,12 @@ using UnityEngine;
 public class HealthPotion : Potion
 {
     public string statToModify = "Health";
-    public RPGStats.Modifier healthMod;
+    public GenericModifier healthMod;
     public int Value;
     public override void Initialize(GameObject obj)
     {
         _owner = obj;
-        healthMod = new RPGStats.Modifier("add", statToModify , Value);
+        healthMod = Instantiate(healthMod);
     }
 
     public override void Execute()
@@ -21,7 +21,7 @@ public class HealthPotion : Potion
     }
     public override void Consume(GameObject owner)
     {
-        owner.GetComponent<PlayerBehaviour>().ModifyStat(statToModify, healthMod);
+        owner.GetComponent<PlayerBehaviour>().ModifyStat(healthMod.ModType.ToString(), healthMod.TheMod);
         
     }
     

@@ -10,6 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
     private int modcount;
 
     public OnStatModify onStatModify;
+    public OnHealthChange onHealthChange = new OnHealthChange();
     public Stats stats;    
 
     private void Awake()
@@ -29,11 +30,39 @@ public class PlayerBehaviour : MonoBehaviour
         onStatModify.Invoke();
     }
 
-    public void ModifyStat(string stat, Modifier mod)
+    private void Update()
     {
+        
+    }
+    //TODO : ADD THE TIMERFOR DEBUFFS AND DAMAGE OVER TIME, MAKE AN OBJECT TO HOLD THE ID OF THE MOD AND THE TIME
+    //TILL IT NEEDS TO GO AWAY
+    public List<int> timedMods;
+    public void ModifyStatOverTime(string stat, Modifier mod, float duration)
+    {
+
         var valids = new List<string>(Enum.GetNames(typeof(StatType)));
         if(!valids.Contains(stat)) return;
         stats.AddModifier(modcount++, mod);
+        timedMods.Add(modcount);
+
+        if(stat == "Health")
+            onHealthChange.Invoke(stats.GetStat(stat).Value);
+        onStatModify.Invoke();
+        foreach(var id in timedMods)
+        {
+            //stats.Modifiers[id]
+        }
+    }
+
+    public void ModifyStat(string stat, Modifier mod)
+    {
+
+        var valids = new List<string>(Enum.GetNames(typeof(StatType)));
+        if(!valids.Contains(stat)) return;
+        stats.AddModifier(modcount++, mod);
+
+        if(stat == "Health")
+            onHealthChange.Invoke(stats.GetStat(stat).Value);
         onStatModify.Invoke();
     }
     public void ModifyRandomStat(string stat)
@@ -54,7 +83,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     [Serializable]
-    public class OnHealthChange : UnityEvent
+    public class OnHealthChange : UnityEvent<int>
     {
     }
 }

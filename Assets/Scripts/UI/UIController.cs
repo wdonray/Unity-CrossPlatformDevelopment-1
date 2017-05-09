@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     public OnStart onStart;
     public OnStartButton onStartButton;
     public OnSubmit onSubmit;
+    
     [HideInInspector] public Unit Unit;
 
     
@@ -44,7 +45,11 @@ public class UIController : MonoBehaviour
         if (GetSubmit()) onSubmit.Invoke();
         if (GetStart()) onStartButton.Invoke();
     }
-
+    public void SetHealthSlider(int val)
+    {
+        Debug.Log("got val " + val);
+        view.HealthSlider.value = val;
+    }
     public static bool GetCancel()
     {
         return Input.GetButtonDown("Cancel");

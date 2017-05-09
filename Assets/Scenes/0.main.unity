@@ -9121,7 +9121,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1641055796}
-  - component: {fileID: 1641055795}
   m_Layer: 0
   m_Name: GameStateBehaviour
   m_TagString: Untagged
@@ -9129,17 +9128,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1641055795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1641055794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0232d899b776d5c4cb49c4abe8f314d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1641055796
 Transform:
   m_ObjectHideFlags: 0
@@ -9982,7 +9970,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1641055795}
+      - m_Target: {fileID: 0}
         m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
