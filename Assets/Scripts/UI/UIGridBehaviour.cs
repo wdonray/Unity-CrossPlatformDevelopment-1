@@ -19,6 +19,7 @@ public class UIGridBehaviour : MonoBehaviour
     {
         ClearItems();
 
+        foreach (var i in backPack.backPackBase.Items)
         {
             _item = i;
             SetItem();
