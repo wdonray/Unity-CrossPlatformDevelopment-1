@@ -23,7 +23,7 @@ public class EncounterBehaviour : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-
+            encounter.EncounterUnderway();
         }
     }
 
