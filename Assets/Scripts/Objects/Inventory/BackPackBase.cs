@@ -8,6 +8,12 @@ public class BackPackBase : ScriptableObject
 {
     public int Capacity = 25;
 
-    public List<Item> Items = new List<Item>();
+    [SerializeField]
+    public List<Item> INSPECTOR_Items = new List<Item>();
 
+
+    public List<Item> Items
+    {
+        get { return INSPECTOR_Items; }
+    }
 }
