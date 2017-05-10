@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: Poison Gas 1
   m_EditorClassIdentifier: 
   encounterMaterial: {fileID: 2100000, guid: d20f5e0566a2afa4f9bd6dd04517932c, type: 2}
-  modifier: {fileID: 11400000, guid: 9a57a21483079fe42875dae9eee3ead2, type: 2}
+  modifier: {fileID: 11400000, guid: d1482700eb733c048b199f15bfa255de, type: 2}

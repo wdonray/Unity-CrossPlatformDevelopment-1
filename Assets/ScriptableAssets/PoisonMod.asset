@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: PoisonMod
   m_EditorClassIdentifier: 
   EffectedStatType: 0
+  TheMod:
+    stat: 
+    type: 
+    value: 0
   ModType: 0
   ModifiedValue: 0

@@ -9,6 +9,8 @@ public class PoisonGas : Encounter {
     public GenericModifier modifier;
 
     private GameObject _player;
+    private GenericModifier RUNTIME_MOD;
+    private float _timer = 0;
 
     public override void Initialize(GameObject obj)
     {
@@ -26,22 +28,36 @@ public class PoisonGas : Encounter {
 
         //Finds player for Encounter functions
         _player = FindObjectOfType<PlayerInput>().gameObject;
+
+        RUNTIME_MOD = Instantiate(modifier);
+        RUNTIME_MOD.Initialize(null);
     }
 
     public override bool EncounterStart()
     {
-        Debug.Log("You got the stank!");
+        _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
 
         return true;
     }
 
     public override bool EncounterUnderway()
     {
+        if (_timer >= 1.5f)
+        {
+            _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
+            _timer = 0;
+        }
+        else
+        {
+            _timer += Time.deltaTime;
+        }
         return true;
     }
 
     public override bool EncounterEnd()
     {
+        _timer = 0;
+
         return true;
     }
 }
