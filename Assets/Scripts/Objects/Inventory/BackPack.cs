@@ -12,15 +12,16 @@ public class BackPack : MonoBehaviour
 
     private void Awake()
     {
-        foreach (var item in backPackBase.Items)
-        {
-            items.Add(Instantiate(item));
-        }
-        Capacity = backPackBase.Capacity;
+        
     }
 
     private void Start()
     {
+        foreach(var item in backPackBase.Items)
+        {
+            items.Add(Instantiate(item));
+        }
+        Capacity = backPackBase.Capacity;
         onBackPackChange.Invoke(this);
     }
 
