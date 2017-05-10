@@ -20,6 +20,7 @@ public class ThornTrap : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("collide with player");
+            Debug.Log(collision.gameObject.name);
             collision.gameObject.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
             Destroy(gameObject);
         }

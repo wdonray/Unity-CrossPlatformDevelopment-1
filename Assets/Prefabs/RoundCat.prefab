@@ -1311,11 +1311,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab9741f9d99f234e86eaaa2e4179af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walk: 0
-  FollowTarget: {fileID: 0}
-  FollowPlayer: 1
-  FollowDistance: 5
   dist: 0
+  FollowDistance: 5
+  FollowPlayer: 1
+  FollowTarget: {fileID: 0}
+  walk: 0
 --- !u!137 &137036042002997716
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
