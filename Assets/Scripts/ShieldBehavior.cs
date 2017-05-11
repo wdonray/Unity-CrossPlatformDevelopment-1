@@ -10,6 +10,8 @@ public class ShieldBehavior : MonoBehaviour
     public List<GameObject> IgnoredColliders;
     public GameObject RootObject;
 
+    public ShieldConfig _ShieldConfig;
+
     private void Awake()
     {
         InitalPosition = this.transform.localPosition;
@@ -42,33 +44,22 @@ public class ShieldBehavior : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ObjectsInCollision.Contains(collision.gameObject))
-            return;
-
         if (IgnoredColliders.Contains(collision.gameObject))
             return;
-
-        ObjectsInCollision.Add(collision.gameObject);
-        if (GetComponent<Rigidbody2D>() == null)
-        {
-            gameObject.AddComponent<Rigidbody2D>();
-        }
+        if (GetComponent<Rigidbody2D>())
+            return;
+        this.gameObject.AddComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (ObjectsInCollision.Contains(collision.gameObject))
-            ObjectsInCollision.Remove(collision.gameObject);
-        if (ObjectsInCollision.Count == 0)
-        {
-            if (GetComponent<Rigidbody2D>())
-            {
-                Destroy(GetComponent<Rigidbody2D>());
-                this.transform.localPosition = InitalPosition;
-                this.transform.localRotation = InitialRotation;
-            }
-        }
+        if (IgnoredColliders.Contains(collision.gameObject))
+            return;
+        if (GetComponent<Rigidbody2D>())
+            Destroy(this.GetComponent<Rigidbody2D>());
+        this.transform.position = InitalPosition;
+        this.transform.localRotation = InitialRotation;
     }
 }
