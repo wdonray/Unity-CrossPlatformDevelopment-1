@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPool: []
-  prefab: {fileID: 1198312808088668, guid: 47939b80d2737654f94fce45453d530e, type: 2}
+  prefab: {fileID: 1145766425354238, guid: 7e5c52ba9f35ce143a4800533011c266, type: 2}
   countdown: 1
   forceFactor: 1
   maxCats: 25
@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IgnoredColliders: []
   RootObject: {fileID: 1745552625}
-  _ShieldConfig: {fileID: 11400000, guid: 519d35d9ee9006744bf4c8321867a336, type: 2}
+  _ShieldConfig: {fileID: 0}
 --- !u!61 &564623788
 BoxCollider2D:
   m_ObjectHideFlags: 0
