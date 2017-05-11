@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class ShieldConfig : Weapon, IBlockable
 {
-    public float ShieldGrowth;
-
-    public float BlockDelay;
+    public float ShieldGrowth;    
 
     public virtual void Block()
     {

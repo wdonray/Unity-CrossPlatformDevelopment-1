@@ -10,9 +10,9 @@ public class AwesomeShield : ShieldConfig
 
     public override void Block()
     {
-        if(this._owner.transform.localScale.magnitude < MaxScale.magnitude)
-            this._owner.transform.localScale *= ShieldGrowth;            
+        this._owner.transform.localScale = MaxScale;
     }
+
     public override void StopBlock()
     {
         this._owner.transform.localScale = InitialScale;
