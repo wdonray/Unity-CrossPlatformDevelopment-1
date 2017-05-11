@@ -10,8 +10,6 @@ public class AwesomeShield : ShieldConfig
 
     public override void Block()
     {
-        Debug.Log(this._owner.transform.localScale.magnitude + " Local");
-        Debug.Log(MaxScale.magnitude + "Max");
         if(this._owner.transform.localScale.magnitude < MaxScale.magnitude)
             this._owner.transform.localScale *= ShieldGrowth;            
     }
