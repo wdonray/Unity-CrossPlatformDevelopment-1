@@ -18,14 +18,15 @@ public class UIGridBehaviour : MonoBehaviour
 
     private void Start()
     {
-        
+        GetComponentsInChildren(true, children);
     }
 
     public void BackPackUpdated(BackPack backPack)
     {
-        ClearItems();
-
-        foreach (var i in backPack.items)
+         ClearItems();
+        if(backPack.Items.Count <= 0)
+            return;
+        foreach (var i in backPack.Items)
         {
             _item = i;
             SetItem();
@@ -38,7 +39,6 @@ public class UIGridBehaviour : MonoBehaviour
         {
             if(children.Count <= 0)
                 GetComponentsInChildren(true, children);
-            //children.ForEach(child => Debug.Log("Child: " + child.name));            
             firstAvailable = children.First(c => c.childCount <= 0 && c.parent == transform).gameObject;
             
             return firstAvailable;

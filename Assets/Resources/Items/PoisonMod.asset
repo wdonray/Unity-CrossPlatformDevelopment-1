@@ -8,13 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 356c61aa227d77546b09d6c6ff619f74, type: 3}
-  m_Name: LoganStats
+  m_Script: {fileID: 11500000, guid: e2c369bcf98e9ce4d9b433b33ecf497b, type: 3}
+  m_Name: PoisonMod
   m_EditorClassIdentifier: 
-  stats:
-  - _baseValue: 0
-    Name: 4
-    Value: 100
-  - _baseValue: 1
-    Name: 0
-    Value: 10
+  EffectedStatType: 0
+  TheMod:
+    stat: 
+    type: 
+    value: 0
+  ModType: 0
+  ModifiedValue: 0

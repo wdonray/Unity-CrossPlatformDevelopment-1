@@ -3,32 +3,30 @@
 public class ItemBehaviour : MonoBehaviour
 {
     public Item item;
-    public Item runtimeItem;
 
-    private void Start()
+    Item runtimeItem;
+
+    public string ITEM_NAME;
+    
+    void Start()
     {
-        var s = ScriptableObject.CreateInstance(item.GetType());
-        runtimeItem = (Item) s;
+        
+        runtimeItem = Instantiate(item);
         runtimeItem.Initialize(null);
+
         runtimeItem.sprite = item.sprite;
-        GetComponent<SpriteRenderer>().sprite = item.sprite;
+        ITEM_NAME = runtimeItem.Name;
+        GetComponent<SpriteRenderer>().sprite = runtimeItem.sprite;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void AddToBackpack(GameObject go)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponentInParent<BackPack>().Add(item);
-            Destroy(gameObject);
-        }
+        Debug.Log("add to pack");
+        go.GetComponentInParent<BackPack>().AddToPack(item);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void DestroyItemGameObject()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponentInParent<BackPack>().Add(item);
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, 3);
     }
 }

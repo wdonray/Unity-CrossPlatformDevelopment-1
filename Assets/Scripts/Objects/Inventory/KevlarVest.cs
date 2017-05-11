@@ -22,6 +22,6 @@ public class KevlarVest : Armor
             return;
 
         backpack = obj.GetComponent<BackPack>();
-        backpack.Add(Instantiate(this));
+        backpack.AddToPack(Instantiate(this));
     }
 }

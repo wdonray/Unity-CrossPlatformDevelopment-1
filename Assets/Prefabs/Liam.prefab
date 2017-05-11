@@ -1710,7 +1710,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c2fc8be163e82aa449da546dbfc5eb46, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 1
   m_WarningMessage: 
@@ -1782,12 +1782,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backPackBase: {fileID: 11400000, guid: 0aecb6011db73bd42851912861c67220, type: 2}
   Capacity: 25
-  items: []
-  onBackPackChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: BackPack+OnBackPackChange, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114170449247653750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2475,7 +2469,7 @@ MonoBehaviour:
   m_Length: 1.1678135
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4848614417066394}
-  m_AttachedIK: {fileID: 114743047644730846}
+  m_AttachedIK: {fileID: 114350944169143788}
 --- !u!114 &114880196545792130
 MonoBehaviour:
   m_ObjectHideFlags: 1

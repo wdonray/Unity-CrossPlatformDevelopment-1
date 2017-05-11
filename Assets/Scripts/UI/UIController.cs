@@ -16,10 +16,6 @@ public class UIController : MonoBehaviour
     public OnStart onStart;
     public OnStartButton onStartButton;
     public OnSubmit onSubmit;
-    
-    [HideInInspector] public Unit Unit;
-
-    
 
     private void Create()
     {
@@ -37,6 +33,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         onStart.Invoke();
+        backPack.onBackPackChange.AddListener(view.InventoryGrid.GetComponent<UIGridBehaviour>().BackPackUpdated);
     }
 
     private void Update()
