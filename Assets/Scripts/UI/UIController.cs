@@ -1,5 +1,4 @@
 ﻿using System;
-using ScriptableAssets;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,14 +9,14 @@ using UnityEngine.UI;
 /// </summary>
 public class UIController : MonoBehaviour
 {
-    public BackPack backPack;
-    public UIView view;
+    public BackPackBehaviour backPack;
     public OnCancel onCancel;
     public OnStart onStart;
     public OnStartButton onStartButton;
     public OnSubmit onSubmit;
+    public UIView view;
 
-    private void Create()
+    void Create()
     {
         foreach (var item in backPack.backPackBase.Items)
         {
@@ -30,23 +29,26 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
         onStart.Invoke();
-        backPack.onBackPackChange.AddListener(view.InventoryGrid.GetComponent<UIGridBehaviour>().BackPackUpdated);
+        var ui_gridbehaviour = view.InventoryGrid.GetComponent<UIGridBehaviour>();
+        backPack.onBackPackAddItem.AddListener(ui_gridbehaviour.SetItem);
     }
 
-    private void Update()
+    void Update()
     {
         if (GetCancel()) onCancel.Invoke();
         if (GetSubmit()) onSubmit.Invoke();
         if (GetStart()) onStartButton.Invoke();
     }
+
     public void SetHealthSlider(int val)
     {
         Debug.Log("got val " + val);
         view.HealthSlider.value = val;
     }
+
     public static bool GetCancel()
     {
         return Input.GetButtonDown("Cancel");
