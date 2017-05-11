@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1198312808088668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.09, y: 6.7, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -101,6 +101,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerTag: Player
+  onStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114858194506292050}
+        m_MethodName: Initialize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: OnPhysicsTrigger+OnStart, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   onEnterCollision:
     m_PersistentCalls:
       m_Calls: []
@@ -111,28 +127,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: OnPhysicsTrigger+OnExitCollision, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  onExitTrigger:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: OnPhysicsTrigger+OnExitTrigger, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1198312808088668}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: OnPhysicsTrigger+OnStart, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onTriggerEnter:
+  onEnterTrigger:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114858194506292050}
@@ -159,6 +154,11 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: OnPhysicsTrigger+OnEnterTrigger, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onExitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OnPhysicsTrigger+OnExitTrigger, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114858194506292050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,11 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f36bdfa25f6b749bfea8d8f23b033f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleItems:
-  - {fileID: 11400000, guid: 74e96f62622c4d64f93b70669304b2ee, type: 2}
-  - {fileID: 11400000, guid: 6a6e2b48acdb7be418b4e84eb20ec931, type: 2}
-  - {fileID: 11400000, guid: 3f35547d245b7104b926958da6f8ab58, type: 2}
-  item: {fileID: 0}
+  timer: 0
+  item: {fileID: 11400000, guid: 259bb9dee547465469043f03622ed493, type: 2}
   ITEM_NAME: 
 --- !u!212 &212647460393903416
 SpriteRenderer:

@@ -2,46 +2,42 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BackPack : MonoBehaviour
+public class BackPackBehaviour : MonoBehaviour
 {
     public BackPackBase backPackBase;
 
     public int Capacity = 25;
 
-    private List<Item> items;
+    public OnBackPackAddItem onBackPackAddItem = new OnBackPackAddItem();
 
-    public List<Item> Items
-    {
-        get { return items; }
-    }
+    public OnBackPackChange onBackPackChange = new OnBackPackChange();
 
-    private void Start()
+    public List<Item> Items { get; set; }
+
+    void Start()
     {
-        items = new List<Item>();
+        Items = new List<Item>();
         foreach (var i in backPackBase.Items)
         {
             var runtimeitem = Instantiate(i);
             runtimeitem.Initialize(null);
             AddToPack(runtimeitem);
-
         }
         Capacity = backPackBase.Capacity;
-        
     }
 
     public bool AddToPack(Item item)
     {
-
-        items.Add(item);
-        onBackPackChange.Invoke(this);
+        Items.Add(item);
+        onBackPackAddItem.Invoke(item);
         return true;
     }
 
     public bool Remove(Item item)
     {
-        if(items.Contains(item))
+        if (Items.Contains(item))
         {
-            items.Remove(item);
+            Items.Remove(item);
             onBackPackChange.Invoke(this);
             return true;
         }
@@ -51,12 +47,15 @@ public class BackPack : MonoBehaviour
 
     public void PrintItems()
     {
-        items.ForEach(item => Debug.Log(item.Name));
+        Items.ForEach(item => Debug.Log(item.Name));
     }
 
 
+    public class OnBackPackChange : UnityEvent<BackPackBehaviour>
+    {
+    }
 
-    public class OnBackPackChange : UnityEvent<BackPack> { }
-    public OnBackPackChange onBackPackChange = new OnBackPackChange();
-
+    public class OnBackPackAddItem : UnityEvent<Item>
+    {
+    }
 }
