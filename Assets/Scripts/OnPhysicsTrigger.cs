@@ -6,7 +6,6 @@ public class OnPhysicsTrigger : MonoBehaviour
 {
     public string ListenerTag;
 
-
     public OnEnterCollision onEnterCollision = new OnEnterCollision();
     public OnExitCollision onExitCollision = new OnExitCollision();
     public OnExitTrigger onExitTrigger = new OnExitTrigger();
@@ -18,17 +17,15 @@ public class OnPhysicsTrigger : MonoBehaviour
         onStart.Invoke();
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-            onTriggerEnter.Invoke();
+        if (collision.gameObject.CompareTag(ListenerTag))
+            onTriggerEnter.Invoke(collision.gameObject);
     }
-
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag(ListenerTag))
             onExitTrigger.Invoke();
     }
 
@@ -50,7 +47,7 @@ public class OnPhysicsTrigger : MonoBehaviour
     }
 
     [Serializable]
-    public class OnEnterTrigger : UnityEvent
+    public class OnEnterTrigger : UnityEvent<GameObject>
     {
     }
 

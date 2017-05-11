@@ -15,7 +15,9 @@ public class CombatKnife : Weapon
     {
         if (Name == "")
             Name = "CombatKnife";
+        if(obj == null)
+            return;
         backpack = obj.GetComponent<BackPack>();
-        backpack.Add(Instantiate(this));
+        backpack.AddToPack(Instantiate(this));
     }
 }

@@ -15,4 +15,5 @@ MonoBehaviour:
   Name: Item
   sprite: {fileID: 0}
   statToModify: Health
+  healthMod: {fileID: 0}
   Value: 0
