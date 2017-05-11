@@ -8,42 +8,38 @@ public class BackPack : MonoBehaviour
 
     public int Capacity = 25;
 
-    public List<Item> items = new List<Item>();
+    private List<Item> items;
 
-    private void Awake()
+    public List<Item> Items
     {
-        
+        get { return items; }
     }
 
     private void Start()
     {
-        foreach(var item in backPackBase.Items)
+        items = new List<Item>();
+        foreach (var i in backPackBase.Items)
         {
-            items.Add(Instantiate(item));
+            var runtimeitem = Instantiate(i);
+            runtimeitem.Initialize(null);
+            AddToPack(runtimeitem);
+
         }
         Capacity = backPackBase.Capacity;
-        onBackPackChange.Invoke(this);
+        
     }
 
-    [System.Serializable]
-    public class OnBackPackChange : UnityEvent<BackPack> { }
-    public OnBackPackChange onBackPackChange = new OnBackPackChange();
-
-    public bool Add(Item item)
+    public bool AddToPack(Item item)
     {
-        if (items.Count < items.Capacity)
-        {
-            items.Add(item);
-            onBackPackChange.Invoke(this);
-            return true;
-        }
 
-        return false;
+        items.Add(item);
+        onBackPackChange.Invoke(this);
+        return true;
     }
 
     public bool Remove(Item item)
     {
-        if (items.Contains(item))
+        if(items.Contains(item))
         {
             items.Remove(item);
             onBackPackChange.Invoke(this);
@@ -57,4 +53,10 @@ public class BackPack : MonoBehaviour
     {
         items.ForEach(item => Debug.Log(item.Name));
     }
+
+
+
+    public class OnBackPackChange : UnityEvent<BackPack> { }
+    public OnBackPackChange onBackPackChange = new OnBackPackChange();
+
 }
