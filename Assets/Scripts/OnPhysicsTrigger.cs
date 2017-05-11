@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class OnPhysicsTrigger : MonoBehaviour
 {
     public string ListenerTag;
@@ -65,4 +67,27 @@ public class OnPhysicsTrigger : MonoBehaviour
     public class OnStart : UnityEvent
     {
     }
+    /*
+#if UNITY_EDITOR
+    [CustomEditor(typeof(OnPhysicsTrigger))]
+    public class InspectorOnPhysicsTrigger : Editor
+    {
+        bool showinspector = false;
+        
+        public override void OnInspectorGUI()
+        {
+            if (showinspector)
+                base.OnInspectorGUI();
+
+            var mytarget = target as OnPhysicsTrigger;
+            if (GUILayout.Button("Do it"))
+            {
+                showinspector = !showinspector;
+            }
+
+        }
+    }
+
+#endif\
+*/
 }

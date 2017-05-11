@@ -170,7 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f36bdfa25f6b749bfea8d8f23b033f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 09c293d9f2e82ab47bc2c279bdc2ffc4, type: 2}
+  possibleItems:
+  - {fileID: 11400000, guid: 74e96f62622c4d64f93b70669304b2ee, type: 2}
+  - {fileID: 11400000, guid: 6a6e2b48acdb7be418b4e84eb20ec931, type: 2}
+  - {fileID: 11400000, guid: 3f35547d245b7104b926958da6f8ab58, type: 2}
+  item: {fileID: 0}
   ITEM_NAME: 
 --- !u!212 &212647460393903416
 SpriteRenderer:
