@@ -15,7 +15,7 @@ public class ThornTrap : MonoBehaviour
         RUNTIME_MOD.Initialize(null);        
     }
 
-    private void TriggerEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {

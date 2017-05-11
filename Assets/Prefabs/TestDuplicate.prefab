@@ -2249,12 +2249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backPackBase: {fileID: 0}
   Capacity: 25
-  items: []
-  onBackPackChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: BackPack+OnBackPackChange, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114917904419787102
 MonoBehaviour:
   m_ObjectHideFlags: 1
