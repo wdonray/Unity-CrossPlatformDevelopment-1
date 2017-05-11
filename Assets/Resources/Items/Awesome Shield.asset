@@ -15,4 +15,6 @@ MonoBehaviour:
   Name: Awesome Shield Of Awesome
   sprite: {fileID: 0}
   Damage: 0
-  ShieldGrowth: 0
+  ShieldGrowth: 0.5
+  BlockDelay: 1
+  MaxScale: {x: 0, y: 0, z: 0}

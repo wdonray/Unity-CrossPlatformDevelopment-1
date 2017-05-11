@@ -3,11 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldConfig : Weapon, IBlock
+public class ShieldConfig : Weapon, IBlockable
 {
-    public float ShieldGrowth;    
+    public float ShieldGrowth;
+
+    public float BlockDelay;
 
     public virtual void Block()
+    {
+        throw new NotImplementedException();
+    }
+
+    public virtual void StopBlock()
     {
         throw new NotImplementedException();
     }
@@ -24,7 +31,9 @@ public class ShieldConfig : Weapon, IBlock
 }
 
 
-public interface IBlock
+public interface IBlockable
 {
     void Block();
+
+    void StopBlock();
 }

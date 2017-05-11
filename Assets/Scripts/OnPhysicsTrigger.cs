@@ -28,7 +28,7 @@ public class OnPhysicsTrigger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
-            onExitTrigger.Invoke();
+            onExitTrigger.Invoke(collision.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,7 +44,7 @@ public class OnPhysicsTrigger : MonoBehaviour
     }
 
     [Serializable]
-    public class OnExitTrigger : UnityEvent
+    public class OnExitTrigger : UnityEvent<GameObject>
     {
     }
 
