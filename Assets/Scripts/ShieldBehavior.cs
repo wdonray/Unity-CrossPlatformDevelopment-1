@@ -12,7 +12,7 @@ public class ShieldBehavior : MonoBehaviour
 
     public ShieldConfig _ShieldConfig;
 
-    private void Awake()
+    public void Initialize()
     {
         InitalPosition = this.transform.localPosition;
         InitialRotation = this.transform.localRotation;
@@ -28,38 +28,23 @@ public class ShieldBehavior : MonoBehaviour
             }
         }
     }
-
-    // Use this for initialization
-    void Start()
+    
+    public void DoBlock(GameObject go)
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        for (var i = ObjectsInCollision.Count - 1; i >= 0; i--)
-        {
-            if (ObjectsInCollision[i] == null)
-                ObjectsInCollision.RemoveAt(i);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (IgnoredColliders.Contains(collision.gameObject))
+        if (IgnoredColliders.Contains(go))
             return;
         if (GetComponent<Rigidbody2D>())
             return;
         this.gameObject.AddComponent<Rigidbody2D>();
+        _ShieldConfig.Block();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void DestroyRigidBody(GameObject go)
     {
-        if (IgnoredColliders.Contains(collision.gameObject))
+        if (IgnoredColliders.Contains(go))
             return;
         if (GetComponent<Rigidbody2D>())
             Destroy(this.GetComponent<Rigidbody2D>());
-        this.transform.position = InitalPosition;
-        this.transform.localRotation = InitialRotation;
     }
+    
 }

@@ -7,6 +7,8 @@ public class AwesomeShield : ShieldConfig {
 
     public override void Block()
     {
-        this._owner.transform.localScale *= ShieldGrowth;
+        
+        //this._owner.transform.localScale *= ShieldGrowth;
+            
     }
 }
