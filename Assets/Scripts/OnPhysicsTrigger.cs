@@ -2,42 +2,44 @@
 using UnityEngine;
 using UnityEngine.Events;
 #if UNITY_EDITOR
-using UnityEditor;
+
 #endif
+
 public class OnPhysicsTrigger : MonoBehaviour
 {
     public string ListenerTag;
-
     public OnEnterCollision onEnterCollision = new OnEnterCollision();
+    public OnEnterTrigger onEnterTrigger = new OnEnterTrigger();
     public OnExitCollision onExitCollision = new OnExitCollision();
     public OnExitTrigger onExitTrigger = new OnExitTrigger();
-    public OnStart onStart = new OnStart();
-    public OnEnterTrigger onTriggerEnter = new OnEnterTrigger();
 
-    private void Start()
+    public OnStart onStart = new OnStart();
+
+
+    void Start()
     {
         onStart.Invoke();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
-            onTriggerEnter.Invoke(collision.gameObject);
+            onEnterTrigger.Invoke(collision.gameObject);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
             onExitTrigger.Invoke(collision.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
             onEnterCollision.Invoke(collision.gameObject.name);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
             onExitCollision.Invoke(collision.gameObject.tag);
@@ -67,6 +69,7 @@ public class OnPhysicsTrigger : MonoBehaviour
     public class OnStart : UnityEvent
     {
     }
+
     /*
 #if UNITY_EDITOR
     [CustomEditor(typeof(OnPhysicsTrigger))]
