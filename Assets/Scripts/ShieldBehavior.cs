@@ -42,12 +42,12 @@ public class ShieldBehavior : MonoBehaviour
     {        
         if (IgnoredColliders.Contains(go))
             return;
-        CurrentShield.Block();
+        CurrentShield.Block(go);
         if(_ShieldConfig.ShieldGrowth < 1)
         {
             GetComponent<BoxCollider2D>().offset = MyColliderOffset * 2;
             GetComponent<BoxCollider2D>().size = MyColliderSize * 2;
-        }        
+        }                        
     }
     
     public void StopBlock(GameObject go)

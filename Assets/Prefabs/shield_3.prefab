@@ -23,6 +23,9 @@ GameObject:
   - component: {fileID: 33146049584655730}
   - component: {fileID: 23228942005042168}
   - component: {fileID: 60262454678446944}
+  - component: {fileID: 61935719734496630}
+  - component: {fileID: 114758033310270210}
+  - component: {fileID: 114102336026616644}
   m_Layer: 0
   m_Name: shield_3
   m_TagString: Blocker
@@ -37,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508141173826926}
   m_LocalRotation: {x: -0, y: -0, z: 0.9976988, w: 0.067803234}
-  m_LocalPosition: {x: 2.780995, y: 3.1207259, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: -2, y: -2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +84,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508141173826926}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43773638197983896, guid: 75986e785e551924ba739cea894b69f2, type: 2}
 --- !u!60 &60262454678446944
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -106,13 +109,114 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.6022427, y: 1.1487582}
-      - {x: -0.3616517, y: 1.3342273}
+    - - {x: 0.56099886, y: 1.0110078}
+      - {x: 0.03235531, y: 1.0946498}
+      - {x: -0.4321134, y: 1.2345254}
+      - {x: -0.684031, y: 0.8728986}
       - {x: -1.093863, y: 0.55202484}
+      - {x: -1.1744883, y: 0.51765513}
+      - {x: -1.1054792, y: 0.24125814}
       - {x: -0.5112628, y: -0.6850225}
-      - {x: 0.5999844, y: -1.334482}
-      - {x: 0.8584354, y: -0.3731537}
-      - {x: 0.8551637, y: 0.29567158}
+      - {x: -0.32212305, y: -0.871749}
+      - {x: 0.05550036, y: -1.1002364}
+      - {x: 0.58281875, y: -1.2527509}
+      - {x: 0.84074986, y: -0.37556922}
+      - {x: 0.77182204, y: 0.2902968}
+--- !u!61 &61935719734496630
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508141173826926}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.09645581, y: -0.033271432}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.8377671, y: 3.5759947}
+  m_EdgeRadius: 0
+--- !u!114 &114102336026616644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508141173826926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f4ebc7c8c0c474b98cc42b662d3b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerTag: Untagged
+  onEnterCollision:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OnPhysicsTrigger+OnEnterCollision, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onEnterTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114758033310270210}
+        m_MethodName: DoBlock
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: OnPhysicsTrigger+OnEnterTrigger, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExitCollision:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OnPhysicsTrigger+OnExitCollision, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExitTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114758033310270210}
+        m_MethodName: StopBlock
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: OnPhysicsTrigger+OnExitTrigger, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114758033310270210}
+        m_MethodName: Initialize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: OnPhysicsTrigger+OnStart, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114341230006114802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,3 +236,19 @@ MonoBehaviour:
   m_SortingOrder: 15
   m_Bones: []
   m_BoneTransforms: []
+--- !u!114 &114758033310270210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508141173826926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6899395d23b88754c8f3fd8b110f4855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoredColliders: []
+  RootObject: {fileID: 0}
+  MyColliderOffset: {x: 0, y: 0}
+  MyColliderSize: {x: 0, y: 0}
+  _ShieldConfig: {fileID: 11400000, guid: 519d35d9ee9006744bf4c8321867a336, type: 2}

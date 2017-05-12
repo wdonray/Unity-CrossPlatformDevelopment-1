@@ -8,14 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99f72233fc16e1a4098330a7d53fcbff, type: 3}
-  m_Name: Awesome Shield
+  m_Script: {fileID: 11500000, guid: 3df4349c7c6330b4398a2bc10701b71c, type: 3}
+  m_Name: Spikey Shield
   m_EditorClassIdentifier: 
   ID: 0
-  Name: Awesome Shield Of Awesome
+  Name: Thorny Shield
   sprite: {fileID: 0}
   Damage: 0
-  ShieldGrowth: -2
-  MaxScale: {x: 0, y: 0, z: 0}
-  InitialScale: {x: 0, y: 0, z: 0}
-  isBlocking: 0
+  ShieldGrowth: 0
+  _StatModifier: {fileID: 11400000, guid: afae4d2c405ef024db28934057cae467, type: 2}

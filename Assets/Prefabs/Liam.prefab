@@ -86,14 +86,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4277710015062076}
   - component: {fileID: 114992701903169588}
-  - component: {fileID: 114514842762314182}
-  - component: {fileID: 114162206893445188}
   - component: {fileID: 114205316028594518}
   - component: {fileID: 114385398897895932}
   - component: {fileID: 114997601430399276}
   - component: {fileID: 95394001872395982}
   - component: {fileID: 50734737273072412}
   - component: {fileID: 82460199755292088}
+  - component: {fileID: 61112429813597222}
+  - component: {fileID: 114588359844497130}
+  - component: {fileID: 114136620387377396}
   m_Layer: 0
   m_Name: Liam
   m_TagString: Player
@@ -343,7 +344,6 @@ GameObject:
   - component: {fileID: 4715374223404658}
   - component: {fileID: 114332156714219726}
   - component: {fileID: 137192497951077000}
-  - component: {fileID: 61440903771613924}
   m_Layer: 0
   m_Name: SpriteMesh
   m_TagString: Player
@@ -1111,7 +1111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1102637753599556}
   m_LocalRotation: {x: -0, y: -0, z: 0.99244416, w: 0.12269736}
-  m_LocalPosition: {x: 1.7623155, y: 0.09988272, z: 0}
+  m_LocalPosition: {x: 1.7623155, y: 0, z: 1}
   m_LocalScale: {x: -2, y: -2, z: 2}
   m_Children: []
   m_Father: {fileID: 4292586848230712}
@@ -1245,14 +1245,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1915.8662
+  m_Mass: 1915.866
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &58689826718420658
 CircleCollider2D:
@@ -1494,19 +1494,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6748309, y: 0.9135593}
   m_EdgeRadius: 0
---- !u!61 &61440903771613924
+--- !u!61 &61112429813597222
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1648222576929206}
+  m_GameObject: {fileID: 1132785852957868}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23555374, y: 1.9394317}
+  m_Offset: {x: 0, y: 1.37}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1517,7 +1517,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.676456, y: 9.730316}
+  m_Size: {x: 4.1, y: 7.74}
   m_EdgeRadius: 0
 --- !u!61 &61532365285642266
 BoxCollider2D:
@@ -1769,7 +1769,7 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
---- !u!114 &114162206893445188
+--- !u!114 &114136620387377396
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1777,11 +1777,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132785852957868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f047173bac04e484b83667f4db44193d, type: 3}
+  m_Script: {fileID: 11500000, guid: cab7cffb7cce7cb4cbd58796ba092bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backPackBase: {fileID: 11400000, guid: 0aecb6011db73bd42851912861c67220, type: 2}
-  Capacity: 25
+  Health: 0
+  inspectorWeapons:
+  - {fileID: 11400000, guid: c8e5241122006d5459357c59950ce3e0, type: 2}
+  - {fileID: 11400000, guid: fd7988ee97432e041b6f164ebf62b9cd, type: 2}
+  weapons: []
 --- !u!114 &114170449247653750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2140,40 +2143,6 @@ MonoBehaviour:
   - {fileID: 114331028962263118}
   - {fileID: 114923963181708152}
   - {fileID: 114954525613407368}
---- !u!114 &114514842762314182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1132785852957868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a46391207c77e44692807dceaed1fc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onStatModify:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onHealthChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetHealthSlider
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: PlayerBehaviour+OnHealthChange, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  stats: {fileID: 11400000, guid: 1c5a6b51e8fe0a349a3faddc0dc37662, type: 2}
-  timedMods: 
 --- !u!114 &114540868467064826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2211,6 +2180,40 @@ MonoBehaviour:
     m_RestoreDefaultPose: 1
     targetPosition: {x: 1.1394392, y: -2.3579378, z: 0}
     flip: 1
+--- !u!114 &114588359844497130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132785852957868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a46391207c77e44692807dceaed1fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStatModify:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SetHealthSlider
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: PlayerBehaviour+OnHealthChange, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  stats: {fileID: 11400000, guid: 1c5a6b51e8fe0a349a3faddc0dc37662, type: 2}
+  timedMods: 
 --- !u!114 &114590013032236226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2226,7 +2229,7 @@ MonoBehaviour:
   m_Length: 1.0844933
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4947943635801508}
-  m_AttachedIK: {fileID: 114540868467064826}
+  m_AttachedIK: {fileID: 114307553113732148}
 --- !u!114 &114619268225681952
 MonoBehaviour:
   m_ObjectHideFlags: 1

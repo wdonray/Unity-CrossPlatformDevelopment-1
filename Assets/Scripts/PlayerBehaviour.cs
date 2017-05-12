@@ -5,7 +5,7 @@ using ScriptableAssets;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerBehaviour : CharacterBehavior
 {
     private int modcount;
 
@@ -53,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
         onStatModify.Invoke();        
     }
 
-    public void ModifyStat(string stat, Modifier mod)
+    public override void ModifyStat(string stat, Modifier mod)
     {
         var valids = new List<string>(Enum.GetNames(typeof(StatType)));
         if(!valids.Contains(stat))
