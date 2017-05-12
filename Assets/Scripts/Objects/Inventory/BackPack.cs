@@ -4,7 +4,7 @@ using UnityEngine;
 
 [Serializable]
 [CreateAssetMenu(fileName = "BackPackPrefs", menuName = "Item/BP")]
-public class BackPackBase : ScriptableObject
+public class BackPack : ScriptableObject
 {
     public int Capacity = 25;
 
