@@ -4,10 +4,8 @@ using UnityEngine.Events;
 
 public class BackPackBehaviour : MonoBehaviour
 {
-    public BackPackBase backPackBase;
-
-    public int Capacity = 25;
-
+    public BackPack backPack_config;
+    
     public OnBackPackAddItem onBackPackAddItem = new OnBackPackAddItem();
 
     public OnBackPackChange onBackPackChange = new OnBackPackChange();
@@ -17,13 +15,12 @@ public class BackPackBehaviour : MonoBehaviour
     void Start()
     {
         Items = new List<Item>();
-        foreach (var i in backPackBase.Items)
+        foreach (var item in backPack_config.Items)
         {
-            var runtimeitem = Instantiate(i);
+            var runtimeitem = Instantiate(item);
             runtimeitem.Initialize(null);
             AddToPack(runtimeitem);
         }
-        Capacity = backPackBase.Capacity;
     }
 
     public bool AddToPack(Item item)
