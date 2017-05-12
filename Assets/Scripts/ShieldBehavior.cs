@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ShieldBehavior : MonoBehaviour
 {        
-    public List<GameObject> IgnoredColliders;
-    public GameObject RootObject;
-
     public Vector2 MyColliderOffset;
     public Vector2 MyColliderSize;
 
@@ -21,26 +18,12 @@ public class ShieldBehavior : MonoBehaviour
         CurrentShield = _ShieldConfig;
 
         MyColliderOffset = GetComponent<BoxCollider2D>().offset;
-        MyColliderSize = GetComponent<BoxCollider2D>().size;
-
-        if (RootObject)
-            return;
-
-        IgnoredColliders.Add(RootObject);
-        if (!RootObject)
-            return;
-        foreach (var collider in RootObject.GetComponentsInChildren<Collider2D>())
-        {
-            if (collider != this.GetComponent<Collider2D>())
-            {
-                IgnoredColliders.Add(collider.gameObject);
-            }
-        }        
+        MyColliderSize = GetComponent<BoxCollider2D>().size;     
     }    
 
     public void DoBlock(GameObject go)
     {        
-        if (IgnoredColliders.Contains(go))
+        if (go == this.transform.parent)
             return;
         CurrentShield.Block(go);
         if(_ShieldConfig.ShieldGrowth < 1)
@@ -52,7 +35,7 @@ public class ShieldBehavior : MonoBehaviour
     
     public void StopBlock(GameObject go)
     {
-        if (IgnoredColliders.Contains(go))
+        if (go == this.transform.parent)
             return;
         CurrentShield.StopBlock();
         GetComponent<BoxCollider2D>().offset = MyColliderOffset;

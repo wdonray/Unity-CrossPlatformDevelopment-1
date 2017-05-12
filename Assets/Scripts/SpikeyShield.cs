@@ -7,7 +7,8 @@ public class SpikeyShield : ShieldConfig
 {   
     public override void Block(GameObject blockedObject)
     {
-                
+        if(blockedObject.GetComponentInParent<CharacterBehavior>())
+            blockedObject.GetComponentInParent<CharacterBehavior>().ModifyStat(_StatModifier.EffectedStatType.ToString(), _StatModifier.TheMod);
     }
 
     public override void StopBlock()
@@ -19,6 +20,7 @@ public class SpikeyShield : ShieldConfig
     {
         base.Initialize(obj);
         _StatModifier = Instantiate(_StatModifier);
+        _StatModifier.Initialize(null);
     }
 
     public GenericModifier _StatModifier;

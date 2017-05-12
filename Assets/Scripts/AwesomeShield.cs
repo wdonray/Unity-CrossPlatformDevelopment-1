@@ -33,8 +33,9 @@ public class AwesomeShield : ShieldConfig
         base.Initialize(obj);
         if (ShieldGrowth == 0)
             ShieldGrowth = 1;
-        ShieldGrowth = Mathf.Abs(ShieldGrowth);
-        //TODO::OWNER PROBABLY NOT SET
+        ShieldGrowth = Mathf.Abs(ShieldGrowth);        
+        if (!_owner)
+            return;
         InitialScale = _owner.transform.localScale;
         MaxScale = _owner.transform.localScale * Mathf.Abs(ShieldGrowth);
     }
