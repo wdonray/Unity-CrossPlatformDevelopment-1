@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: Shrinking Shield
   m_EditorClassIdentifier: 
   ID: 0
-  Name: Item
+  Name: Shrinking Shield
   sprite: {fileID: 0}
   Damage: 0
-  ShieldGrowth: 0
+  ShieldGrowth: 0.5
   MaxScale: {x: 0, y: 0, z: 0}
   InitialScale: {x: 0, y: 0, z: 0}
   isBlocking: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AwesomeShield", menuName = "Items/Shields/Awesome Shield")]
+[CreateAssetMenu(menuName = "Shields/Awesome Shield")]
 public class AwesomeShield : ShieldConfig
 {
     public Vector3 MaxScale;
@@ -10,7 +10,7 @@ public class AwesomeShield : ShieldConfig
 
     public bool isBlocking;
 
-    public override void Block()
+    public override void Block(GameObject blockedObject)
     {
         if (isBlocking)
             return;
@@ -31,6 +31,10 @@ public class AwesomeShield : ShieldConfig
     public override void Initialize(GameObject obj)
     {
         base.Initialize(obj);
+        if (ShieldGrowth == 0)
+            ShieldGrowth = 1;
+        ShieldGrowth = Mathf.Abs(ShieldGrowth);
+        //TODO::OWNER PROBABLY NOT SET
         InitialScale = _owner.transform.localScale;
         MaxScale = _owner.transform.localScale * Mathf.Abs(ShieldGrowth);
     }
