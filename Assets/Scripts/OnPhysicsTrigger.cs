@@ -1,20 +1,21 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 #if UNITY_EDITOR
+using UnityEditor;
 
 #endif
 
-public class OnPhysicsTrigger : MonoBehaviour
+public class OnPhysicsTrigger : EventTrigger
 {
     public string ListenerTag;
-    public OnEnterCollision onEnterCollision = new OnEnterCollision();
-    public OnEnterTrigger onEnterTrigger = new OnEnterTrigger();
-    public OnExitCollision onExitCollision = new OnExitCollision();
-    public OnExitTrigger onExitTrigger = new OnExitTrigger();
 
     public OnStart onStart = new OnStart();
-
+    public OnEnterCollision onEnterCollision = new OnEnterCollision();
+    public OnExitCollision onExitCollision = new OnExitCollision();
+    public OnEnterTrigger onEnterTrigger = new OnEnterTrigger();
+    public OnExitTrigger onExitTrigger = new OnExitTrigger();
 
     void Start()
     {
@@ -36,13 +37,19 @@ public class OnPhysicsTrigger : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
-            onEnterCollision.Invoke(collision.gameObject.name);
+            onEnterCollision.Invoke(collision.gameObject);
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
-            onExitCollision.Invoke(collision.gameObject.tag);
+            onExitCollision.Invoke(collision.gameObject);
+    }
+
+
+    [Serializable]
+    public class OnStart : UnityEvent
+    {
     }
 
     [Serializable]
@@ -56,41 +63,19 @@ public class OnPhysicsTrigger : MonoBehaviour
     }
 
     [Serializable]
-    public class OnEnterCollision : UnityEvent<string>
+    public class OnEnterCollision : UnityEvent<GameObject>
     {
     }
 
     [Serializable]
-    public class OnExitCollision : UnityEvent<string>
+    public class OnExitCollision : UnityEvent<GameObject>
     {
     }
 
-    [Serializable]
-    public class OnStart : UnityEvent
-    {
-    }
 
-    /*
 #if UNITY_EDITOR
-    [CustomEditor(typeof(OnPhysicsTrigger))]
-    public class InspectorOnPhysicsTrigger : Editor
-    {
-        bool showinspector = false;
-        
-        public override void OnInspectorGUI()
-        {
-            if (showinspector)
-                base.OnInspectorGUI();
 
-            var mytarget = target as OnPhysicsTrigger;
-            if (GUILayout.Button("Do it"))
-            {
-                showinspector = !showinspector;
-            }
+    
 
-        }
-    }
-
-#endif\
-*/
+#endif
 }

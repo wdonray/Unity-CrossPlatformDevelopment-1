@@ -10,11 +10,12 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public BackPackBehaviour backPack;
+    public UIView view;
     public OnCancel onCancel;
     public OnStart onStart;
     public OnStartButton onStartButton;
     public OnSubmit onSubmit;
-    public UIView view;
+    
 
     void Create()
     {
@@ -34,6 +35,24 @@ public class UIController : MonoBehaviour
         onStart.Invoke();
         var ui_gridbehaviour = view.InventoryGrid.GetComponent<UIGridBehaviour>();
         backPack.onBackPackAddItem.AddListener(ui_gridbehaviour.SetItem);
+    }
+    public bool inventoryup = false;
+    public Vector3 oldInventoryPos;
+    public void InventoryToggle()
+    {
+        if (!inventoryup)
+        {
+            oldInventoryPos = view.Inventory.transform.localPosition;
+            view.Inventory.transform.localPosition = new Vector3(0, 1000f, 0);
+            inventoryup = true;
+        }
+
+        else
+        {
+            view.Inventory.transform.localPosition = oldInventoryPos;
+            inventoryup = false;
+        }
+            
     }
 
     void Update()
