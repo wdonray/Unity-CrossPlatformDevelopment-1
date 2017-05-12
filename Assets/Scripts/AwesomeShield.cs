@@ -32,6 +32,6 @@ public class AwesomeShield : ShieldConfig
     {
         base.Initialize(obj);
         InitialScale = _owner.transform.localScale;
-        MaxScale = _owner.transform.localScale * ShieldGrowth;
+        MaxScale = _owner.transform.localScale * Mathf.Abs(ShieldGrowth);
     }
 }

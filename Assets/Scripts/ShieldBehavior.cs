@@ -23,8 +23,12 @@ public class ShieldBehavior : MonoBehaviour
         MyColliderOffset = GetComponent<BoxCollider2D>().offset;
         MyColliderSize = GetComponent<BoxCollider2D>().size;
 
-        IgnoredColliders.Add(RootObject);
+        if (RootObject)
+            return;
 
+        IgnoredColliders.Add(RootObject);
+        if (!RootObject)
+            return;
         foreach (var collider in RootObject.GetComponentsInChildren<Collider2D>())
         {
             if (collider != this.GetComponent<Collider2D>())
@@ -39,8 +43,11 @@ public class ShieldBehavior : MonoBehaviour
         if (IgnoredColliders.Contains(go))
             return;
         CurrentShield.Block();
-        GetComponent<BoxCollider2D>().offset = MyColliderOffset * 2;
-        GetComponent<BoxCollider2D>().size = MyColliderSize * 2;
+        if(_ShieldConfig.ShieldGrowth < 1)
+        {
+            GetComponent<BoxCollider2D>().offset = MyColliderOffset * 2;
+            GetComponent<BoxCollider2D>().size = MyColliderSize * 2;
+        }        
     }
     
     public void StopBlock(GameObject go)
