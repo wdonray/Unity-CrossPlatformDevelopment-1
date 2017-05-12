@@ -2,59 +2,39 @@
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.EventSystems;
+using UnityEngine.EventSystems;
 
-[CustomEditor(typeof(OnPhysicsTrigger))]
-public class OnPhysicsTriggerEditor : Editor
+namespace ChuTools
 {
-    protected static bool showLine = true; //declare outside of function
-    private AnimBool showFields;
-    private GUIStyle style;
-    public int _choice;
-    public enum TriggerType
+    [CustomEditor(typeof(OnPhysicsTrigger))]
+    public class OnPhysicsTriggerEditor : EventTriggerEditor
     {
-        Start = 0,
-        OnTriggerEnter2D = 1,
-        OnTriggerEnter = 2,
-        OnCollisionEnter2D = 3,
-        OnCollisionEnter = 4
-    }
+        protected static bool showLine = true; //declare outside of function
 
 
-    private void OnEnable()
-    {
-        showFields = new AnimBool(true) {speed = 35f};
-        showFields.valueChanged.AddListener(Repaint);
-    }
+        public enum PhysicsTriggerType
+        {
+            Start = 0,
+            OnTriggerEnter2D = 1,
+            OnTriggerExit2D = 2,
+            OnCollisionEnter2D = 3,
+            OnCollisionExit2D = 4
+        }
+        
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        //base.OnInspectorGUI();
-        //EditorUtility.SetDirty(target);
 
-        //style = new GUIStyle("HelpBox") { richText = true };
-
-        //EditorGUILayout.Space();
-
-        //var mytarget = target as OnPhysicsTrigger;
-
-        //if(mytarget == null)
-        //    return;
-
-        //if (GUILayout.Button("Add Event"))
-        //{
-        //    _choice = EditorGUILayout.Popup(_choice, System.Enum.GetNames(typeof(TriggerType)));
-        //}
-        //SerializedProperty onCheck0 = serializedObject.FindProperty("onStart"); // <-- UnityEvent
-        //SerializedProperty onCheck1 = serializedObject.FindProperty("onEnterTrigger"); // <-- UnityEvent
-        //SerializedProperty onCheck2 = serializedObject.FindProperty("onExitTrigger"); // <-- UnityEvent
-        //SerializedProperty onCheck3 = serializedObject.FindProperty("onEnterCollision"); // <-- UnityEvent
-        //SerializedProperty onCheck4 = serializedObject.FindProperty("onExitCollision"); // <-- UnityEvent
-
-        //EditorGUILayout.PropertyField(onCheck0);
-        //EditorGUILayout.PropertyField(onCheck1);
-        //EditorGUILayout.PropertyField(onCheck2);
-        //EditorGUILayout.PropertyField(onCheck3);
-        //EditorGUILayout.PropertyField(onCheck4);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("onStart"), true); // <-- UnityEvent
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("onEnterTrigger"), true); // <-- UnityEvent
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("onExitTrigger"), true); // <-- UnityEvent
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("onEnterCollision"), true); // <-- UnityEvent
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("onExitCollision"), true); // <-- UnityEvent
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }
