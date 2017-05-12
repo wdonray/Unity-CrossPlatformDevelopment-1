@@ -18,7 +18,8 @@ public class ShieldBehavior : MonoBehaviour
         CurrentShield = _ShieldConfig;
 
         MyColliderOffset = GetComponent<BoxCollider2D>().offset;
-        MyColliderSize = GetComponent<BoxCollider2D>().size;     
+        MyColliderSize = GetComponent<BoxCollider2D>().size;
+        GetComponent<SpriteRenderer>().sprite = _ShieldConfig.sprite;
     }    
 
     public void DoBlock(GameObject go)
