@@ -17,11 +17,11 @@ public class ItemBehaviour : MonoBehaviour
 
         GetComponent<SpriteRenderer>().sprite = runtimeItem.sprite;
     }
-
+    
     public void AddToBackpack(GameObject go)
     {
         Debug.Log("add to pack");
-        go.GetComponentInParent<BackPackBehaviour>().AddToPack(item);
+        go.GetComponentInParent<BackPackBehaviour>().AddToPack(runtimeItem);
     }
 
     public void DestroyItemGameObject()
