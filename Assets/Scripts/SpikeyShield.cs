@@ -4,7 +4,9 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Spikey Shield", menuName = "Items/Shields/Spikey Shield")]
 public class SpikeyShield : ShieldConfig
-{   
+{
+    Anima2D.SpriteMesh spikeyShieldMesh;
+
     public override void Block(GameObject blockedObject)
     {
         if(blockedObject.GetComponentInParent<CharacterBehavior>())
@@ -21,6 +23,7 @@ public class SpikeyShield : ShieldConfig
         base.Initialize(obj);
         _StatModifier = Instantiate(_StatModifier);
         _StatModifier.Initialize(null);
+        obj.GetComponent<Anima2D.SpriteMeshInstance>().spriteMesh = spikeyShieldMesh;
     }
 
     public GenericModifier _StatModifier;
