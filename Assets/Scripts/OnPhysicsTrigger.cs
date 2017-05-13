@@ -1,48 +1,59 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+#if UNITY_EDITOR
+using UnityEditor;
 
-public class OnPhysicsTrigger : MonoBehaviour
+#endif
+
+public class OnPhysicsTrigger : EventTrigger
 {
     public string ListenerTag;
 
+    public OnStart onStart = new OnStart();
     public OnEnterCollision onEnterCollision = new OnEnterCollision();
     public OnExitCollision onExitCollision = new OnExitCollision();
+    public OnEnterTrigger onEnterTrigger = new OnEnterTrigger();
     public OnExitTrigger onExitTrigger = new OnExitTrigger();
-    public OnStart onStart = new OnStart();
-    public OnEnterTrigger onTriggerEnter = new OnEnterTrigger();
 
-    private void Start()
+    void Start()
     {
         onStart.Invoke();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
-            onTriggerEnter.Invoke(collision.gameObject);
+            onEnterTrigger.Invoke(collision.gameObject);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
-            onExitTrigger.Invoke();
+            onExitTrigger.Invoke(collision.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
-            onEnterCollision.Invoke(collision.gameObject.name);
+            onEnterCollision.Invoke(collision.gameObject);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))
-            onExitCollision.Invoke(collision.gameObject.tag);
+            onExitCollision.Invoke(collision.gameObject);
+    }
+
+
+    [Serializable]
+    public class OnStart : UnityEvent
+    {
     }
 
     [Serializable]
-    public class OnExitTrigger : UnityEvent
+    public class OnExitTrigger : UnityEvent<GameObject>
     {
     }
 
@@ -52,17 +63,19 @@ public class OnPhysicsTrigger : MonoBehaviour
     }
 
     [Serializable]
-    public class OnEnterCollision : UnityEvent<string>
+    public class OnEnterCollision : UnityEvent<GameObject>
     {
     }
 
     [Serializable]
-    public class OnExitCollision : UnityEvent<string>
+    public class OnExitCollision : UnityEvent<GameObject>
     {
     }
 
-    [Serializable]
-    public class OnStart : UnityEvent
-    {
-    }
+
+#if UNITY_EDITOR
+
+    
+
+#endif
 }

@@ -999,15 +999,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43f9cf27163d104eb08183be87d0b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  velocity: {x: 0, y: 0, z: 0}
-  scaleF: 0
-  startScale: {x: 0, y: 0, z: 0}
+  crouchspeed: 5
+  IKSpine: {fileID: 0}
   jumpPower: 800
-  blockinput: 0
-  crouching: 0
-  jumping: 0
-  grounded: 0
+  speed: 15
 --- !u!114 &114175103087142928
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,7 +8,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     internal static readonly int RVERTICAL = Animator.StringToHash("rightvertical");
     internal static readonly int LHORIZONTAL = Animator.StringToHash("lefthorizontal");
     internal static readonly int LVERTICAL = Animator.StringToHash("leftvertical");
-    private PlayerInput _playerInput;
+    
     private Rigidbody2D _rigidbody2D;
     private bool _rootMotion;
 
@@ -22,43 +22,42 @@ public class PlayerMovementBehaviour : MonoBehaviour
     private float scaleF;
 
 
-    [Range(0, 100)] public float speed = 15f;
+    [Range(0, 100)]
+    public float speed = 15f;
 
-    private Vector3 velocity;
+
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
         scaleF = transform.localScale.x;
-        _playerInput = GetComponent<PlayerInput>();
     }
 
     private void Update()
     {
-        if (_rootMotion)
+        if(_rootMotion)
             return;
 
         lookat = new Vector3(PlayerInput.RightStick.x, PlayerInput.RightStick.y, 0);
         Debug.DrawLine(transform.position, transform.position + lookat * 15f, Color.blue);
         var move = new Vector3(PlayerInput.LeftStick.x, PlayerInput.LeftStick.y, 0);
         var dir = move.normalized;
-        velocity = dir * speed;
 
         m_anim.SetFloat(RHORIZONTAL, PlayerInput.RightStick.x);
         m_anim.SetFloat(RVERTICAL, PlayerInput.RightStick.y);
         m_anim.SetFloat(LHORIZONTAL, PlayerInput.LeftStick.x);
         m_anim.SetFloat(LVERTICAL, PlayerInput.LeftStick.y);
 
-        if (PlayerInput.UserControl)
+        if(PlayerInput.UserControl)
         {
-            if (_rigidbody2D.velocity.magnitude > 0)
+            if(_rigidbody2D.velocity.magnitude > 0)
             {
                 var dot = Vector3.Dot(dir, transform.right);
 
-                if (dot < 0 || PlayerInput.RightStick.x < 0)
+                if(dot < 0 || PlayerInput.RightStick.x < 0)
                     SetScaleX(transform, -scaleF);
-                else if (dot > 0 || PlayerInput.RightStick.x > 0)
+                else if(dot > 0 || PlayerInput.RightStick.x > 0)
                     SetScaleX(transform, scaleF);
             }
 

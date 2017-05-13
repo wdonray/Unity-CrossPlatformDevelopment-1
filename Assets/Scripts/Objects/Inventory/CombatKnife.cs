@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Item/CombatKnife")]
 public class CombatKnife : Weapon
 {
-    private BackPack backpack;
+  
 
     public override void Execute()
     {
@@ -17,7 +17,5 @@ public class CombatKnife : Weapon
             Name = "CombatKnife";
         if(obj == null)
             return;
-        backpack = obj.GetComponent<BackPack>();
-        backpack.AddToPack(Instantiate(this));
     }
 }

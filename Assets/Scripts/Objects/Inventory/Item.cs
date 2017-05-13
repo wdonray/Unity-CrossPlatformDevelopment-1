@@ -6,9 +6,17 @@ public abstract class Item : ScriptableObject, IExecutable
     public int ID;
     public string Name = "Item";
     public Sprite sprite;
+    /// <summary>
+    /// the GameObject responsible for this instance object
+    /// </summary>
     protected GameObject _owner;
 
     public abstract void Execute();
+
+    /// <summary>
+    /// initialize this object with an owner
+    /// </summary>
+    /// <param name="obj"></param>
     public abstract void Initialize(GameObject obj);
 
 }
