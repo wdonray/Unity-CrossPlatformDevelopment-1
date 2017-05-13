@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Item/Gun")]
+[CreateAssetMenu(menuName ="Items/Gun")]
 public class CombatRifle : Weapon, IShootable
 {    
     public GameObject projectilePrefab;

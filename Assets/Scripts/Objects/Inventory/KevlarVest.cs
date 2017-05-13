@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "KevlarVest", menuName = "Item/KevlarVest")]
+[CreateAssetMenu(menuName = "Items/KevlarVest")]
 public class KevlarVest : Armor
 { 
     public override void Execute()

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Item/CombatKnife")]
+[CreateAssetMenu(menuName = "Items/CombatKnife")]
 public class CombatKnife : Weapon
 {
   
