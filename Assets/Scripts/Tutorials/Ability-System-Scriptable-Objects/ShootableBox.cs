@@ -1,4 +1,8 @@
-﻿public class ShootableBox : EntityBase
+﻿namespace Tutorials
+{
+
+
+    public class ShootableBox : EntityBase
 {
     public override void Damage(int amount)
     {
@@ -7,4 +11,5 @@
 
             health = newhealth - amount;
     }
+}
 }

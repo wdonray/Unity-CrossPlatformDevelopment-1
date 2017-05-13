@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+namespace Tutorials
+{
+    
+
 public class ProjectileShootTriggerable : MonoBehaviour
 {
     public Transform bulletSpawn; // Transform variable to hold the location where we will spawn our projectile
@@ -17,5 +21,6 @@ public class ProjectileShootTriggerable : MonoBehaviour
 
         //Add force to the instantiated bullet, pushing it forward away from the bulletSpawn location, using projectile force for how hard to push it away
         clonedBullet.AddForce(bulletSpawn.transform.forward * projectileForce);
+    }
     }
 }

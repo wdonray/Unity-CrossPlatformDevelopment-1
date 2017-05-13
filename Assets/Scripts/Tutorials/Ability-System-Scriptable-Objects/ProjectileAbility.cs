@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+namespace Tutorials
+{
+    
+
 [CreateAssetMenu(menuName = "Abilities/ProjectileAbility")]
 public class ProjectileAbility : Ability
 {
@@ -17,5 +21,6 @@ public class ProjectileAbility : Ability
     public override void TriggerAbility()
     {
         launcher.Launch();
+    }
     }
 }

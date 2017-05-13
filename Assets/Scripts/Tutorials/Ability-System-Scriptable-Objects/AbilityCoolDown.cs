@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+namespace Tutorials
+{
+    
+
 public class AbilityCoolDown : MonoBehaviour
 {
     [SerializeField] private Ability ability;
@@ -74,5 +78,7 @@ public class AbilityCoolDown : MonoBehaviour
         abilitySource.clip = ability.aSound;
         abilitySource.Play();
         ability.TriggerAbility();
+    }
+
     }
 }

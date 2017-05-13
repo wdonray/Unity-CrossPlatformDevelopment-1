@@ -4,23 +4,29 @@
 public class CombatShotgun : Weapon, IShootable
 {
     readonly int numPellets = 5;
-    public GameObject projectilePrefab;
 
-    public void Shoot(GameObject obj)
-    {
-        for (var i = 0; i < numPellets; i++)
-        {
-            var go = Instantiate(projectilePrefab, obj.transform);
-            go.transform.ResetTransformation();
-            go.transform.localPosition += new Vector3(0, i + 5f, 0);
-            go.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 5f, ForceMode2D.Impulse);
-        }
-    }
+    public GameObject projectilePrefab;
 
     public override void Initialize(GameObject obj)
     {
         _owner = obj;
     }
+
+    public void Shoot(GameObject obj)
+    {
+        for (var i = 0; i < numPellets; i++)
+        {
+            var pb = _owner.GetComponent<PlayerMovementBehaviour>();
+            var go = Instantiate(projectilePrefab, _owner.transform.position, _owner.transform.rotation);
+            go.transform.localPosition += new Vector3(Mathf.Cos(i), Mathf.Sin(i), 0) + pb.Direction * 5f;
+            var thisrb = go.GetComponent<Rigidbody2D>();
+            
+            thisrb.AddForce(pb.Direction * 25f, ForceMode2D.Impulse);
+            Destroy(go, 2f);
+        }
+    }
+
+    
 
     public override void Execute()
     {

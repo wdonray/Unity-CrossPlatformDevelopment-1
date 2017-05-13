@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
+namespace Tutorials
+{
 
-[CreateAssetMenu(menuName = "Abilities/RaycastAbility")]
+
+    [CreateAssetMenu(menuName = "Abilities/RaycastAbility")]
 public class RaycastAbility : Ability
 {
     public int gunDamage = 1;
@@ -26,4 +29,5 @@ public class RaycastAbility : Ability
     {
         rcShoot.Fire();
     }
+}
 }

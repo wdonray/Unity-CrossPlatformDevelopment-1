@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+namespace Tutorials
+{
+    
+
 public abstract class Ability : ScriptableObject
 {
     public float aBaseCoolDown = 1f;
@@ -10,4 +14,5 @@ public abstract class Ability : ScriptableObject
 
     public abstract void Initialize(GameObject obj);
     public abstract void TriggerAbility();
+    }
 }

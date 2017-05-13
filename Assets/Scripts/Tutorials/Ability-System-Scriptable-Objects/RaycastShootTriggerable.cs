@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
+namespace Tutorials
+{
 
-public class RaycastShootTriggerable : MonoBehaviour
+
+    public class RaycastShootTriggerable : MonoBehaviour
 {
     private Camera fpsCam; // Holds a reference to the first person camera.
 
@@ -83,4 +86,5 @@ public class RaycastShootTriggerable : MonoBehaviour
         //Deactivate our line renderer after waiting
         laserLine.enabled = false;
     }
+}
 }

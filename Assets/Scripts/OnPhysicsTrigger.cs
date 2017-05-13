@@ -7,8 +7,9 @@ using UnityEditor;
 
 #endif
 
-public class OnPhysicsTrigger : EventTrigger
+public class OnPhysicsTrigger : MonoBehaviour
 {
+    [TagSelector]
     public string ListenerTag;
 
     public OnStart onStart = new OnStart();

@@ -32,8 +32,14 @@ public class PlayerMovementBehaviour : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
         scaleF = transform.localScale.x;
+        _direction = Vector3.right;
     }
 
+    private Vector3 _direction;
+    public Vector3 Direction
+    {
+        get { return _direction; }
+    }
     private void Update()
     {
         if(_rootMotion)
@@ -55,10 +61,18 @@ public class PlayerMovementBehaviour : MonoBehaviour
             {
                 var dot = Vector3.Dot(dir, transform.right);
 
-                if(dot < 0 || PlayerInput.RightStick.x < 0)
+                if (dot < 0 || PlayerInput.RightStick.x < 0)
+                {
                     SetScaleX(transform, -scaleF);
-                else if(dot > 0 || PlayerInput.RightStick.x > 0)
+                    _direction = Vector3.left;
+                }
+                    
+                else if (dot > 0 || PlayerInput.RightStick.x > 0)
+                {
                     SetScaleX(transform, scaleF);
+                    _direction = Vector3.right;
+                }
+                    
             }
 
 

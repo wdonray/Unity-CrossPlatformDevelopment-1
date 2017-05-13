@@ -1951,18 +1951,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a46391207c77e44692807dceaed1fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onStatModify:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: PlayerBehaviour+OnHealthChange, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onStatModify:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   stats: {fileID: 0}
-  timedMods: 
 --- !u!114 &114441367324306332
 MonoBehaviour:
   m_ObjectHideFlags: 1

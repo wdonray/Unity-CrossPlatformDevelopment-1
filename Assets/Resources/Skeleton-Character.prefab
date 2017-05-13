@@ -2597,11 +2597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6899395d23b88754c8f3fd8b110f4855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ShieldConfig: {fileID: 11400000, guid: ba7476647c0296846b90a23c416ea43d, type: 2}
-  IgnoredColliders: []
   MyColliderOffset: {x: 0, y: 0}
   MyColliderSize: {x: 0, y: 0}
-  RootObject: {fileID: 1362411048103790}
+  _ShieldConfig: {fileID: 11400000, guid: ba7476647c0296846b90a23c416ea43d, type: 2}
 --- !u!114 &114573557592765506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2917,8 +2915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f4ebc7c8c0c474b98cc42b662d3b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
-  delegates: []
   ListenerTag: Untagged
   onStart:
     m_PersistentCalls:
@@ -2991,8 +2987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f4ebc7c8c0c474b98cc42b662d3b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
-  delegates: []
   ListenerTag: Untagged
   onStart:
     m_PersistentCalls:

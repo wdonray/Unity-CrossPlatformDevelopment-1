@@ -10,18 +10,14 @@ public class ThornTrap : MonoBehaviour
 
     private void Start()
     {
-                
         RUNTIME_MOD = Instantiate(ThornModConfig);
         RUNTIME_MOD.Initialize(null);        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void DoDamage(GameObject go)
     {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("collide with player");            
-            collision.gameObject.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
-            Destroy(gameObject);
-        }
+        Debug.Log("collide with player");
+        go.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
+        Destroy(gameObject);
     }
 }
