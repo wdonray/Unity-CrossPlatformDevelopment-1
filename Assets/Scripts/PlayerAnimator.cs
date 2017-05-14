@@ -10,7 +10,12 @@ public class PlayerAnimator : MonoBehaviour
     private static readonly int PUNCHTRIGGER = Animator.StringToHash("punch");
     private static readonly int JUMPTRIGGER = Animator.StringToHash("jump");
     private static readonly int CROUCHING = Animator.StringToHash("crouch");
+
+    
+    
+#pragma warning disable 0414
     private static readonly int ANIMSPEED = Animator.StringToHash("Speed");
+#pragma warning restore 0414
     private IAttachable currentOffhand;
 
     private IAttachable currentWeapon;

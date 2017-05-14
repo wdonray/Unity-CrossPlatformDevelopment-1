@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Spikey Shield", menuName = "Items/Shields/Spikey Shield")]
 public class SpikeyShield : ShieldConfig
 {
+#pragma warning disable 0649
     Anima2D.SpriteMesh spikeyShieldMesh;
-
+#pragma warning restore 0649
     public override void Block(GameObject blockedObject)
     {
         if(blockedObject.GetComponentInParent<CharacterBehaviour>())

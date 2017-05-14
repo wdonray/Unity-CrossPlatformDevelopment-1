@@ -17,7 +17,10 @@ public abstract class Item : ScriptableObject, IExecutable
     /// initialize this object with an owner
     /// </summary>
     /// <param name="obj"></param>
-    public abstract void Initialize(GameObject obj);
+    public virtual void Initialize(GameObject obj)
+    {
+        Name = this.GetType().ToString();
+    }
 
 }
 

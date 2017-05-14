@@ -1961,7 +1961,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  stats: {fileID: 0}
+  PlayerStats: {fileID: 0}
 --- !u!114 &114441367324306332
 MonoBehaviour:
   m_ObjectHideFlags: 1
