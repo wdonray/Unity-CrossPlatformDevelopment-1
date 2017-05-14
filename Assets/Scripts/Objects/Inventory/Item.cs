@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[Serializable]
 public abstract class Item : ScriptableObject, IExecutable
 {
     public int ID;
@@ -23,7 +24,7 @@ public abstract class Item : ScriptableObject, IExecutable
     }
 
 }
-
+[Serializable]
 public abstract class Equipment : Item, IEquippable
 {
     public virtual void Equip()
@@ -34,17 +35,17 @@ public abstract class Equipment : Item, IEquippable
     {
     }
 }
-
+[Serializable]
 public abstract class Potion : Equipment, IConsumable
 {
     public abstract void Consume(GameObject owner);
 }
-
+[Serializable]
 public abstract class Weapon : Equipment
 {
     public int Damage;
 }
-
+[Serializable]
 public abstract class Armor : Equipment
 {
     public int ArmorRating;

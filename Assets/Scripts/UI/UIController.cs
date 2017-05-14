@@ -24,15 +24,17 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         view = FindObjectOfType<UIView>();
+    }
+
+    void SetButtonCallbacks()
+    {
         var save_button = GameObject.Find("Button-Save").GetComponent<Button>();
         var load_button = GameObject.Find("Button-Load").GetComponent<Button>();
         save_button.onClick.AddListener(delegate
         {
             DataController.SaveBackPack(backPackBehaviour.backPack_config);
         });
-        load_button.onClick.AddListener(delegate() { DataController.LoadBackPack(0); });
-
-
+        load_button.onClick.AddListener(delegate () { DataController.LoadBackPack(0); });
     }
 
     private void Start()
