@@ -1797,6 +1797,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerTag: Untagged
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OnPhysicsTrigger+OnStart, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   onEnterCollision:
     m_PersistentCalls:
       m_Calls: []
@@ -1817,11 +1822,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: OnPhysicsTrigger+OnExitTrigger, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: OnPhysicsTrigger+OnStart, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114194235064256156
 MonoBehaviour:
   m_ObjectHideFlags: 1

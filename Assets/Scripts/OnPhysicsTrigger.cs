@@ -9,18 +9,24 @@ using UnityEngine.Events;
 public class OnPhysicsTrigger : MonoBehaviour
 {
     [TagSelector] public string ListenerTag;
+    public OnStart onStart = new OnStart();
     public OnEnterCollision onEnterCollision = new OnEnterCollision();
     public OnEnterTrigger onEnterTrigger = new OnEnterTrigger();
     public OnExitCollision onExitCollision = new OnExitCollision();
     public OnExitTrigger onExitTrigger = new OnExitTrigger();
-
-    public OnStart onStart = new OnStart();
-
+    
+    /// <summary>
+    /// invoke start callbacks
+    /// </summary>
     private void Start()
     {
         onStart.Invoke();
     }
 
+    /// <summary>
+    /// if the listener tag matches what we enter then invoke trigger enter callbacks, 
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(ListenerTag))

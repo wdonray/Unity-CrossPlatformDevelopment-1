@@ -4,8 +4,8 @@ public class ThornTrap : MonoBehaviour
 {
     private GenericModifier RUNTIME_MOD;
     public GenericModifier ThornModConfig;
-
-    private void Start()
+    
+    public void Initialize()
     {
         RUNTIME_MOD = Instantiate(ThornModConfig);
         RUNTIME_MOD.Initialize(null);

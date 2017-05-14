@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 
 namespace ChuTools
 {
-    [CustomEditor(typeof(OnPhysicsTrigger))]
+    [CustomEditor(typeof(CustomEventTrigger))]
     public class OnPhysicsTriggerEditor : EventTriggerEditor
     {
         protected static bool showLine = true; //declare outside of function
