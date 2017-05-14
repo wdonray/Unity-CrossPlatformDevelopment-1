@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: HeavyArmor
   m_EditorClassIdentifier: 
   ID: 14066
-  Name: KevlarVest
+  Name: HeavyArmor
   sprite: {fileID: 21300000, guid: 87efaf20c96bd46b2a6e7bf4d4d3fd57, type: 3}
   ArmorRating: 25

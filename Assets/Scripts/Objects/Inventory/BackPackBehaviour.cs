@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class BackPackBehaviour : MonoBehaviour
 {
+    
     public BackPack backPack_config;
     
     public OnBackPackAddItem onBackPackAddItem = new OnBackPackAddItem();
