@@ -37,8 +37,6 @@ public abstract class Potion : Equipment, IConsumable
     public abstract void Consume(GameObject owner);
 }
 
-
-
 public abstract class Weapon : Equipment
 {
     public int Damage;

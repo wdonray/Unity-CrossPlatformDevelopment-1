@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using RPGStats;
 using UnityEngine;
@@ -6,20 +8,35 @@ using UnityEngine;
 namespace ScriptableAssets
 {
     [CreateAssetMenu(fileName = "Stats", menuName = "Stats/StatsTemplate", order = 1)]
-    public class Stats : ScriptableObject
+    public class Stats : ScriptableObject, IEnumerable<Stat>
     {
+        public List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
         public Dictionary<string, Stat> Items = new Dictionary<string, Stat>();
 
         public Dictionary<int, Modifier> Modifiers = new Dictionary<int, Modifier>();
-        [System.Serializable]
-        public class IDModifier
-        {
-            public int identifier;
-            public Modifier mod;
-        }
-        public List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
-
         public Stat[] stats;
+
+        public Stat this[string element]
+        {
+            get
+            {
+                if (Items.ContainsKey(element))
+                    return Items[element];
+                return null;
+            }
+
+            set { Items[element] = value; }
+        }
+
+        public IEnumerator<Stat> GetEnumerator()
+        {
+            return Items.Values.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Items.Values.GetEnumerator();
+        }
 
         private void OnEnable()
         {
@@ -31,15 +48,13 @@ namespace ScriptableAssets
 
         public string AddModifier(int id, Modifier m)
         {
-            
-            INSPECTOR_MODS.Add(new IDModifier {identifier = id, mod = m });
+            INSPECTOR_MODS.Add(new IDModifier {identifier = id, mod = m});
             Modifiers.Add(id, m);
             var result = string.Format(
                 "Add modifier {0} {1} {2}",
                 Modifiers[id].stat,
                 Modifiers[id].type,
                 Modifiers[id].value);
-
 
             Items[m.stat].Apply(m);
             return result;
@@ -70,6 +85,13 @@ namespace ScriptableAssets
         public Stat GetStat(string key)
         {
             return Items[key];
+        }
+
+        [Serializable]
+        public class IDModifier
+        {
+            public int identifier;
+            public Modifier mod;
         }
     }
 }

@@ -9,8 +9,8 @@ public class SpikeyShield : ShieldConfig
 
     public override void Block(GameObject blockedObject)
     {
-        if(blockedObject.GetComponentInParent<CharacterBehavior>())
-            blockedObject.GetComponentInParent<CharacterBehavior>().ModifyStat(_StatModifier.EffectedStatType.ToString(), _StatModifier.TheMod);
+        if(blockedObject.GetComponentInParent<CharacterBehaviour>())
+            blockedObject.GetComponentInParent<CharacterBehaviour>().ModifyStat(_StatModifier.EffectedStatType.ToString(), _StatModifier.TheMod);
     }
 
     public override void StopBlock()

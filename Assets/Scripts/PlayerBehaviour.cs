@@ -5,82 +5,66 @@ using ScriptableAssets;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerBehaviour : CharacterBehavior
+public class PlayerBehaviour : CharacterBehaviour
 {
-    int modcount;
+
+    [Serializable]
+    public class OnStatModify : UnityEvent<string> { }
+
+    [Serializable]
+    public class OnHealthChange : UnityEvent<int> { }
+
+    private int modcount;
+    private List<int> timedMods;
     public OnHealthChange onHealthChange = new OnHealthChange();
-    public OnStatModify onStatModify;
-    public Stats stats;
+    public OnStatModify onStatModify = new OnStatModify();
+    public Stats PlayerStats;
 
     //TODO : ADD THE TIMERFOR DEBUFFS AND DAMAGE OVER TIME, MAKE AN OBJECT TO HOLD THE ID OF THE MOD AND THE TIME TILL IT NEEDS TO GO AWAY
 
-    List<int> timedMods;
-
-
     void Awake()
     {
-        if (stats == null)
+        if (PlayerStats == null)
         {
             Debug.LogWarning("you have not assigned a stats reference object");
             return;
         }
 
-        var newstats = Instantiate(stats);
-        stats = newstats;
+        var newstats = Instantiate(PlayerStats);
+        PlayerStats = newstats;
     }
 
     void Start()
     {
-        onStatModify.Invoke();
+        onStatModify.Invoke("");
     }
 
-    public void ModifyStatOverTime(string stat, Modifier mod, float duration)
+    public void ModifyStatOverTime(string statName, Modifier mod, float duration)
     {
         var valids = new List<string>(Enum.GetNames(typeof(StatType)));
-        if (!valids.Contains(stat)) return;
-        stats.AddModifier(modcount++, mod);
+        if (!valids.Contains(statName)) return;
+        PlayerStats.AddModifier(modcount++, mod);
         timedMods.Add(modcount);
 
-        if (stat == "Health")
-            onHealthChange.Invoke(stats.GetStat(stat).Value);
-        onStatModify.Invoke();
+        if (statName == "Health")
+            onHealthChange.Invoke(PlayerStats[statName].Value);
+        onStatModify.Invoke(statName);
     }
 
-    public override void ModifyStat(string stat, Modifier mod)
+    public override void ModifyStat(string statName, Modifier mod)
     {
         var valids = new List<string>(Enum.GetNames(typeof(StatType)));
-        if (!valids.Contains(stat))
+        if (!valids.Contains(statName))
         {
-            Debug.LogWarningFormat("stat:: {0}, is not a valid stat to modify", stat);
+            Debug.LogWarningFormat("stat:: {0}, is not a valid stat to modify", statName);
             return;
         }
 
-        stats.AddModifier(modcount++, mod);
+        PlayerStats.AddModifier(modcount++, mod);
 
-        if (stat == "Health")
-            onHealthChange.Invoke(stats.GetStat(stat).Value);
-        onStatModify.Invoke();
+        if (statName == "Health")
+            onHealthChange.Invoke(PlayerStats[statName].Value);
+        onStatModify.Invoke(statName);
     }
 
-    public void ModifyRandomStat(string stat)
-    {
-        var valids = new List<string>(Enum.GetNames(typeof(StatType)));
-        if (!valids.Contains(stat)) return;
-
-
-        var res = stats.AddModifier(modcount++, new Modifier("add", stat, 2));
-        var info = string.Format("Stat: {0}, {1} modifier of {2} :: {3}", stat, "add", 2, res);
-        Debug.Log(info);
-        onStatModify.Invoke();
-    }
-
-    [Serializable]
-    public class OnStatModify : UnityEvent
-    {
-    }
-
-    [Serializable]
-    public class OnHealthChange : UnityEvent<int>
-    {
-    }
 }

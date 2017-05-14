@@ -1797,31 +1797,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerTag: Untagged
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OnPhysicsTrigger+OnStart, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   onEnterCollision:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: OnPhysicsTrigger+OnEnterCollision, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onEnterTrigger:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: OnPhysicsTrigger+OnEnterTrigger, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onExitCollision:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: OnPhysicsTrigger+OnExitCollision, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OnPhysicsTrigger+OnEnterTrigger, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onExitTrigger:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: OnPhysicsTrigger+OnExitTrigger, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: OnPhysicsTrigger+OnStart, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114194235064256156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2191,11 +2191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a46391207c77e44692807dceaed1fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onStatModify:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   onHealthChange:
     m_PersistentCalls:
       m_Calls:
@@ -2212,8 +2207,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: PlayerBehaviour+OnHealthChange, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onStatModify:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   stats: {fileID: 11400000, guid: 1c5a6b51e8fe0a349a3faddc0dc37662, type: 2}
-  timedMods: 
 --- !u!114 &114590013032236226
 MonoBehaviour:
   m_ObjectHideFlags: 1
