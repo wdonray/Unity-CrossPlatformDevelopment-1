@@ -21,6 +21,8 @@ public abstract class Item : ScriptableObject, IExecutable
     public virtual void Initialize(GameObject obj)
     {
         Name = this.GetType().ToString();
+        obj = _owner;
+        ID = GetHashCode();
     }
 
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ThornTrap : MonoBehaviour
+public class ThornTrapBehaviour : MonoBehaviour
 {
     private GenericModifier RUNTIME_MOD;
     public GenericModifier ThornModConfig;

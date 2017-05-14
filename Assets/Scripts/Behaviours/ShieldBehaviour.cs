@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldBehavior : MonoBehaviour
+public class ShieldBehaviour : MonoBehaviour
 {        
     public Vector2 MyColliderOffset;
     public Vector2 MyColliderSize;
