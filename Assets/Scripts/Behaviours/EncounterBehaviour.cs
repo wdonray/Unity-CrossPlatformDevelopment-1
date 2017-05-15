@@ -16,6 +16,7 @@ public class EncounterBehaviour : MonoBehaviour
         if (other.tag == "Player")
         {
             encounter.EncounterStart();
+            encounter.EncounterStart(other.gameObject);
         }
     }
 
