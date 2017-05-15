@@ -38,18 +38,6 @@ public class PlayerBehaviour : CharacterBehaviour
         onStatModify.Invoke("");
     }
 
-    public override int ModifyStatOverTime(string statName, Modifier mod)
-    {
-        var valids = new List<string>(Enum.GetNames(typeof(StatType)));
-        if (!valids.Contains(statName)) return -1;
-        PlayerStats.AddModifier(modcount++, mod);
-
-        if (statName == "Health")
-            onHealthChange.Invoke(PlayerStats[statName].Value);
-        onStatModify.Invoke(statName);
-        return modcount;
-    }
-
     public override void ModifyStat(string statName, Modifier mod)
     {
         var valids = new List<string>(Enum.GetNames(typeof(StatType)));
@@ -71,5 +59,5 @@ public class PlayerBehaviour : CharacterBehaviour
         PlayerStats.ClearModifiers();
         onHealthChange.Invoke(PlayerStats["Health"].Value);
     }
-
+    
 }
