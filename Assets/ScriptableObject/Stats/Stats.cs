@@ -76,8 +76,13 @@ using UnityEngine;
         {
             var keys = Modifiers.Keys.ToArray();
             foreach (var key in keys)
+            {
                 RemoveModifier(key);
+            }
+                
             Modifiers.Clear();
+            INSPECTOR_MODS.Clear();
+
         }
 
         public Stat GetStat(string key)
