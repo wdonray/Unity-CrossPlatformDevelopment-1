@@ -33,8 +33,16 @@ public class PoisonGas : Encounter {
         RUNTIME_MOD.Initialize(null);
     }
 
+    public bool EncounterStartedWithPlayer(GameObject obj)
+    {
+        if(obj.GetComponent<PlayerBehaviour>())
+            obj.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
+        return true;
+    }
+
     public override bool EncounterStart()
     {
+        
         _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
 
         return true;

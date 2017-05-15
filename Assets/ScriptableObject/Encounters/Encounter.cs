@@ -16,7 +16,11 @@ public abstract class Encounter : ScriptableObject {
             return true;
         }
     }
-    
+
+    public virtual bool EncounterStart(GameObject obj)
+    {
+        return EncounterStart();
+    }
     public virtual bool EncounterStart()
     {
         Debug.Log("EncounterStart Has Not Been Overridden");
