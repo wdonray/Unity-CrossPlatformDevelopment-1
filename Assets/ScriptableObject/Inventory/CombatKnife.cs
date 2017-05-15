@@ -11,9 +11,7 @@ public class CombatKnife : Weapon
 
     public override void Initialize(GameObject obj)
     {
-        if (Name == "")
-            Name = "CombatKnife";
-        if(obj == null)
-            return;
+        base.Initialize(obj);
+        
     }
 }

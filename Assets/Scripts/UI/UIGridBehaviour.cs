@@ -12,7 +12,7 @@ public class UIGridBehaviour : MonoBehaviour
 
     private GameObject firstAvailable;
     private int itemIndex = 1;
-    private int numItems;
+    private int numItems = 0;
 
 
     public GameObject FirstAvailable
@@ -29,6 +29,14 @@ public class UIGridBehaviour : MonoBehaviour
         GetComponentsInChildren(true, children);
     }
 
+    public void SetItems(BackPack backPack)
+    {
+        ui_items.ForEach(Destroy);
+        numItems = 0;
+        itemIndex = 1;
+        backPack.Items.ForEach(SetItem);
+    }
+
     public void SetItem(Item item)
     {
         var newtotal = numItems + 1;
@@ -38,7 +46,7 @@ public class UIGridBehaviour : MonoBehaviour
         ui_items.Add(itemgo);
         itemgo.transform.SetParent(children[itemIndex]);
         itemgo.GetComponent<RectTransform>().Stretch();
-        itemgo.GetComponent<Image>().sprite = item.sprite;
+        itemgo.GetComponent<Image>().sprite = item.ItemSprite;
         numItems++;
         itemIndex++;
     }

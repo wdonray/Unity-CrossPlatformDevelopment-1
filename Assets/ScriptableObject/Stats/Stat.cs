@@ -1,9 +1,7 @@
 ﻿using System;
 using RPGStats;
 using UnityEngine;
-
-namespace ScriptableAssets
-{
+ 
     public enum StatType
     {
         Knowledge,
@@ -39,4 +37,4 @@ namespace ScriptableAssets
                 Value -= _baseValue * mod.value / 10;
         }
     }
-}
+ 

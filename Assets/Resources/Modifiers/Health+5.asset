@@ -8,10 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3851384a9420e974d96687e0061aafc6, type: 3}
-  m_Name: CombatKnife
+  m_Script: {fileID: 11500000, guid: e2c369bcf98e9ce4d9b433b33ecf497b, type: 3}
+  m_Name: Health+5
   m_EditorClassIdentifier: 
-  _itemName: CombatKnife
-  DisplayName: 
-  ItemSprite: {fileID: 21300002, guid: d08b3f4556c15fd4594461dc8cdf5b77, type: 3}
-  Damage: 25
+  EffectedStatType: 4
+  TheMod:
+    stat: 
+    type: 
+    value: 0
+  ModType: 0
+  ModifiedValue: 5

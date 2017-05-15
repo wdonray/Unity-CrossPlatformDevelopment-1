@@ -25,7 +25,8 @@ public class ShieldConfig : Weapon, IBlockable
     public override void Initialize(GameObject obj)
     {
         this._owner = obj;
-        
+        base.Initialize(obj);
+
     }
 }
 

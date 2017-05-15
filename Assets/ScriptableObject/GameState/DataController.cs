@@ -29,30 +29,38 @@ public class ScriptableSingleton<T> : ScriptableObject where T : ScriptableObjec
 public class DataController : ScriptableSingleton<DataController>
 {
     private static string path;
-
-    private void OnEnable()
+    private static int numsaves = 0;
+    public static void Save<T>(T data, string profilename = "") where T : ScriptableObject
     {
-        //should be replaced with Application.persistentDataPath
-        path = Application.dataPath + "/Saves/";
-        Debug.Log(path);
-    }
+        
+        
 
-    public static void Save<T>(T data) where T : ScriptableObject
-    {
-        Debug.LogFormat("save {0} with filename {0}.json", data);
+        
+        path = Application.dataPath + "/StreamingAssets/";
+        var files = System.IO.Directory.GetFiles(path, "*.json").ToList();
+        numsaves = files.Count;
         //object to json string
         var json = JsonUtility.ToJson(data, true);
         //filename to save
-        var filename = string.Format("{0}.json", data);
+        var savename = data.GetType().ToString();
+        if (profilename != "")
+            savename = profilename;
+        
+        var filename = string.Format("{0}-{1}.json", savename, numsaves);
         //write all text to the file at the path
         File.WriteAllText(path + filename, json);
+        numsaves++;
+        Debug.LogFormat("save {0} with filename {1}", data, filename);
     }
 
     public static T Load<T>(string filename) where T : ScriptableObject
     {
-        var json = File.ReadAllText(path + filename);
+        path = Application.dataPath + "/StreamingAssets/";
+        var json = File.ReadAllText(path + filename+".json");
         var scriptableObject = ScriptableObject.CreateInstance<T>();
         JsonUtility.FromJsonOverwrite(json, scriptableObject);
+        if (scriptableObject == null)
+            Debug.Log("could not load requested file");
         return scriptableObject;
     }
 

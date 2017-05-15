@@ -5,19 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/KevlarVest")]
 public class KevlarVest : Armor
 {
-    public int yep = 0;
     public override void Execute()
     {
         throw new NotImplementedException();
     }
 
     public override void Initialize(GameObject obj)
-    {        
-        ID = GetHashCode();
+    {
+        base.Initialize(obj);
+        _itemID = GetHashCode();
 
-        if (Name == "")
-            Name = "KevlarVest";
-        name = Name;
+        if (_itemName == "")
+            _itemName = "KevlarVest";
+        name = _itemName;
+        DisplayName = _itemName;
         if (obj == null)
             return;
          
