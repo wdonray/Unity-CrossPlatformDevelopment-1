@@ -12,16 +12,17 @@ public class ItemFactory : MonoBehaviour
     public static int itemsCreated = 0;
 
     public List<string> values;
-
+    public static ItemFactory Instance;
     private void Awake()
     {
         var items = Resources.LoadAll<Item>("Items");
         _itemDataBase = new Dictionary<string, Item>();
+
         foreach (var item in items)
         {
             Item val;
-            if (!_itemDataBase.TryGetValue(item.Name, out val))
-                _itemDataBase.Add(item.Name, item);
+            if (!_itemDataBase.TryGetValue(item._itemName, out val))
+                _itemDataBase.Add(item._itemName, item);
         }
 
         _itemPrefab = Resources.Load("ItemPrefabResource") as GameObject;
@@ -35,10 +36,11 @@ public class ItemFactory : MonoBehaviour
         if (_itemDataBase.TryGetValue(itemName, out val))
         {
             var clone = Instantiate(_itemPrefab);
+            clone.hideFlags = HideFlags.HideAndDontSave;
             var itembehaviour = clone.GetComponent<ItemBehaviour>();
-            itembehaviour.item = val;
-            itembehaviour.Initialize();
-            Debug.LogFormat("created {0}", val.Name);
+            itembehaviour.item_config = val;
+            Debug.LogFormat("created {0}", val._itemName);
+            Destroy(clone);
         }
         else
         {

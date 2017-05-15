@@ -11,8 +11,9 @@ public class HealthPotion : Potion
     public int Value;
     public override void Initialize(GameObject obj)
     {
-        _owner = obj;
+        base.Initialize(obj);
         healthMod = Instantiate(healthMod);
+        healthMod.Initialize(obj);
     }
 
     public override void Execute()

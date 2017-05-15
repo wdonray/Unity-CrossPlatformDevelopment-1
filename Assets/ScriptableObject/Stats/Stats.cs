@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using RPGStats;
 using UnityEngine;
-
-namespace ScriptableAssets
-{
-    [CreateAssetMenu(fileName = "Stats", menuName = "Stats/StatsTemplate", order = 1)]
+ 
+    [CreateAssetMenu(menuName = "Stats")]
     public class Stats : ScriptableObject, IEnumerable<Stat>
     {
         public List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
@@ -94,4 +92,4 @@ namespace ScriptableAssets
             public Modifier mod;
         }
     }
-}
+ 

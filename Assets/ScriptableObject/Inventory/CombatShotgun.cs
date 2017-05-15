@@ -9,7 +9,7 @@ public class CombatShotgun : Weapon, IShootable
 
     public override void Initialize(GameObject obj)
     {
-        _owner = obj;
+        base.Initialize(obj);
     }
 
     public override void Execute()
