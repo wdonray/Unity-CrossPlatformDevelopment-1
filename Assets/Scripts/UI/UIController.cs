@@ -65,11 +65,13 @@ public class UIController : MonoBehaviour
         SetButtonCallbacks();
         UpdateSavesDropdown();
 
-
+        onStartButton.Invoke();
     }
 
     private void Update()
     {
+        GameObject.Find("Text-Player").GetComponent<Text>().text =
+            FindObjectOfType<PlayerBehaviour>().PlayerStats["Health"].Value.ToString();
         if (GetCancel()) onCancel.Invoke();
         if (GetSubmit()) onSubmit.Invoke();
         if (GetStart()) onStartButton.Invoke();
