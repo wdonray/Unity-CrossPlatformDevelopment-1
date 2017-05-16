@@ -13,13 +13,9 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private BackPackBehaviour backPackBehaviour;
 
-    [SerializeField] public BackPack Inventory;
+    public BackPack Inventory;
 
-    [SerializeField] private bool InventoryUp;
-
-    [SerializeField] private Dropdown itemDropdownList;
-
-    public int loadid;
+    private bool InventoryUp;
 
     private Vector3 oldInventoryPos;
 
@@ -30,11 +26,13 @@ public class UIController : MonoBehaviour
     public OnStartButton onStartButton;
 
     [HideInInspector] public OnSubmit onSubmit;
-
+    [SerializeField] private Dropdown itemDropdownList;
     [SerializeField] private Dropdown savesDropdownList;
 
     [SerializeField] private UIView View;
-
+    Button save_button, load_button, clear_button;
+    List<Button> _buttons;
+    List<Dropdown> _dropdowns;
     private void Awake()
     {
         View = FindObjectOfType<UIView>();
@@ -66,27 +64,31 @@ public class UIController : MonoBehaviour
         UpdateSavesDropdown();
 
         onStartButton.Invoke();
+        _buttons.ForEach(b => b.gameObject.SetActive(false));
+        _dropdowns = new List<Dropdown>() {itemDropdownList, savesDropdownList};
+        _dropdowns.ForEach(d => d.gameObject.SetActive(false));
+
     }
 
     private void Update()
     {
-        GameObject.Find("Text-Player").GetComponent<Text>().text =
-            FindObjectOfType<PlayerBehaviour>().PlayerStats["Health"].Value.ToString();
         if (GetCancel()) onCancel.Invoke();
         if (GetSubmit()) onSubmit.Invoke();
         if (GetStart()) onStartButton.Invoke();
     }
 
+    
     private void SetButtonCallbacks()
     {
-        var save_button = GameObject.Find("Button-Save").GetComponent<Button>();
-        var load_button = GameObject.Find("Button-Load").GetComponent<Button>();
-        var clear_button = GameObject.Find("Button-Clear").GetComponent<Button>();
+         save_button = GameObject.Find("Button-Save").GetComponent<Button>();
+         load_button = GameObject.Find("Button-Load").GetComponent<Button>();
+         clear_button = GameObject.Find("Button-Clear").GetComponent<Button>();
 
         clear_button.onClick.AddListener( delegate { backPackBehaviour.RemoveAll(); });
 
-        save_button.onClick.AddListener(delegate
-        {
+        save_button.onClick.AddListener(
+            delegate
+            {
             DataController.Save(backPackBehaviour.backPack_runtime, "BackPack");
             UpdateSavesDropdown();
         });
@@ -95,6 +97,7 @@ public class UIController : MonoBehaviour
         {
             backPackBehaviour.Initialize(DataController.Load<BackPack>(savesDropdownList.captionText.text));
         });
+        _buttons = new List<Button>() {save_button, load_button, clear_button};
     }
 
     public void UpdateSavesDropdown()
@@ -108,9 +111,8 @@ public class UIController : MonoBehaviour
             var fname = f.Substring(path.Length);
             var nfname = fname.Remove(fname.Length - ".json".Length);
             names.Add(nfname);
-        }
-        
-        
+        } 
+
         savesDropdownList.ClearOptions();
         savesDropdownList.AddOptions(names);
     }
