@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Goblin Loot Table
   m_EditorClassIdentifier: 
   ItemDrops:
-  - chance: 0.491
+  - chance: 1
     item: {fileID: 11400000, guid: 3f35547d245b7104b926958da6f8ab58, type: 2}
-  - chance: 0.107
+  - chance: 1
     item: {fileID: 11400000, guid: e0d718040ae68f14bb8c3a9afd2804fa, type: 2}
-  randomroll: 0.036694765
+  randomroll: 0.80658185

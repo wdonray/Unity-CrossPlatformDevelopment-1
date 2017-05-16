@@ -30,7 +30,7 @@ public class LootTable : ScriptableObject
         randomroll = UnityEngine.Random.Range(0f, 1f);
         foreach (var itemdrop in ItemDrops)
         {
-            if (itemdrop.chance < randomroll)
+            if (itemdrop.chance > randomroll)
                 items.Add(itemdrop.item);
         }
         return items;
@@ -41,11 +41,12 @@ public class LootTable : ScriptableObject
     [CustomEditor(typeof(LootTable))]
     public class InspectorLootTable : Editor
     {
+        string result = "";
         public override void OnInspectorGUI()
         {
-            base.OnInspectorGUI();
+            
             var mytarget = target as LootTable;
-            var result = "";
+       
             if(GUILayout.Button("DROP ITEMS", GUILayout.ExpandWidth(false)))
             {
         
@@ -56,13 +57,15 @@ public class LootTable : ScriptableObject
                 }
                 else
                 {
+                    result = "";
                     randomdrops.ForEach(d => result += "," + d.name);
                 }
             }
+            EditorGUILayout.LabelField("result", result);
 
-            EditorGUILayout.LabelField(result);
-
+            base.OnInspectorGUI();
         }
+     
     }
 #endif
 }

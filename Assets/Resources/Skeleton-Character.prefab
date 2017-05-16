@@ -2501,7 +2501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f047173bac04e484b83667f4db44193d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backPack_config: {fileID: 11400000, guid: 529dc606c0f1e8c408080490a6134c8b, type: 2}
+  backPack_config: {fileID: 0}
   backPack_runtime: {fileID: 0}
 --- !u!114 &114352463390898088
 MonoBehaviour:
@@ -2600,7 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyColliderOffset: {x: 0, y: 0}
   MyColliderSize: {x: 0, y: 0}
-  _ShieldConfig: {fileID: 11400000, guid: ba7476647c0296846b90a23c416ea43d, type: 2}
+  _ShieldConfig: {fileID: 0}
 --- !u!114 &114573557592765506
 MonoBehaviour:
   m_ObjectHideFlags: 1

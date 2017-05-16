@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using RPGStats;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Stats")]
 public class Stats : ScriptableObject, IEnumerable<Stat>
-{
-    
-
+{ 
     public Dictionary<string, Stat> Items = new Dictionary<string, Stat>();
-
     public Dictionary<int, Modifier> Modifiers = new Dictionary<int, Modifier>();
     public Stat[] stats;
-    public List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
+    private List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
     public Stat this[string element]
     {
         get
@@ -94,4 +94,23 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
         public int identifier;
         public Modifier mod;
     }
+
+#if UNITY_EDITOR
+
+    [CustomEditor(typeof(Stats))]
+    public class InspectorLootTable : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            var mytarget = target as Stats;
+            base.OnInspectorGUI();
+            foreach (var mod in mytarget.INSPECTOR_MODS)
+            {
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField("mod:" + mod.mod.stat, mod.mod.value.ToString());
+                GUILayout.EndHorizontal();
+            }
+        }
+    }
+#endif
 }

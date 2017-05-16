@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 public class BackPackBehaviour : MonoBehaviour
 {
-
     public BackPack backPack_config;
+    [HideInInspector]
     public BackPack backPack_runtime;
 
     public OnBackPackAddItem onBackPackAddItem = new OnBackPackAddItem();

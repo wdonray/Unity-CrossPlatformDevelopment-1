@@ -8,7 +8,7 @@ public class HealthPotion : Potion
 {
     public string statToModify = "Health";
     public GenericModifier healthMod;
-    public int Value;
+    private int Value;
     public override void Initialize(GameObject obj)
     {
         base.Initialize(obj);
