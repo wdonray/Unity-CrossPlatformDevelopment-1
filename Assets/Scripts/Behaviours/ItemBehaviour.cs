@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class ItemBehaviour : MonoBehaviour
 {
     public Item item_config;
@@ -8,6 +9,9 @@ public class ItemBehaviour : MonoBehaviour
     public bool RANDOM;
     public int Timer;
     private bool _initialized = false;
+
+    private SpriteRenderer _spriteRenderer;
+
     public void Initialize()
     {
         if (_initialized)
@@ -15,7 +19,8 @@ public class ItemBehaviour : MonoBehaviour
             Debug.LogWarning("attempting to initialize an already initialized item behaviour");
             return;
         }
-        
+
+        _spriteRenderer = this.GetComponent<SpriteRenderer>();
         var allitems = Resources.LoadAll<Item>("Items");
         var randint = Random.Range(0, allitems.Length - 1);
         if (RANDOM)
@@ -27,7 +32,7 @@ public class ItemBehaviour : MonoBehaviour
         item_runtime.ItemSprite = item_config.ItemSprite;
         ITEM_NAME = item_runtime.DisplayName;
 
-        GetComponent<SpriteRenderer>().sprite = item_runtime.ItemSprite;
+        _spriteRenderer.sprite = item_runtime.ItemSprite;
         _initialized = true;
     }
 
@@ -40,5 +45,17 @@ public class ItemBehaviour : MonoBehaviour
     public void DestroyItemGameObject()
     {
         Destroy(gameObject, Timer);
+    }
+
+    /// <summary>
+    /// The scale function.
+    /// Scales the current object based on its size.
+    /// </summary>
+    public void Scale()
+    {
+        if (_spriteRenderer.sprite.rect.size.x < 200)
+        {
+            transform.localScale = new Vector3(5, 5, 1);
+        }
     }
 }
