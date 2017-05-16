@@ -15,7 +15,6 @@ public class PlayerBehaviour : CharacterBehaviour
     public class OnHealthChange : UnityEvent<int> { }
 
     private int modcount;
-    private List<int> timedMods;
     public OnHealthChange onHealthChange = new OnHealthChange();
     public OnStatModify onStatModify = new OnStatModify();
     public Stats PlayerStats;
@@ -39,18 +38,6 @@ public class PlayerBehaviour : CharacterBehaviour
         onStatModify.Invoke("");
     }
 
-    public void ModifyStatOverTime(string statName, Modifier mod, float duration)
-    {
-        var valids = new List<string>(Enum.GetNames(typeof(StatType)));
-        if (!valids.Contains(statName)) return;
-        PlayerStats.AddModifier(modcount++, mod);
-        timedMods.Add(modcount);
-
-        if (statName == "Health")
-            onHealthChange.Invoke(PlayerStats[statName].Value);
-        onStatModify.Invoke(statName);
-    }
-
     public override void ModifyStat(string statName, Modifier mod)
     {
         var valids = new List<string>(Enum.GetNames(typeof(StatType)));
@@ -67,4 +54,10 @@ public class PlayerBehaviour : CharacterBehaviour
         onStatModify.Invoke(statName);
     }
 
+    public void ClearAll()
+    {
+        PlayerStats.ClearModifiers();
+        onHealthChange.Invoke(PlayerStats["Health"].Value);
+    }
+    
 }

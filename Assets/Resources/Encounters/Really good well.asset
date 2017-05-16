@@ -8,13 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c369bcf98e9ce4d9b433b33ecf497b, type: 3}
-  m_Name: ThornBushDamage
+  m_Script: {fileID: 11500000, guid: 23c1de3d779a0e5408fb39d18e263648, type: 3}
+  m_Name: Really good well
   m_EditorClassIdentifier: 
-  EffectedStatType: 4
-  TheMod:
-    stat: 
-    type: 
-    value: 0
-  ModType: 1
-  ModifiedValue: -1
