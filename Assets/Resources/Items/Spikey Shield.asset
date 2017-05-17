@@ -8,13 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 356c61aa227d77546b09d6c6ff619f74, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: 3df4349c7c6330b4398a2bc10701b71c, type: 3}
+  m_Name: Spikey Shield
   m_EditorClassIdentifier: 
-  StatsArray:
-  - _baseValue: 100
-    Name: 4
-    Value: 0
-  - _baseValue: 10
-    Name: 0
-    Value: 0
+  _itemName: SpikeyShield
+  DisplayName: 
+  ItemSprite: {fileID: 0}
+  Damage: 0
+  ShieldGrowth: 0
+  _StatModifier: {fileID: 0}

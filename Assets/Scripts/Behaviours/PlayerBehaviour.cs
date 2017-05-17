@@ -8,17 +8,6 @@ using UnityEngine.Events;
 public class PlayerBehaviour : CharacterBehaviour
 {
 
-    [Serializable]
-    public class OnStatModify : UnityEvent<string> { }
-
-    [Serializable]
-    public class OnHealthChange : UnityEvent<int> { }
-
-    private int modcount;
-    public OnHealthChange onHealthChange = new OnHealthChange();
-    public OnStatModify onStatModify = new OnStatModify();
-    public Stats PlayerStats;
-
     //TODO : ADD THE TIMERFOR DEBUFFS AND DAMAGE OVER TIME, MAKE AN OBJECT TO HOLD THE ID OF THE MOD AND THE TIME TILL IT NEEDS TO GO AWAY
 
     void Awake()
@@ -28,16 +17,15 @@ public class PlayerBehaviour : CharacterBehaviour
             Debug.LogWarning("you have not assigned a stats reference object");
             return;
         }
-
-        var newstats = Instantiate(PlayerStats);
-        PlayerStats = newstats;
+        
+        GameState.Instance._player = new GameState.PlayerInfo(PlayerStats) { Name = name };
     }
 
     void Start()
     {
         onStatModify.Invoke("");
     }
-
+    
     public override void ModifyStat(string statName, Modifier mod)
     {
         var valids = new List<string>(Enum.GetNames(typeof(StatType)));

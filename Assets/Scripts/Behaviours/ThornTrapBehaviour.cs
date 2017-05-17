@@ -13,7 +13,6 @@ public class ThornTrapBehaviour : MonoBehaviour
 
     public void DoDamage(GameObject go)
     {
-        Debug.Log("collide with player");
         go.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
         Destroy(gameObject);
     }

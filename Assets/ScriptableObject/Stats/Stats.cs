@@ -3,18 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using RPGStats;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using UnityEngine;
 
 [CreateAssetMenu(menuName = "Stats")]
 public class Stats : ScriptableObject, IEnumerable<Stat>
-{ 
+{
+    private readonly List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
     public Dictionary<string, Stat> Items = new Dictionary<string, Stat>();
     public Dictionary<int, Modifier> Modifiers = new Dictionary<int, Modifier>();
-    public Stat[] stats;
-    private List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
+    public Stat[] StatsArray;
+
     public Stat this[string element]
     {
         get
@@ -27,6 +28,11 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
         set { Items[element] = value; }
     }
 
+    public int Count
+    {
+        get { return StatsArray.Length; }
+    }
+
     public IEnumerator<Stat> GetEnumerator()
     {
         return Items.Values.GetEnumerator();
@@ -37,11 +43,11 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
         return Items.Values.GetEnumerator();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
-        if (stats == null) return;
+        if (StatsArray == null) return;
 
-        foreach (var stat in stats)
+        foreach (var stat in StatsArray)
             Add(stat);
     }
 
@@ -94,7 +100,6 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
         public int identifier;
         public Modifier mod;
     }
-
 #if UNITY_EDITOR
 
     [CustomEditor(typeof(Stats))]
@@ -104,12 +109,13 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
         {
             var mytarget = target as Stats;
             base.OnInspectorGUI();
-            foreach (var mod in mytarget.INSPECTOR_MODS)
-            {
-                GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField("mod:" + mod.mod.stat, mod.mod.value.ToString());
-                GUILayout.EndHorizontal();
-            }
+            if (mytarget != null)
+                foreach (var mod in mytarget.INSPECTOR_MODS)
+                {
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField("mod:" + mod.mod.stat, mod.mod.value.ToString());
+                    GUILayout.EndHorizontal();
+                }
         }
     }
 #endif
