@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using RPGStats;
-using ScriptableAssets;
 using UnityEngine;
-using UnityEngine.Events;
-
+using System.Linq;
 public class PlayerBehaviour : CharacterBehaviour
 {
 
@@ -12,13 +10,13 @@ public class PlayerBehaviour : CharacterBehaviour
 
     void Awake()
     {
-        if (PlayerStats == null)
+        if (CharacterStats == null)
         {
-            Debug.LogWarning("you have not assigned a stats reference object");
-            return;
+            Debug.LogWarning("You have not assigned a stats reference object... creating.");
+            CharacterStats = Resources.Load<Stats>(@"Stats\PlayerStats");
         }
         
-        GameState.Instance._player = new GameState.PlayerInfo(PlayerStats) { Name = name };
+        GameState.Instance._player = new GameState.PlayerInfo(CharacterStats) { Name = name };
     }
 
     void Start()
@@ -26,26 +24,25 @@ public class PlayerBehaviour : CharacterBehaviour
         onStatModify.Invoke("");
     }
     
-    public override void ModifyStat(string statName, Modifier mod)
+    public override void ModifyStat(Stat stat, RPGStats.Modifier mod)
     {
-        var valids = new List<string>(Enum.GetNames(typeof(StatType)));
-        if (!valids.Contains(statName))
+        if (!this.CharacterStats.GetStat(stat.Name))
         {
-            Debug.LogWarningFormat("stat:: {0}, is not a valid stat to modify", statName);
+            Debug.LogWarningFormat("stat:: {0}, is not a valid stat to modify", stat);
             return;
         }
 
-        PlayerStats.AddModifier(modcount++, mod);
+        CharacterStats.AddModifier(modcount++, mod);
 
-        if (statName == "Health")
-            onHealthChange.Invoke(PlayerStats[statName].Value);
-        onStatModify.Invoke(statName);
+        if (stat.Name == "Health")
+            onHealthChange.Invoke(CharacterStats[stat.Name].Value);
+        onStatModify.Invoke(stat.Name);
     }
 
     public void ClearAll()
     {
-        PlayerStats.ClearModifiers();
-        onHealthChange.Invoke(PlayerStats["Health"].Value);
+        CharacterStats.ClearModifiers();
+        onHealthChange.Invoke(CharacterStats["Health"].Value);
     }
     
 }

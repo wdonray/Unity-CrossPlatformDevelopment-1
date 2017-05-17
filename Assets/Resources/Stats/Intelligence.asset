@@ -8,13 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c369bcf98e9ce4d9b433b33ecf497b, type: 3}
-  m_Name: 20%Damage
+  m_Script: {fileID: 11500000, guid: 7a361b491b9e000409cfeac725989fff, type: 3}
+  m_Name: Intelligence
   m_EditorClassIdentifier: 
-  EffectedStat: {fileID: 11400000, guid: e9a5aebd17170cc4db0784f2cca8c848, type: 2}
-  mod:
-    stat: 
-    type: 
-    value: 0
-  ModType: 0
-  ModifiedValue: -2
+  _baseValue: 0
+  Name: 
+  Value: 0

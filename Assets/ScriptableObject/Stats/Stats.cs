@@ -13,7 +13,7 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
 {
     private readonly List<IDModifier> INSPECTOR_MODS = new List<IDModifier>();
     public Dictionary<string, Stat> Items = new Dictionary<string, Stat>();
-    public Dictionary<int, Modifier> Modifiers = new Dictionary<int, Modifier>();
+    public Dictionary<int, RPGStats.Modifier> Modifiers = new Dictionary<int, RPGStats.Modifier>();
     public Stat[] StatsArray;
 
     public Stat this[string element]
@@ -48,10 +48,10 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
         if (StatsArray == null) return;
 
         foreach (var stat in StatsArray)
-            Add(stat);
+            Add(Instantiate(stat));
     }
 
-    public string AddModifier(int id, Modifier m)
+    public string AddModifier(int id, RPGStats.Modifier m)
     {
         INSPECTOR_MODS.Add(new IDModifier {identifier = id, mod = m});
         Modifiers.Add(id, m);
@@ -76,7 +76,8 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
 
     public void Add(Stat s)
     {
-        Items.Add(s.Name.ToString(), s);
+        s.Name = s.Name.Replace("(Clone)", string.Empty);
+        Items.Add(s.Name, s);
     }
 
     public void ClearModifiers()
@@ -98,7 +99,7 @@ public class Stats : ScriptableObject, IEnumerable<Stat>
     public class IDModifier
     {
         public int identifier;
-        public Modifier mod;
+        public RPGStats.Modifier mod;
     }
 #if UNITY_EDITOR
 

@@ -6,10 +6,10 @@ using UnityEngine;
 public class PoisonGas : Encounter {
     
     public Material encounterMaterial;
-    public GenericModifier modifier;
+    public Modifier modifier;
 
     private GameObject _player;
-    private GenericModifier RUNTIME_MOD;
+    private Modifier RUNTIME_MOD;
     private float _timer = 0;
 
     public override void Initialize(GameObject obj)
@@ -36,14 +36,14 @@ public class PoisonGas : Encounter {
     public bool EncounterStartedWithPlayer(GameObject obj)
     {
         if(obj.GetComponent<PlayerBehaviour>())
-            obj.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
+            obj.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStat, RUNTIME_MOD.mod);
         return true;
     }
 
     public override bool EncounterStart()
     {
         
-        _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
+        _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStat, RUNTIME_MOD.mod);
 
         return true;
     }
@@ -52,7 +52,7 @@ public class PoisonGas : Encounter {
     {
         if (_timer >= 1.5f)
         {
-            _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStatType.ToString(), RUNTIME_MOD.TheMod);
+            _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStat, RUNTIME_MOD.mod);
             _timer = 0;
         }
         else

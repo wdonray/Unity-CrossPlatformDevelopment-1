@@ -2,27 +2,20 @@
 using RPGStats;
 using UnityEngine;
 
-public enum StatType
-{
-    Knowledge,
-    Guts,
-    Charm,
-    Kindness,
-    Health,
-    Mana,
-}
-
-[Serializable]
-public class Stat
+[CreateAssetMenu]
+public class Stat : ScriptableObject
 {
     [SerializeField]
     private int _baseValue;
-
-    public StatType Name;
+    public string Name;
     public int Value;
+    private void OnEnable()
+    {
+        Name = name;
+        Value = _baseValue;
+    }
 
-
-    public void Apply(Modifier mod)
+    public void Apply(RPGStats.Modifier mod)
     {
         
         if(mod.type == "add")
@@ -34,7 +27,7 @@ public class Stat
             Value += _baseValue * mod.value / 10;
     }
 
-    public void Remove(Modifier mod)
+    public void Remove(RPGStats.Modifier mod)
     {
         if(mod.type == "add")
             Value -= mod.value;

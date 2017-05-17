@@ -11,11 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356c61aa227d77546b09d6c6ff619f74, type: 3}
   m_Name: LoganStats
   m_EditorClassIdentifier: 
-  stats:
-  - _baseValue: 100
-    Name: 4
-    Value: 100
-  - _baseValue: 10
-    Name: 0
-    Value: 10
-  INSPECTOR_MODS: []
+  StatsArray:
+  - {fileID: 11400000, guid: e9a5aebd17170cc4db0784f2cca8c848, type: 2}
+  - {fileID: 11400000, guid: 9deb50faa16e99744852fb6704c1efd8, type: 2}

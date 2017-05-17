@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   StatsArray:
-  - _baseValue: 100
-    Name: 4
-    Value: 0
-  - _baseValue: 10
-    Name: 0
-    Value: 0
+  - {fileID: 11400000, guid: e9a5aebd17170cc4db0784f2cca8c848, type: 2}
+  - {fileID: 11400000, guid: 9deb50faa16e99744852fb6704c1efd8, type: 2}
+  - {fileID: 11400000, guid: df3cfcac0cea2e04ca840f6c5eb80e3a, type: 2}

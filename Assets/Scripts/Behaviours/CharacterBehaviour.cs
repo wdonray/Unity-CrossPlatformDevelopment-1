@@ -14,9 +14,9 @@ public abstract class CharacterBehaviour : MonoBehaviour
 
     protected int modcount;
     [SerializeField]
-    protected Stats PlayerStats;
+    protected Stats CharacterStats;
     public OnHealthChange onHealthChange = new OnHealthChange();
     public OnStatModify onStatModify = new OnStatModify();
     
-    public virtual void ModifyStat(string statName, Modifier mod) { }
+    public virtual void ModifyStat(Stat stat, RPGStats.Modifier mod) { }
 }
