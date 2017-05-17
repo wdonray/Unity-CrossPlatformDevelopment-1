@@ -1951,17 +1951,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a46391207c77e44692807dceaed1fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterStats: {fileID: 0}
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: PlayerBehaviour+OnHealthChange, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: CharacterBehaviour+OnHealthChange, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onStatModify:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: PlayerBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  PlayerStats: {fileID: 0}
+    m_TypeName: CharacterBehaviour+OnStatModify, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114441367324306332
 MonoBehaviour:
   m_ObjectHideFlags: 1
