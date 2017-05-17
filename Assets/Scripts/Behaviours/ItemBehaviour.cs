@@ -12,6 +12,12 @@ public class ItemBehaviour : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
 
+    public void Initialize(Item item)
+    {
+        item_config = item;
+        Initialize();
+    }
+
     public void Initialize()
     {
         if (_initialized)

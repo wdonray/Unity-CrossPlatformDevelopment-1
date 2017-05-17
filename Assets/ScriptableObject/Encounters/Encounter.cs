@@ -23,22 +23,16 @@ public abstract class Encounter : ScriptableObject {
     }
     public virtual bool EncounterStart()
     {
-        Debug.Log("EncounterStart Has Not Been Overridden");
-
         return true;
     }
 
     public virtual bool EncounterUnderway()
     {
-        Debug.Log("EncounterUnderway Has Not Been Overridden");
-
         return true;
     }
 
     public virtual bool EncounterEnd()
     {
-        Debug.Log("EncounterEnd Has Not Been Overridden");
-
         return true;
     }
 

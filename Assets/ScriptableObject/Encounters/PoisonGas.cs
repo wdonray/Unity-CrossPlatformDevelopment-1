@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Encounter/PoisonGas")]
 public class PoisonGas : Encounter {
     
-    public Material EncounterMaterial;
-    public GenericModifier Modifier;
+    public Material encounterMaterial;
+    public Modifier modifier;
 
     private GameObject _player;
-    private GenericModifier _runtimeMod;
-    private float _timer;
+    private Modifier RUNTIME_MOD;
+    private float _timer = 0;
 
     public override void Initialize(GameObject obj)
     {
@@ -24,26 +24,26 @@ public class PoisonGas : Encounter {
         var main = obj.GetComponent<ParticleSystem>().main;
         main.startLifetime = 1;
 
-        obj.GetComponent<ParticleSystemRenderer>().material = EncounterMaterial;
+        obj.GetComponent<ParticleSystemRenderer>().material = encounterMaterial;
 
         //Finds player for Encounter functions
         _player = FindObjectOfType<PlayerInput>().gameObject;
 
-        _runtimeMod = Instantiate(Modifier);
-        _runtimeMod.Initialize(null);
+        RUNTIME_MOD = Instantiate(modifier);
+        RUNTIME_MOD.Initialize(null);
     }
 
     public bool EncounterStartedWithPlayer(GameObject obj)
     {
         if(obj.GetComponent<PlayerBehaviour>())
-            obj.GetComponent<PlayerBehaviour>().ModifyStat(_runtimeMod.EffectedStatType.ToString(), _runtimeMod.TheMod);
+            obj.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStat, RUNTIME_MOD.mod);
         return true;
     }
 
     public override bool EncounterStart()
     {
         
-        _player.GetComponent<PlayerBehaviour>().ModifyStat(_runtimeMod.EffectedStatType.ToString(), _runtimeMod.TheMod);
+        _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStat, RUNTIME_MOD.mod);
 
         return true;
     }
@@ -52,7 +52,7 @@ public class PoisonGas : Encounter {
     {
         if (_timer >= 1.5f)
         {
-            _player.GetComponent<PlayerBehaviour>().ModifyStat(_runtimeMod.EffectedStatType.ToString(), _runtimeMod.TheMod);
+            _player.GetComponent<PlayerBehaviour>().ModifyStat(RUNTIME_MOD.EffectedStat, RUNTIME_MOD.mod);
             _timer = 0;
         }
         else

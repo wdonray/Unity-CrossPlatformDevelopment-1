@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2c369bcf98e9ce4d9b433b33ecf497b, type: 3}
-  m_Name: 20%Damage
+  m_Name: Nikes
   m_EditorClassIdentifier: 
-  EffectedStat: {fileID: 11400000, guid: e9a5aebd17170cc4db0784f2cca8c848, type: 2}
+  EffectedStat: {fileID: 11400000, guid: df3cfcac0cea2e04ca840f6c5eb80e3a, type: 2}
   mod:
     stat: 
     type: 
     value: 0
-  ModType: 0
-  ModifiedValue: -2
+  ModType: 1
+  ModifiedValue: 2
